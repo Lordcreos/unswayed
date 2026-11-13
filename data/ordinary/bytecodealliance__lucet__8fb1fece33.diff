@@ -1,0 +1,17 @@
+diff --git a/lucet-runtime/lucet-runtime-internals/src/error.rs b/lucet-runtime/lucet-runtime-internals/src/error.rs
+index 4ca1da9d..240df83d 100644
+--- a/lucet-runtime/lucet-runtime-internals/src/error.rs
++++ b/lucet-runtime/lucet-runtime-internals/src/error.rs
+@@ -115,10 +115,10 @@ pub enum ModuleError {
+ #[macro_export]
+ macro_rules! lucet_bail {
+     ($e:expr) => {
+-        return Err(lucet_format_err!($e));
++        return Err(lucet_format_err!($e))
+     };
+     ($fmt:expr, $($arg:tt)*) => {
+-        return Err(lucet_format_err!($fmt, $($arg)*));
++        return Err(lucet_format_err!($fmt, $($arg)*))
+     };
+ }
+ 

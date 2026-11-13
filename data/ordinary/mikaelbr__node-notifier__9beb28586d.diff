@@ -1,0 +1,51 @@
+diff --git a/lib/utils.js b/lib/utils.js
+index 3a577f61..7ab0c78b 100644
+--- a/lib/utils.js
++++ b/lib/utils.js
+@@ -45,7 +45,7 @@ var notifySendFlags = {
+   h: 'hint',
+   hint: 'hint',
+   a: 'app-name',
+-  'app-name': 'app-name',
++  'app-name': 'app-name'
+ };
+ 
+ module.exports.command = function (notifier, options, cb) {
+@@ -352,7 +352,7 @@ var allowedToasterFlags = [
+   'pid',
+   'pipeName',
+   'close',
+-  'install',
++  'install'
+ ];
+ var toasterSoundPrefix = 'Notification.';
+ var toasterDefaultSound = 'Notification.Default';
+diff --git a/notifiers/toaster.js b/notifiers/toaster.js
+index a5d0ff67..0bbb873b 100644
+--- a/notifiers/toaster.js
++++ b/notifiers/toaster.js
+@@ -55,7 +55,7 @@ function notifyRaw(options, callback) {
+   var is64Bit = os.arch() === 'x64';
+   var resultBuffer;
+   const server = {
+-    namedPipe: getPipeName(),
++    namedPipe: getPipeName()
+   };
+ 
+   if (typeof options === 'string') {
+@@ -139,7 +139,7 @@ function notifyRaw(options, callback) {
+       explicitTrue: true,
+       wrapper: '',
+       keepNewlines: true,
+-      noEscape: true,
++      noEscape: true
+     });
+ 
+     var notifierWithArch = notifier + '-x' + (is64Bit ? '64' : '86') + '.exe';
+@@ -156,5 +156,5 @@ Object.defineProperty(WindowsToaster.prototype, 'notify', {
+   get: function () {
+     if (!this._notify) this._notify = notifyRaw.bind(this);
+     return this._notify;
+-  },
++  }
+ });

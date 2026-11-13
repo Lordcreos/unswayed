@@ -1,0 +1,12 @@
+diff --git a/src/cmsio1.c b/src/cmsio1.c
+index 316bf0ceb..364741c9e 100644
+--- a/src/cmsio1.c
++++ b/src/cmsio1.c
+@@ -590,6 +590,7 @@ cmsPipeline* _cmsReadOutputLUT(cmsHPROFILE hProfile, int Intent)
+     cmsContext ContextID  = cmsGetProfileContextID(hProfile);
+ 
+ 
++    if (Intent >= INTENT_PERCEPTUAL && Intent <= INTENT_ABSOLUTE_COLORIMETRIC) {
+ 
+         tag16 = PCS2Device16[Intent];
+         tagFloat = PCS2DeviceFloat[Intent];

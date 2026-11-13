@@ -1,0 +1,65 @@
+diff --git a/src/cli.js b/src/cli.js
+index ec52f79..f2bb08b 100755
+--- a/src/cli.js
++++ b/src/cli.js
+@@ -11,6 +11,7 @@ program
+     "[options]\nGenerate an image of a geojson with a background map layer"
+   )
+   .option("-g, --geojson <string>", "Geojson object to be rendered")
++  .option("-f, --geojsonfile <string>", "Geojson file name to be rendered (\"-\" reads STDIN)")
+   .option(
+     "-H, --height <number>",
+     "Height in pixels of the returned img",
+@@ -139,6 +140,12 @@ program.on("--help", function() {
+   process.stdout.write(
+     `  $ osmsm -g '[{"type":"Feature","properties":{"party":"Republican"},"geometry":{"type":"Polygon","coordinates":[[[-104.05,48.99],[-97.22,48.98],[-96.58,45.94],[-104.03,45.94],[-104.05,48.99]]]}},{"type":"Feature","properties":{"party":"Democrat"},"geometry":{"type":"Polygon","coordinates":[[[-109.05,41.00],[-102.06,40.99],[-102.03,36.99],[-109.04,36.99],[-109.05,41.00]]]}}]' --height=300 --width=300\n`
+   );
++  process.stdout.write(
++    `  $ osmsm -f /path/to/my_file.json\n`
++  );
++  process.stdout.write(
++    `  $ program_with_geojson_on_stdout | osmsm -f -\n`
++  );
+   process.stdout.write("\n");
+ });
+ 
+diff --git a/src/lib.d.ts b/src/lib.d.ts
+index b03ba0d..895706e 100644
+--- a/src/lib.d.ts
++++ b/src/lib.d.ts
+@@ -9,6 +9,12 @@ interface OsmStaticMapsOptions {
+    */
+   geojson?: string | GeoJSON.GeoJSON;
+ 
++  /**
++   * Geojson file name to be rendered in the map
++   * @defaultValue `undefined`
++   */
++  geojsonfile?: string;
++
+   /**
+    * height in pixels of the returned img
+    * @defaultValue `600`
+diff --git a/src/lib.js b/src/lib.js
+index 5f135dc..d25a9d6 100644
+--- a/src/lib.js
++++ b/src/lib.js
+@@ -56,6 +56,7 @@ module.exports = function(options) {
+   return new Promise(function(resolve, reject) {
+     options = options || {};
+     options.geojson = (options.geojson && (typeof options.geojson === 'string' ? options.geojson : JSON.stringify(options.geojson))) || '';
++    options.geojsonfile = options.geojsonfile || '';
+     options.height = options.height || 600;
+     options.width = options.width || 800;
+     options.center = options.center || '';
+@@ -73,6 +74,10 @@ module.exports = function(options) {
+     options.style = (options.style && (typeof options.style === 'string' ? options.style : JSON.stringify(options.style))) || false;
+     options.timeout = typeof options.timeout == undefined ? 20000 : options.timeout
+ 
++    if (options.geojsonfile) {
++      options.geojson= fs.readFileSync(options.geojsonfile=="-"?process.stdin.fd:options.geojsonfile, 'utf8');
++    }
++
+     const html = replacefiles(template(options));
+ 
+     if (options.renderToHtml) {

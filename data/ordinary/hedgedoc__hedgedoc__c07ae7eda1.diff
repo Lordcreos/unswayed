@@ -1,0 +1,21 @@
+diff --git a/lib/config/dockerSecret.js b/lib/config/dockerSecret.js
+index 3a6910f418..50bf7fe2c1 100644
+--- a/lib/config/dockerSecret.js
++++ b/lib/config/dockerSecret.js
+@@ -14,11 +14,11 @@ function getSecret (secret) {
+ if (fs.existsSync(basePath)) {
+   module.exports = {
+     dbURL: getSecret('dbURL'),
+-    sessionsecret: getSecret('sessionsecret'),
+-    sslkeypath: getSecret('sslkeypath'),
+-    sslcertpath: getSecret('sslcertpath'),
+-    sslcapath: getSecret('sslcapath'),
+-    dhparampath: getSecret('dhparampath'),
++    sessionSecret: getSecret('sessionsecret'),
++    sslKeyPath: getSecret('sslkeypath'),
++    sslCertPath: getSecret('sslcertpath'),
++    sslCAPath: getSecret('sslcapath'),
++    dhParamPath: getSecret('dhparampath'),
+     s3: {
+       accessKeyId: getSecret('s3_acccessKeyId'),
+       secretAccessKey: getSecret('s3_secretAccessKey')

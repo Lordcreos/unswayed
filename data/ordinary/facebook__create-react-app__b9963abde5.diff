@@ -1,0 +1,103 @@
+diff --git a/docusaurus/docs/advanced-configuration.md b/docusaurus/docs/advanced-configuration.md
+index a3000988b62..336d28cb2a2 100644
+--- a/docusaurus/docs/advanced-configuration.md
++++ b/docusaurus/docs/advanced-configuration.md
+@@ -27,4 +27,6 @@ You can adjust various development and production settings by setting environmen
+ | IMAGE_INLINE_SIZE_LIMIT   | 🚫 Ignored  |  ✅ Used   | By default, images smaller than 10,000 bytes are encoded as a data URI in base64 and inlined in the CSS or JS build artifact. Set this to control the size limit in bytes. Setting it to 0 will disable the inlining of images.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+ | FAST_REFRESH              |   ✅ Used   | 🚫 Ignored | When set to `false`, disables experimental support for Fast Refresh to allow you to tweak your components in real time without reloading the page.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+ | TSC_COMPILE_ON_ERROR      |   ✅ Used   |  ✅ Used   | When set to `true`, you can run and properly build TypeScript projects even if there are TypeScript type check errors. These errors are printed as warnings in the terminal and/or browser console.                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
++| ESLINT_NO_DEV_ERRORS      |   ✅ Used   | 🚫 Ignored | When set to `true`, ESLint errors are converted to warnings during development. As a result, ESLint output will no longer appear in the error overlay.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
++| DISABLE_ESLINT_PLUGIN     |   ✅ Used   |  ✅ Used   | When set to `true`, [eslint-webpack-plugin](https://github.com/webpack-contrib/eslint-webpack-plugin) will be completely disabled.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+ | DISABLE_NEW_JSX_TRANSFORM |   ✅ Used   |  ✅ Used   | When set to `true`, disables the [new JSX transform](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html) introduced in React 17 and backported to React 16.14.0, 15.7.0, and 0.14.10. New projects will use a version of React that supports this by default but you may need to disable it in existing projects if you can't upgrade React.                                                                                                                                                                                                                                                                                                     |
+diff --git a/packages/react-dev-utils/eslintFormatter.js b/packages/react-dev-utils/eslintFormatter.js
+index 47b111f7568..4e8280c686a 100644
+--- a/packages/react-dev-utils/eslintFormatter.js
++++ b/packages/react-dev-utils/eslintFormatter.js
+@@ -14,6 +14,10 @@ const table = require('text-table');
+ 
+ const cwd = process.cwd();
+ 
++const emitErrorsAsWarnings =
++  process.env.NODE_ENV === 'development' &&
++  process.env.ESLINT_NO_DEV_ERRORS === 'true';
++
+ function isError(message) {
+   if (message.fatal || message.severity === 2) {
+     return true;
+@@ -38,7 +42,7 @@ function formatter(results) {
+ 
+     messages = messages.map(message => {
+       let messageType;
+-      if (isError(message)) {
++      if (isError(message) && !emitErrorsAsWarnings) {
+         messageType = 'error';
+         hasErrors = true;
+         if (message.ruleId) {
+diff --git a/packages/react-scripts/config/webpack.config.js b/packages/react-scripts/config/webpack.config.js
+index 502736ead11..ba8fd0b9b56 100644
+--- a/packages/react-scripts/config/webpack.config.js
++++ b/packages/react-scripts/config/webpack.config.js
+@@ -55,6 +55,9 @@ const reactRefreshOverlayEntry = require.resolve(
+ // makes for a smoother build process.
+ const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
+ 
++const emitErrorsAsWarnings = process.env.ESLINT_NO_DEV_ERRORS === 'true';
++const disableESLintPlugin = process.env.DISABLE_ESLINT_PLUGIN === 'true';
++
+ const imageInlineSizeLimit = parseInt(
+   process.env.IMAGE_INLINE_SIZE_LIMIT || '10000'
+ );
+@@ -750,29 +753,31 @@ module.exports = function (webpackEnv) {
+           // The formatter is invoked directly in WebpackDevServerUtils during development
+           formatter: isEnvProduction ? typescriptFormatter : undefined,
+         }),
+-      new ESLintPlugin({
+-        // Plugin options
+-        extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+-        formatter: require.resolve('react-dev-utils/eslintFormatter'),
+-        eslintPath: require.resolve('eslint'),
+-        context: paths.appSrc,
+-        cache: true,
+-        cacheLocation: path.resolve(
+-          paths.appNodeModules,
+-          '.cache/.eslintcache'
+-        ),
+-        // ESLint class options
+-        cwd: paths.appPath,
+-        resolvePluginsRelativeTo: __dirname,
+-        baseConfig: {
+-          extends: [require.resolve('eslint-config-react-app/base')],
+-          rules: {
+-            ...(!hasJsxRuntime && {
+-              'react/react-in-jsx-scope': 'error',
+-            }),
++      !disableESLintPlugin &&
++        new ESLintPlugin({
++          // Plugin options
++          extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
++          formatter: require.resolve('react-dev-utils/eslintFormatter'),
++          eslintPath: require.resolve('eslint'),
++          emitWarning: isEnvDevelopment && emitErrorsAsWarnings,
++          context: paths.appSrc,
++          cache: true,
++          cacheLocation: path.resolve(
++            paths.appNodeModules,
++            '.cache/.eslintcache'
++          ),
++          // ESLint class options
++          cwd: paths.appPath,
++          resolvePluginsRelativeTo: __dirname,
++          baseConfig: {
++            extends: [require.resolve('eslint-config-react-app/base')],
++            rules: {
++              ...(!hasJsxRuntime && {
++                'react/react-in-jsx-scope': 'error',
++              }),
++            },
+           },
+-        },
+-      }),
++        }),
+     ].filter(Boolean),
+     // Some libraries import Node modules but don't use them in the browser.
+     // Tell webpack to provide empty mocks for them so importing them works.

@@ -1,0 +1,52 @@
+{
+  "title": "Choose the visual world for the Unswayed demo console",
+  "question": "The roll assigned Blinded Trial. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Blinded Trial",
+      "kicker": "THE ROLL",
+      "lineage": "double-blind trial kits, sealed randomisation envelopes, CONSORT flow diagrams",
+      "thesis": "The demo runs as a two-arm trial: one arm reads the story, the other gets the sealed sample.",
+      "palette": ["#f3f6f9", "#0d1b2a", "#ff5a36", "#1746e0", "#ffd400"],
+      "materials": ["trial-kit label stock", "blister-pack grids", "opaque sealed envelope"],
+      "viewport": "One pull request splits into two colour-owned arms, vermilion reads the description, ultramarine sees it sealed; verdict stamps land per arm, and a 90-cell blister pack shows 53 approved against 6.",
+      "risk": "A medical metaphor can feel off-topic to CISOs if the labels stop speaking security."
+    },
+    {
+      "id": "challenger-dumbar",
+      "label": "Modular Colour Bars",
+      "lineage": "Studio Dumbar modular identity systems",
+      "thesis": "Hard saturated bars physically cover the author's story wherever the gate looks.",
+      "case": "Fuses well and reads from the back row, but it looks like a design festival more than a control a CISO would sign off.",
+      "hero": "https://impeccable.style/worlds/cards/studio-dumbar-identity-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/studio-dumbar-identity.webp"
+    },
+    {
+      "id": "challenger-phosphor",
+      "label": "Phosphor Terminal",
+      "lineage": "green-phosphor terminals in a midnight machine room",
+      "thesis": "The whole demo prints itself as one glowing transcript.",
+      "case": "The room knows it by heart, which is the problem: every security demo ships it, and one transcript column cannot hold two verdicts side by side.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-phosphor-terminal-midnight-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/signals-instruments-phosphor-terminal-midnight.webp"
+    },
+    {
+      "id": "challenger-decollage",
+      "label": "Torn Billboard",
+      "lineage": "Paris décollage, posters torn back to earlier layers",
+      "thesis": "Tear the story away and the diff underneath is what gets judged.",
+      "case": "The tear is the mechanism, but aged poster fragments cost legibility at projector distance.",
+      "hero": "https://impeccable.style/worlds/cards/design-canon-decollage-torn-billboard-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/design-canon-decollage-torn-billboard.webp"
+    }
+  ],
+  "reroll": true,
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A dark security dashboard: two panels side by side with red and green status chips.",
+    "viewport": "Description and diff on the left, reviewer and gate verdict cards on the right, a metrics row along the bottom."
+  },
+  "steer": true
+}

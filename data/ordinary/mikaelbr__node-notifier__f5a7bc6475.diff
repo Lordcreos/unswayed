@@ -1,0 +1,13 @@
+diff --git a/test/notify-send.js b/test/notify-send.js
+index 0dde9381..894e5dfb 100644
+--- a/test/notify-send.js
++++ b/test/notify-send.js
+@@ -70,7 +70,7 @@ describe('notify-send', function () {
+     notifier.notify({ message: 'some\n "me\'ss`age`"' });
+   });
+ 
+-  it.only('should only include strings as arguments', function (done) {
++  it('should only include strings as arguments', function (done) {
+     var expected = ['"HACKED"', '--expire-time', '"10000"'];
+ 
+     expectArgsListToBe(expected, done);

@@ -1,0 +1,14 @@
+diff --git a/htdocs/langs/en_US/dict.lang b/htdocs/langs/en_US/dict.lang
+index f0fa27bcbf87b..81f6246989628 100644
+--- a/htdocs/langs/en_US/dict.lang
++++ b/htdocs/langs/en_US/dict.lang
+@@ -5,7 +5,8 @@ CountryIT=Italy
+ CountryES=Spain
+ CountryDE=Germany
+ CountryCH=Switzerland
+-CountryGB=Great Britain
++# Warning, country code GB is for United Kingdom. UK Does not exists as country code in ISO standard.
++CountryGB=United Kingdom
+ CountryUK=United Kingdom
+ CountryIE=Ireland
+ CountryCN=China

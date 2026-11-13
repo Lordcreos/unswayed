@@ -1,0 +1,32 @@
+diff --git a/bower.json b/bower.json
+index 74560c2e0..2d1d62b4d 100644
+--- a/bower.json
++++ b/bower.json
+@@ -15,7 +15,7 @@
+ 		"url": "https://github.com/dojo/dijit.git"
+ 	},
+ 	"dependencies": {
+-		"dojo": "1.16.2"
++		"dojo": "1.16.3-pre"
+ 	},
+ 	"devDependencies": {
+ 	}
+diff --git a/package.json b/package.json
+index b9cd065ab..af8a42f68 100644
+--- a/package.json
++++ b/package.json
+@@ -1,12 +1,12 @@
+ {
+ 	"name": "dijit",
+-	"version": "1.16.2",
++	"version": "1.16.3-pre",
+ 	"directories": {
+ 		"lib": "."
+ 	},
+ 	"main": "main",
+ 	"dependencies": {
+-		"dojo": "1.16.2"
++		"dojo": "1.16.3-pre"
+ 	},
+ 	"description": "Dijit provides a complete collection of user interface controls based on Dojo, giving you the power to create web applications that are highly optimized for usability, performance, internationalization, accessibility, but above all deliver an incredible user experience.",
+ 	"license" : "BSD-3-Clause OR AFL-2.1",

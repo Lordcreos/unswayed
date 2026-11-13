@@ -1,0 +1,90 @@
+diff --git a/publify_core/app/models/comment.rb b/publify_core/app/models/comment.rb
+index 9dae48fb83..0c911f32bb 100644
+--- a/publify_core/app/models/comment.rb
++++ b/publify_core/app/models/comment.rb
+@@ -47,6 +47,14 @@ def article_allows_feedback?
+     false
+   end
+ 
++  def blog_allows_feedback?
++    true
++  end
++
++  def check_article_closed_for_feedback
++    errors.add(:article, "Comment are closed") if article.comments_closed?
++  end
++
+   def originator
+     author
+   end
+diff --git a/publify_core/app/models/feedback.rb b/publify_core/app/models/feedback.rb
+index 984477c7af..7bd363d1ae 100644
+--- a/publify_core/app/models/feedback.rb
++++ b/publify_core/app/models/feedback.rb
+@@ -11,11 +11,12 @@ class Feedback < ApplicationRecord
+   include PublifyGuid
+   include ContentBase
+ 
++  validate :article_allows_this_feedback, on: :create
+   validate :feedback_not_closed, on: :create
+   validates :article, presence: true
+ 
+   before_save :correct_url, :classify_content
+-  before_create :create_guid, :article_allows_this_feedback
++  before_create :create_guid
+ 
+   # TODO: Rename so it doesn't sound like only approved ham
+   scope :ham, -> { where(state: %w(presumed_ham ham)) }
+@@ -98,10 +99,6 @@ def article_allows_this_feedback
+     article && blog_allows_feedback? && article_allows_feedback?
+   end
+ 
+-  def blog_allows_feedback?
+-    true
+-  end
+-
+   def akismet_options
+     { type: self.class.to_s.downcase,
+       author: originator,
+@@ -200,7 +197,7 @@ def report_as_ham
+   end
+ 
+   def feedback_not_closed
+-    errors.add(:article_id, "Comment are closed") if article.comments_closed?
++    check_article_closed_for_feedback
+   end
+ 
+   def send_notifications
+diff --git a/publify_core/app/models/trackback.rb b/publify_core/app/models/trackback.rb
+index fc76c5b2f7..71bfcef3b1 100644
+--- a/publify_core/app/models/trackback.rb
++++ b/publify_core/app/models/trackback.rb
+@@ -24,10 +24,14 @@ def article_allows_feedback?
+   def blog_allows_feedback?
+     return true unless blog.global_pings_disable
+ 
+-    errors.add(:article, "Pings are disabled")
++    errors.add(:base, "Pings are disabled")
+     false
+   end
+ 
++  def check_article_closed_for_feedback
++    errors.add(:article, "Pings are closed") if article.pings_closed?
++  end
++
+   def originator
+     blog_name
+   end
+diff --git a/publify_core/spec/models/comment_spec.rb b/publify_core/spec/models/comment_spec.rb
+index 138d037feb..edca03782f 100644
+--- a/publify_core/spec/models/comment_spec.rb
++++ b/publify_core/spec/models/comment_spec.rb
+@@ -41,7 +41,7 @@ def valid_comment(options = {})
+       comment = build(:comment, author: "Old Spammer", body: "Old trackback body",
+                                 article: article)
+       expect(comment.save).to be_falsey
+-      expect(comment.errors[:article_id]).not_to be_empty
++      expect(comment.errors[:article]).not_to be_empty
+     end
+ 
+     it "changes old comment" do

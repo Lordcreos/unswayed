@@ -1,0 +1,100 @@
+diff --git a/src/core/misc.c b/src/core/misc.c
+index 03fcce59a..1cfa15b65 100644
+--- a/src/core/misc.c
++++ b/src/core/misc.c
+@@ -724,20 +724,18 @@ int expand_escape(const char **data)
+ 	}
+ }
+ 
+-/* Escape all the characters in `what' with a backslash */
+-char *escape_string(const char *str, const char *what)
++/* Escape all '"', "'" and '\' chars with '\' */
++char *escape_string(const char *str)
+ {
+-	const char *p;
+-	char *ret;
++	char *ret, *p;
+ 
+-	ret = g_malloc(strlen(str) * 2 + 1);
+-	for (p = str; *p != '\0'; p++, ret++) {
+-		if (strchr(what, *p) != NULL) {
+-			*ret++ = '\\';
+-		}
+-		*ret = *p;
++	p = ret = g_malloc(strlen(str)*2+1);
++	while (*str != '\0') {
++		if (*str == '"' || *str == '\'' || *str == '\\')
++			*p++ = '\\';
++		*p++ = *str++;
+ 	}
+-	*ret = '\0';
++	*p = '\0';
+ 
+ 	return ret;
+ }
+diff --git a/src/core/misc.h b/src/core/misc.h
+index 9e620169c..00637da01 100644
+--- a/src/core/misc.h
++++ b/src/core/misc.h
+@@ -88,8 +88,8 @@ char *stristr_full(const char *data, const char *key);
+ char *ascii_strup(char *str);
+ char *ascii_strdown(char *str);
+ 
+-/* Escape all the characters in `what' with a backslash */
+-char *escape_string(const char *str, const char *what);
++/* Escape all '"', "'" and '\' chars with '\' */
++char *escape_string(const char *str);
+ 
+ /* convert all low-ascii (<32) to ^<A..> combinations */
+ char *show_lowascii(const char *str);
+diff --git a/src/fe-common/core/chat-completion.c b/src/fe-common/core/chat-completion.c
+index 4fe9509a9..1f00feaf9 100644
+--- a/src/fe-common/core/chat-completion.c
++++ b/src/fe-common/core/chat-completion.c
+@@ -1113,7 +1113,7 @@ static void event_text(const char *data, SERVER_REC *server, WI_ITEM_REC *item)
+ 	/* the nick is quoted in case it contains '-' character. also
+ 	   spaces should work too now :) The nick is also escaped in case
+ 	   it contains '\' characters */
+-	target = escape_string(window_item_get_target(item), "\"'\\");
++	target = escape_string(window_item_get_target(item));
+ 	str = g_strdup_printf(IS_CHANNEL(item) ? "-channel \"%s\" %s" :
+ 			      IS_QUERY(item) ? "-nick \"%s\" %s" : "%s %s",
+ 			      target, line);
+diff --git a/src/irc/dcc/dcc-autoget.c b/src/irc/dcc/dcc-autoget.c
+index 214172119..de23a5d13 100644
+--- a/src/irc/dcc/dcc-autoget.c
++++ b/src/irc/dcc/dcc-autoget.c
+@@ -23,7 +23,6 @@
+ #include "masks.h"
+ #include "settings.h"
+ #include "servers.h"
+-#include "misc.h"
+ 
+ #include "dcc-get.h"
+ 
+@@ -31,7 +30,7 @@ static void sig_dcc_request(GET_DCC_REC *dcc, const char *nickaddr)
+ {
+         struct stat statbuf;
+ 	const char *masks;
+-        char *str, *file, *esc_arg;
++        char *str, *file;
+         int max_size;
+ 
+         if (!IS_DCC_GET(dcc)) return;
+@@ -69,14 +68,11 @@ static void sig_dcc_request(GET_DCC_REC *dcc, const char *nickaddr)
+ 
+ 	/* ok. but do we want/need to resume? */
+ 	file = dcc_get_download_path(dcc->arg);
+-	/* we have to escape the quotes as the whole file name gets quoted */
+-	esc_arg = escape_string(dcc->arg, "\"");
+ 	str = g_strdup_printf(settings_get_bool("dcc_autoresume") &&
+ 			      stat(file, &statbuf) == 0 ?
+-			      "RESUME %s \"%s\"" : "GET %s \"%s\"",
+-			      dcc->nick, esc_arg);
++			      "RESUME %s %s" : "GET %s %s",
++			      dcc->nick, dcc->arg);
+ 	signal_emit("command dcc", 2, str, dcc->server);
+-	g_free(esc_arg);
+         g_free(file);
+ 	g_free(str);
+ }

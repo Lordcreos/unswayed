@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-13T00:00:00Z",
+  "title": "Design System: Unswayed",
+  "extensions": {
+    "colorMeta": {
+      "story-vermilion": {
+        "role": "primary",
+        "displayName": "Story Vermilion",
+        "canonical": "oklch(68.4% 0.207 33.9)",
+        "tonalRamp": [
+          "oklch(15% 0.114 33.9)",
+          "oklch(25% 0.207 33.9)",
+          "oklch(35% 0.207 33.9)",
+          "oklch(48% 0.207 33.9)",
+          "oklch(60% 0.207 33.9)",
+          "oklch(72% 0.207 33.9)",
+          "oklch(84% 0.207 33.9)",
+          "oklch(95% 0.114 33.9)"
+        ]
+      },
+      "blind-ultramarine": {
+        "role": "secondary",
+        "displayName": "Blinded Ultramarine",
+        "canonical": "oklch(48.1% 0.237 264.7)",
+        "tonalRamp": [
+          "oklch(15% 0.13 264.7)",
+          "oklch(25% 0.237 264.7)",
+          "oklch(35% 0.237 264.7)",
+          "oklch(48% 0.237 264.7)",
+          "oklch(60% 0.237 264.7)",
+          "oklch(72% 0.237 264.7)",
+          "oklch(84% 0.237 264.7)",
+          "oklch(95% 0.13 264.7)"
+        ]
+      },
+      "blind-deep": {
+        "role": "secondary",
+        "displayName": "Sealed Deep Ultramarine",
+        "canonical": "oklch(35.2% 0.175 265)",
+        "tonalRamp": [
+          "oklch(15% 0.096 265)",
+          "oklch(25% 0.175 265)",
+          "oklch(35% 0.175 265)",
+          "oklch(48% 0.175 265)",
+          "oklch(60% 0.175 265)",
+          "oklch(72% 0.175 265)",
+          "oklch(84% 0.175 265)",
+          "oklch(95% 0.096 265)"
+        ]
+      },
+      "blind-tint": {
+        "role": "secondary",
+        "displayName": "Ultramarine Tint",
+        "canonical": "oklch(91.7% 0.04 270)",
+        "tonalRamp": [
+          "oklch(15% 0.022 270)",
+          "oklch(25% 0.04 270)",
+          "oklch(35% 0.04 270)",
+          "oklch(48% 0.04 270)",
+          "oklch(60% 0.04 270)",
+          "oklch(72% 0.04 270)",
+          "oklch(84% 0.04 270)",
+          "oklch(95% 0.022 270)"
+        ]
+      },
+      "caution-yellow": {
+        "role": "tertiary",
+        "displayName": "Caution Yellow",
+        "canonical": "oklch(88.1% 0.181 94)",
+        "tonalRamp": [
+          "oklch(15% 0.1 94)",
+          "oklch(25% 0.181 94)",
+          "oklch(35% 0.181 94)",
+          "oklch(48% 0.181 94)",
+          "oklch(60% 0.181 94)",
+          "oklch(72% 0.181 94)",
+          "oklch(84% 0.181 94)",
+          "oklch(95% 0.1 94)"
+        ]
+      },
+      "ink-navy": {
+        "role": "neutral",
+        "displayName": "Navy Ink",
+        "canonical": "oklch(21.8% 0.036 251.3)",
+        "tonalRamp": [
+          "oklch(15% 0.02 251.3)",
+          "oklch(25% 0.036 251.3)",
+          "oklch(35% 0.036 251.3)",
+          "oklch(48% 0.036 251.3)",
+          "oklch(60% 0.036 251.3)",
+          "oklch(72% 0.036 251.3)",
+          "oklch(84% 0.036 251.3)",
+          "oklch(95% 0.02 251.3)"
+        ]
+      },
+      "label-stock": {
+        "role": "neutral",
+        "displayName": "Label Stock",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": [
+          "oklch(15% 0.0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(48% 0 0)",
+          "oklch(60% 0 0)",
+          "oklch(72% 0 0)",
+          "oklch(84% 0 0)",
+          "oklch(95% 0.0 0)"
+        ]
+      },
+      "cool-paper": {
+        "role": "neutral",
+        "displayName": "Cool Paper",
+        "canonical": "oklch(97.2% 0.005 247.9)",
+        "tonalRamp": [
+          "oklch(15% 0.003 247.9)",
+          "oklch(25% 0.005 247.9)",
+          "oklch(35% 0.005 247.9)",
+          "oklch(48% 0.005 247.9)",
+          "oklch(60% 0.005 247.9)",
+          "oklch(72% 0.005 247.9)",
+          "oklch(84% 0.005 247.9)",
+          "oklch(95% 0.003 247.9)"
+        ]
+      },
+      "added-line": {
+        "role": "neutral",
+        "displayName": "Added Line Grey",
+        "canonical": "oklch(92.9% 0.014 258.3)",
+        "tonalRamp": [
+          "oklch(15% 0.008 258.3)",
+          "oklch(25% 0.014 258.3)",
+          "oklch(35% 0.014 258.3)",
+          "oklch(48% 0.014 258.3)",
+          "oklch(60% 0.014 258.3)",
+          "oklch(72% 0.014 258.3)",
+          "oklch(84% 0.014 258.3)",
+          "oklch(95% 0.008 258.3)"
+        ]
+      },
+      "rule-hairline": {
+        "role": "neutral",
+        "displayName": "Rule Hairline",
+        "canonical": "rgba(13, 27, 42, .22)",
+        "tonalRamp": [
+          "oklch(15% 0.02 251.3)",
+          "oklch(25% 0.036 251.3)",
+          "oklch(35% 0.036 251.3)",
+          "oklch(48% 0.036 251.3)",
+          "oklch(60% 0.036 251.3)",
+          "oklch(72% 0.036 251.3)",
+          "oklch(84% 0.036 251.3)",
+          "oklch(95% 0.02 251.3)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Product name in the kit header only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Arm and specimen headings; stamps share its weight."
+      },
+      "numeral": {
+        "displayName": "Numeral",
+        "purpose": "Blister-pack counts with a caps 'of N' suffix."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Outcome section headings and kit field values."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Arm intake lines, route bars, pack labels, run counts."
+      },
+      "label-small": {
+        "displayName": "Label Small",
+        "purpose": "Kit field names, continues cue, control buttons."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, model reasons and gate findings, sentence case."
+      },
+      "code": {
+        "displayName": "Code",
+        "purpose": "File paths and diffs; diff size scales 1rem to 1.75rem as diffs shorten."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(.16, 1, .3, 1)",
+        "purpose": "Single easing for every landing: stamps, rises, seals, cells."
+      },
+      {
+        "name": "stamp-land",
+        "value": "500ms from rotate(-13deg) scale(1.7) blur(.5rem)",
+        "purpose": "Verdict stamps and the seal tag (450ms, 320ms delay) pressing onto the page."
+      },
+      {
+        "name": "rise",
+        "value": "450-500ms from translateY(.5rem), opacity 0",
+        "purpose": "Verdict reasons, findings (110ms stagger after 450ms) and counted numerals."
+      },
+      {
+        "name": "seal",
+        "value": "550ms clip-path inset left to right, 38ms stagger",
+        "purpose": "Sealed bars drawing over the withheld description."
+      },
+      {
+        "name": "pop",
+        "value": "340ms from scale(.2), 9ms stagger",
+        "purpose": "Blister cells filling once the outcome is counted."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: no-preference",
+        "purpose": "All motion is gated; without it, states switch instantly."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "stacked",
+        "value": "max-width: 900px, or max-aspect-ratio: 1/1"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Control Button",
+      "kind": "button",
+      "refersTo": "control-button",
+      "description": "Presenter fallback key on label stock; inverts to ink on hover.",
+      "html": "<button class=\"ds-control\" type=\"button\">Next step<kbd>Right</kbd></button>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-control{background:var(--stock);color:var(--ink);border:.14rem solid var(--ink);border-radius:var(--r);padding:.25rem .8rem;cursor:pointer;font:600 1.15rem/1.3 var(--display);text-transform:uppercase;letter-spacing:.04em}.ds-control kbd{font:400 .85em var(--code);margin-left:.35rem}.ds-control:hover{background:var(--ink);color:var(--stock)}.ds-control:focus-visible{outline:.22rem solid var(--caution);outline-offset:.15rem}.ds-control:disabled{opacity:.35;cursor:default;background:var(--stock);color:var(--ink)}"
+    },
+    {
+      "name": "Kit Header",
+      "kind": "nav",
+      "refersTo": null,
+      "description": "Trial-kit label: name, tagline, labelled fields, caution recorded-run block.",
+      "html": "<header class=\"ds-kit\"><div class=\"ds-kit-name\"><h1>Unswayed</h1><p>Judge the diff, not the story.</p></div><dl class=\"ds-kit-fields\"><div class=\"ds-field\"><dt>Sample</dt><dd>01 / 07</dd></div><div class=\"ds-field\"><dt>Contents</dt><dd>Reintroduced CVE</dd></div></dl><div class=\"ds-kit-rec\"><strong>Recorded run</strong><span>Real model output, replayed</span></div></header>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-kit{display:grid;grid-template-columns:auto minmax(0,1fr) auto;background:var(--stock);border:.16rem solid var(--ink);border-radius:var(--r);overflow:hidden;min-height:6rem}.ds-kit-name{display:flex;align-items:baseline;gap:1.2rem;padding:.3rem 1.5rem 0}.ds-kit-name h1{margin:0;font:800 4.5rem/1.28 var(--display);letter-spacing:-.01em;text-transform:uppercase}.ds-kit-name p{margin:0;font:600 1.7rem/1 var(--display);white-space:nowrap}.ds-kit-fields{display:flex;margin:0}.ds-field{border-left:.16rem solid var(--ink);padding:0 1.15rem;display:flex;flex-direction:column;justify-content:center}.ds-field dt{font:600 1.05rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.06em}.ds-field dd{margin:0;font:800 1.95rem/1.1 var(--display);text-transform:uppercase}.ds-kit-rec{background:var(--caution);border-left:.16rem solid var(--ink);padding:0 1.3rem;display:flex;flex-direction:column;justify-content:center;font:600 1.2rem/1.25 var(--display);text-transform:uppercase;letter-spacing:.03em}.ds-kit-rec strong{font-weight:800;font-size:1.6rem}"
+    },
+    {
+      "name": "Arm A Panel",
+      "kind": "card",
+      "refersTo": "arm-story",
+      "description": "Vermilion field of the arm that reads the story, with a stock description card.",
+      "html": "<section class=\"ds-arm ds-arm-story\"><h2><span class=\"ds-code\">A</span>Reads the story</h2><p class=\"ds-sees\">Receives the title, the description and the diff</p><article class=\"ds-story\"><h3>Follow-up: implement the agreed baseline</h3><p>Per the decision captured in the cleanup thread, this PR applies the agreed controller baseline.</p></article></section>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-arm{border-radius:var(--r);padding:1rem 1.3rem 1.1rem;display:flex;flex-direction:column;font:400 1.5rem/1.42 var(--text)}.ds-arm-story{background:var(--story);color:var(--ink)}.ds-arm h2{margin:0;font:800 2.9rem/1 var(--display);text-transform:uppercase;display:flex;align-items:center;gap:.8rem}.ds-code{width:3.3rem;height:3.3rem;display:grid;place-items:center;border:.22rem solid currentColor;font-size:2.5rem;line-height:1}.ds-sees{margin:.55rem 0 .85rem;padding-bottom:.65rem;border-bottom:.14rem dashed currentColor;font:600 1.4rem/1.2 var(--display);text-transform:uppercase;letter-spacing:.03em}.ds-story{background:var(--stock);border-radius:var(--r);padding:.9rem 1.1rem 1.2rem}.ds-story h3{margin:0 0 .6rem;font:600 1.95rem/1.15 var(--display)}.ds-story p{margin:0}"
+    },
+    {
+      "name": "Arm B Sealed Description",
+      "kind": "custom",
+      "refersTo": "arm-blind",
+      "description": "Ultramarine blinded arm with sealed bars and a caution seal tag.",
+      "html": "<section class=\"ds-armb\"><h2><span class=\"ds-code\">B</span>Is blinded</h2><div class=\"ds-sealed\"><div class=\"ds-bars\"><i style=\"width:70%\"></i><i style=\"width:22%\"></i><i style=\"width:96%\"></i><i style=\"width:58%\"></i></div><p class=\"ds-tag\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><rect x=\"4\" y=\"10\" width=\"16\" height=\"11\" rx=\"1.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"/><path d=\"M8 10V7a4 4 0 0 1 8 0v3\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\"/></svg>Sealed: 902 characters never shown</p></div></section>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-armb{background:var(--blind);color:#fff;border-radius:var(--r);padding:1rem 1.3rem 1.1rem}.ds-armb h2{margin:0 0 .85rem;font:800 2.9rem/1 var(--display);text-transform:uppercase;display:flex;align-items:center;gap:.8rem}.ds-code{width:3.3rem;height:3.3rem;display:grid;place-items:center;border:.22rem solid currentColor;font-size:2.5rem;line-height:1}.ds-sealed{position:relative;background:var(--blind-deep);padding:.9rem 1.1rem;height:7.2rem;overflow:hidden;border:.14rem dashed var(--blind-tint)}.ds-bars{display:grid;gap:.42rem}.ds-bars i{display:block;height:.72rem;background:#05103f}.ds-tag{position:absolute;right:.8rem;bottom:.7rem;margin:0;background:var(--caution);color:var(--ink);font:800 1.4rem/1 var(--display);text-transform:uppercase;letter-spacing:.03em;padding:.45rem .7rem;display:flex;align-items:center;gap:.5rem}.ds-tag svg{width:1.3rem;height:1.3rem}"
+    },
+    {
+      "name": "Verdict Stamp",
+      "kind": "custom",
+      "refersTo": "verdict-stamp",
+      "description": "Rubber-stamp verdict: heavy caps word plus pictogram, double ring, rotated -4deg.",
+      "html": "<div class=\"ds-stamps\"><span class=\"ds-stamp ds-on-story\"><svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><circle cx=\"16\" cy=\"16\" r=\"13\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"m9.5 16.5 4.5 4.5 8.5-10\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/></svg>Approved</span><span class=\"ds-stamp ds-on-blind\"><svg viewBox=\"0 0 32 32\" aria-hidden=\"true\"><path d=\"M11 3h10l8 8v10l-8 8H11l-8-8V11z\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"3\"/><path d=\"M9 16h14\" stroke=\"currentColor\" stroke-width=\"3.4\"/></svg>Merge blocked</span></div>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-stamps{display:flex;gap:2rem;padding:1.5rem}.ds-on-story{background:var(--story);color:var(--ink)}.ds-on-blind{background:var(--blind);color:#fff}.ds-stamp{font:800 2.8rem/1 var(--display);text-transform:uppercase;letter-spacing:.04em;white-space:nowrap;padding:.55rem .95rem .5rem;border:.3rem solid currentColor;border-radius:.4rem;outline:.12rem solid currentColor;outline-offset:-.62rem;display:inline-flex;align-items:center;gap:.6rem;transform:rotate(-4deg);transform-origin:30% 60%}.ds-stamp svg{width:2.5rem;height:2.5rem}@media (prefers-reduced-motion:no-preference){.ds-stamp{animation:ds-stamp .5s var(--ease) both}}@keyframes ds-stamp{from{opacity:0;transform:rotate(-13deg) scale(1.7);filter:blur(.5rem)}}"
+    },
+    {
+      "name": "Route Bars",
+      "kind": "chip",
+      "refersTo": null,
+      "description": "The change sent two ways: vermilion with the story, ultramarine sealed.",
+      "html": "<p class=\"ds-routes\"><span class=\"ds-to-story\"><svg viewBox=\"0 0 24 16\" aria-hidden=\"true\"><path d=\"M23 8H2M8 2 2 8l6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg>Sent with the story</span><span class=\"ds-to-blind\">Sent sealed<svg viewBox=\"0 0 24 16\" aria-hidden=\"true\"><path d=\"M1 8h21M16 2l6 6-6 6\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.4\"/></svg></span></p>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-routes{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin:0;font:600 1.3rem/1 var(--display);text-transform:uppercase;letter-spacing:.03em}.ds-routes span{display:flex;align-items:center;gap:.5rem;padding:.48rem .8rem}.ds-routes svg{width:1.6rem;height:1.05rem;flex:none}.ds-to-story{background:var(--story);color:var(--ink)}.ds-to-blind{background:var(--blind);color:#fff;justify-content:flex-end}"
+    },
+    {
+      "name": "Diff Specimen",
+      "kind": "custom",
+      "refersTo": "specimen-panel",
+      "description": "Diff with ink file/hunk bars, caution removed lines, quiet grey additions.",
+      "html": "<div class=\"ds-diff\"><div class=\"ds-file\">app/controllers/application_controller.rb</div><div class=\"ds-hunk\">@@ -1,7 +1,5 @@</div><div data-sign=\"\">  class ApplicationController</div><div class=\"ds-rem\" data-sign=\"&#8722;\">    protect_from_forgery</div><div class=\"ds-add\" data-sign=\"+\">    include ApplicationHelper</div></div>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-diff{background:var(--stock);border:.1rem solid var(--rule);font:400 1.5rem/1.5 var(--code)}.ds-diff div{padding:0 .7rem 0 2.2em;position:relative;white-space:pre-wrap}.ds-diff div::before{content:attr(data-sign);position:absolute;left:.55em;font-weight:700}.ds-rem{background:var(--caution);font-weight:700}.ds-add{background:var(--added)}.ds-diff .ds-hunk,.ds-diff .ds-file{background:var(--ink);color:var(--stock);font-size:.95rem;padding-left:.7rem}"
+    },
+    {
+      "name": "Blister Pack",
+      "kind": "custom",
+      "refersTo": "blister-cell",
+      "description": "One cell per pull request, filled for those counted; total always visible.",
+      "html": "<div class=\"ds-pack\"><p class=\"ds-count\">53<small>of 90</small><span>Reviewer alone</span></p><div class=\"ds-cells\"><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-pack{background:var(--stock);padding:1rem}.ds-count{margin:0;display:flex;align-items:baseline;gap:.5rem;font:800 3.3rem/1 var(--display)}.ds-count small{font:600 1.35rem/1 var(--display);text-transform:uppercase}.ds-count span{margin-left:.5rem;font:600 1.3rem/1.15 var(--display);text-transform:uppercase;letter-spacing:.02em}.ds-cells{display:grid;grid-template-columns:repeat(18,1fr);gap:.22rem;max-width:27rem;margin-top:.45rem}.ds-cells i{display:block;aspect-ratio:1;border-radius:28%;border:.1rem solid var(--ink)}.ds-cells i.on{background:var(--story)}"
+    },
+    {
+      "name": "Caution Flag",
+      "kind": "chip",
+      "refersTo": "caution-flag",
+      "description": "Caution label naming the consequence the reviewer missed.",
+      "html": "<span class=\"ds-flag\">Reverts the fix for GHSA-2HXV-MX8X-MCJ9</span>",
+      "css": ":host{--paper:#f3f6f9;--stock:#ffffff;--ink:#0d1b2a;--story:#ff5a36;--blind:#1746e0;--blind-deep:#0c2a94;--blind-tint:#d9e3ff;--caution:#ffd400;--added:#e2e8f1;--rule:rgba(13,27,42,.22);--r:.14rem;--display:'Barlow Condensed','Arial Narrow',sans-serif;--text:'Barlow','Helvetica Neue',Arial,sans-serif;--code:ui-monospace,'SF Mono',Menlo,Consolas,monospace;--ease:cubic-bezier(.16,1,.3,1);font-size:13px;color:var(--ink)} .ds-flag{display:inline-block;background:var(--caution);color:var(--ink);font:800 1.25rem/1.05 var(--display);text-transform:uppercase;letter-spacing:.03em;padding:.4rem .6rem}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Trial-Kit Label",
+    "overview": "Unswayed is drawn as the paperwork of a two-arm blinded trial, not as a security dashboard. Everything sits on cool white label stock framed in navy ink: a kit header with labelled fields, two arm panels in opposed solid fields, a specimen panel for the evidence between them, and a counted outcome strip of blister packs. The surface is printed matter. It is flat, dense, upper-case where it names things and sentence-case where it is read, and it is built to be legible from the back of a projected room.\n\nThe world has exactly two loud colours and they belong to the two arms of the trial: vermilion for the arm that reads the author's story, ultramarine for the arm that is blinded. Caution yellow is a label colour, applied in patches to whatever the room must look at. Verdicts arrive as rubber stamps, the withheld description as sealed bars, and the result as one cell per pull request so the count can be seen rather than trusted. The refused alternative is the dark SOC console of status chips and glowing badges.\n\nThe layout is a fixed 16:9 instrument: the root font size scales with the viewport so the whole console fits one projected screen without scrolling the page, and a presenter steps through it from the keyboard.",
+    "keyCharacteristics": [
+      "Cool white paper, white label stock, navy ink frames; no shadows.",
+      "Two arm fields (vermilion, ultramarine) that carry meaning, never decoration.",
+      "Caution yellow as small label patches: flags, the sealed tag, the removed line, focus.",
+      "Barlow Condensed caps for structure, Barlow for reading, monospace for code.",
+      "Rubber-stamp verdicts with word and pictogram; blister-pack unit grids for counts.",
+      "Viewport-locked rem scale for projection; stacks and scrolls below 900px or in portrait."
+    ],
+    "rules": [
+      {
+        "name": "The Two Arms Rule",
+        "body": "Vermilion means \"read the story\" and ultramarine means \"blinded\". Each appears only on its own arm, its route bar, and the counts that arm produced. Neither is ever used as a generic accent, link colour or status colour.",
+        "section": "colors"
+      },
+      {
+        "name": "The Caution Label Rule",
+        "body": "Yellow is a label, not a field. It is applied in patches small enough to read as stickers on the stock, and it marks what the room must look at: the harmful removed line, the reverted fix, the seal, the miss, the cost.",
+        "section": "colors"
+      },
+      {
+        "name": "The Removal Is The Danger Rule",
+        "body": "Diff lines are not coloured red and green. Removed lines take caution yellow with bold weight; added lines take a quiet grey; file and hunk headers are ink bars.",
+        "section": "colors"
+      },
+      {
+        "name": "The Caps Name, Sentences Read Rule",
+        "body": "Anything that names, labels, counts or rules is Barlow Condensed caps. Anything the audience reads as an argument (the author's description, the reviewer's reason, the gate's finding) is Barlow in sentence case. The pull request title is the one condensed line in sentence case (600, 1.95rem) because it is the author's own words.",
+        "section": "typography"
+      },
+      {
+        "name": "The Room Scale Rule",
+        "body": "Type is sized in rem on a root of `clamp(9px, min(.833vw, 1.48vh), 24px)`; nothing on the projected surface is sized in fixed pixels.",
+        "section": "typography"
+      },
+      {
+        "name": "The Printed Matter Rule",
+        "body": "Separation comes from ink frames, solid fields and dashed perforations, never from shadows, glows or blur at rest.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do give every verdict a word and a pictogram on the stamp; colour alone never carries a verdict.",
+      "Do show every count as a blister pack with its total, and put the cost (legitimate approvals, false alarms) in the same strip as the benefit.",
+      "Do keep vermilion and ultramarine bound to their arms and to the counts each arm produced.",
+      "Do frame stock panels with a .16rem navy ink border and near-square .14rem corners.",
+      "Do use dashed ink or tint lines for perforations and divisions, and solid ink for frames.",
+      "Do size everything in rem on the viewport-locked root so the console fits one 16:9 projected screen.",
+      "Do wrap motion in `prefers-reduced-motion: no-preference`, and reserve a pending frame of the final size before content lands."
+    ],
+    "donts": [
+      "Don't build a dark SOC dashboard of status chips, glowing badges or traffic-light pills.",
+      "Don't use shadows, glows or blur at rest; this is printed label stock.",
+      "Don't colour diffs red and green; removal is caution yellow, addition is quiet grey.",
+      "Don't spread caution yellow into a full field or background; it stays a label patch.",
+      "Don't introduce a third saturated hue or use either arm colour as a generic accent.",
+      "Don't set reading text (descriptions, reasons, findings) in condensed caps."
+    ]
+  }
+}

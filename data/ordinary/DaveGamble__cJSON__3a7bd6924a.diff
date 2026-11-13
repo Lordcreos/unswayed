@@ -1,0 +1,86 @@
+diff --git a/cJSON_Utils.c b/cJSON_Utils.c
+index e6a8f9d74..82aafeeea 100644
+--- a/cJSON_Utils.c
++++ b/cJSON_Utils.c
+@@ -343,7 +343,8 @@ static cJSON *cJSONUtils_SortList(cJSON *list)
+ 
+ void cJSONUtils_SortObject(cJSON *object)	{object->child=cJSONUtils_SortList(object->child);}
+ 
+-cJSON* cJSONUtils_MergePatch(cJSON *target, cJSON *patch) {
++cJSON* cJSONUtils_MergePatch(cJSON *target, cJSON *patch)
++{
+ 	if (!patch || patch->type != cJSON_Object) {cJSON_Delete(target);return cJSON_Duplicate(patch,1);}
+ 	if (!target || target->type != cJSON_Object) {cJSON_Delete(target);target=cJSON_CreateObject();}
+ 
+@@ -360,3 +361,35 @@ cJSON* cJSONUtils_MergePatch(cJSON *target, cJSON *patch) {
+ 	}
+ 	return target;
+ }
++
++cJSON *cJSONUtils_GenerateMergePatch(cJSON *from,cJSON *to)
++{
++	cJSON *patch=0;
++	if (!to) return cJSON_CreateNull();
++	if (to->type!=cJSON_Object || !from || from->type!=cJSON_Object) return cJSON_Duplicate(to,1);
++	cJSONUtils_SortObject(from);
++	cJSONUtils_SortObject(to);
++	from=from->child;to=to->child;
++	patch=cJSON_CreateObject();
++	while (from || to)
++	{
++		int compare=from?(to?strcmp(from->string,to->string):-1):1;
++		if (compare<0)
++		{
++			cJSON_AddItemToObject(patch,from->string,cJSON_CreateNull());
++			from=from->next;
++		}
++		else if (compare>0)
++		{
++			cJSON_AddItemToObject(patch,to->string,cJSON_Duplicate(to,1));
++			to=to->next;
++		}
++		else
++		{
++			if (cJSONUtils_Compare(from,to)) cJSON_AddItemToObject(patch,to->string,cJSONUtils_GenerateMergePatch(from,to));
++			from=from->next;to=to->next;
++		}
++	}
++	if (!patch->child) {cJSON_Delete(patch);return 0;}
++	return patch;
++}
+\ No newline at end of file
+diff --git a/cJSON_Utils.h b/cJSON_Utils.h
+index c845f8e06..b129b0625 100644
+--- a/cJSON_Utils.h
++++ b/cJSON_Utils.h
+@@ -23,6 +23,7 @@ int cJSONUtils_ApplyPatches(cJSON *object,cJSON *patches);	/* Returns 0 for succ
+ 
+ /* Implement RFC7386 (https://tools.ietf.org/html/rfc7396) JSON Merge Patch spec. */
+ cJSON* cJSONUtils_MergePatch(cJSON *target, cJSON *patch); /* target will be modified by patch. return value is new ptr for target. */
++cJSON *cJSONUtils_GenerateMergePatch(cJSON *from,cJSON *to); /* generates a patch to move from -> to */
+ 
+ char *cJSONUtils_FindPointerFromObjectTo(cJSON *object,cJSON *target);	/* Given a root object and a target object, construct a pointer from one to the other.	*/
+ 
+diff --git a/test_utils.c b/test_utils.c
+index 929f57098..6311b9302 100644
+--- a/test_utils.c
++++ b/test_utils.c
+@@ -148,5 +148,18 @@ int main()
+ 
+ 		free(before);free(patchtext);free(after);cJSON_Delete(object);cJSON_Delete(patch);
+ 	}
++	
++	/* Generate Merge tests: */
++	for (i=0;i<15;i++)
++	{
++		cJSON *from=cJSON_Parse(merges[i][0]);
++		cJSON *to=cJSON_Parse(merges[i][2]);
++		cJSON *patch=cJSONUtils_GenerateMergePatch(from,to);
++		from=cJSONUtils_MergePatch(from,patch);
++		char *patchtext=cJSON_PrintUnformatted(patch);
++		char *patchedtext=cJSON_PrintUnformatted(from);
++		printf("Patch [%s] vs [%s] = [%s] vs [%s] (%s)\n",patchtext,merges[i][1],patchedtext,merges[i][2],strcmp(patchedtext,merges[i][2])?"FAIL":"OK");
++		cJSON_Delete(from);cJSON_Delete(to);cJSON_Delete(patch);free(patchtext);free(patchedtext);
++	}
+ 
+ }

@@ -1,0 +1,26 @@
+diff --git a/packages/react-scripts/config/webpack.config.js b/packages/react-scripts/config/webpack.config.js
+index ba8fd0b9b56..26c2a65aad0 100644
+--- a/packages/react-scripts/config/webpack.config.js
++++ b/packages/react-scripts/config/webpack.config.js
+@@ -759,7 +759,7 @@ module.exports = function (webpackEnv) {
+           extensions: ['js', 'mjs', 'jsx', 'ts', 'tsx'],
+           formatter: require.resolve('react-dev-utils/eslintFormatter'),
+           eslintPath: require.resolve('eslint'),
+-          emitWarning: isEnvDevelopment && emitErrorsAsWarnings,
++          failOnError: !(isEnvDevelopment && emitErrorsAsWarnings),
+           context: paths.appSrc,
+           cache: true,
+           cacheLocation: path.resolve(
+diff --git a/packages/react-scripts/package.json b/packages/react-scripts/package.json
+index a3be55728cf..1e1a164ce69 100644
+--- a/packages/react-scripts/package.json
++++ b/packages/react-scripts/package.json
+@@ -53,7 +53,7 @@
+     "eslint-plugin-react": "^7.21.5",
+     "eslint-plugin-react-hooks": "^4.2.0",
+     "eslint-plugin-testing-library": "^3.9.2",
+-    "eslint-webpack-plugin": "^2.1.0",
++    "eslint-webpack-plugin": "^2.5.2",
+     "file-loader": "6.1.1",
+     "fs-extra": "^9.0.1",
+     "html-webpack-plugin": "4.5.0",

@@ -1,0 +1,13 @@
+diff --git a/include/layout.js b/include/layout.js
+index 6a31f66edf..b8a3071a29 100644
+--- a/include/layout.js
++++ b/include/layout.js
+@@ -1712,6 +1712,8 @@ function loadTopTab(href, id, force) {
+ 		if ($('#'+id).hasClass('lefttab')) {
+ 			$('.lefttab').removeClass('selected');
+ 			$('#'+id).addClass('selected');
++			hideTabId = id.substring(0, id.length-9);
++			$('#'+hideTabId).addClass('selected');
+ 		}
+ 
+ 		return true;

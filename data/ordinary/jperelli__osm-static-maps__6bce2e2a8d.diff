@@ -1,0 +1,25 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 1338d66..1c513aa 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -3,6 +3,7 @@
+ Read geojson from file or stdin
+ 
+ - Add new option '-f' to read geojson from file, stdin ('-') or url
++- Fix minor issue on console error misses
+ 
+ # 3.8.1
+ 
+diff --git a/src/lib.js b/src/lib.js
+index f7bcbc2..d948921 100644
+--- a/src/lib.js
++++ b/src/lib.js
+@@ -125,7 +125,7 @@ module.exports = function(options) {
+         page.on('error', function (err) { reject(err.toString()) })
+         page.on('pageerror', function (err) { reject(err.toString()) })
+         page.on('console', function (msg) {
+-          if (msg.type === 'error') {
++          if (msg.type() === 'error') {
+             reject(JSON.stringify(msg))
+           }
+         })

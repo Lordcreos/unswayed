@@ -1,0 +1,13 @@
+diff --git a/src/core/misc.c b/src/core/misc.c
+index 1cfa15b65..d8437430c 100644
+--- a/src/core/misc.c
++++ b/src/core/misc.c
+@@ -690,6 +690,8 @@ int expand_escape(const char **data)
+ 		return '\n';
+ 	case 'e':
+ 		return 27; /* ESC */
++	case '\\':
++		return '\\';
+ 
+ 	case 'x':
+                 /* hex digit */

@@ -1,0 +1,13 @@
+diff --git a/lib/rake/file_list.rb b/lib/rake/file_list.rb
+index 15ea4b36d..22c339f24 100644
+--- a/lib/rake/file_list.rb
++++ b/lib/rake/file_list.rb
+@@ -294,7 +294,7 @@ def egrep(pattern, *options)
+       matched = 0
+       each do |fn|
+         begin
+-          open(fn, "r", *options) do |inf|
++          File.open(fn, "r", *options) do |inf|
+             count = 0
+             inf.each do |line|
+               count += 1

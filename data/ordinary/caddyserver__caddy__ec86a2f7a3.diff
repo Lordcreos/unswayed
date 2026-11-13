@@ -1,0 +1,65 @@
+diff --git a/caddytest/integration/caddyfile_adapt/matcher_syntax.txt b/caddytest/integration/caddyfile_adapt/matcher_syntax.txt
+index cb521aa6547..a3e0a50e3d5 100644
+--- a/caddytest/integration/caddyfile_adapt/matcher_syntax.txt
++++ b/caddytest/integration/caddyfile_adapt/matcher_syntax.txt
+@@ -37,6 +37,9 @@
+ 		header Bar foo
+ 	}
+ 	respond @matcher9 "header matcher with null field matcher"
++
++	@matcher10 remote_ip private_ranges
++	respond @matcher10 "remote_ip matcher with private ranges"
+ }
+ ----------
+ {
+@@ -209,6 +212,28 @@
+ 									"handler": "static_response"
+ 								}
+ 							]
++						},
++						{
++							"match": [
++								{
++									"remote_ip": {
++										"ranges": [
++											"192.168.0.0/16",
++											"172.16.0.0/12",
++											"10.0.0.0/8",
++											"127.0.0.1/8",
++											"fd00::/8",
++											"::1"
++										]
++									}
++								}
++							],
++							"handle": [
++								{
++									"body": "remote_ip matcher with private ranges",
++									"handler": "static_response"
++								}
++							]
+ 						}
+ 					]
+ 				}
+diff --git a/modules/caddyhttp/matchers.go b/modules/caddyhttp/matchers.go
+index 9f10e2c31f2..f8953ef54d8 100644
+--- a/modules/caddyhttp/matchers.go
++++ b/modules/caddyhttp/matchers.go
+@@ -867,6 +867,17 @@ func (m *MatchRemoteIP) UnmarshalCaddyfile(d *caddyfile.Dispenser) error {
+ 				m.Forwarded = true
+ 				continue
+ 			}
++			if d.Val() == "private_ranges" {
++				m.Ranges = append(m.Ranges, []string{
++					"192.168.0.0/16",
++					"172.16.0.0/12",
++					"10.0.0.0/8",
++					"127.0.0.1/8",
++					"fd00::/8",
++					"::1",
++				}...)
++				continue
++			}
+ 			m.Ranges = append(m.Ranges, d.Val())
+ 		}
+ 		if d.NextBlock(0) {

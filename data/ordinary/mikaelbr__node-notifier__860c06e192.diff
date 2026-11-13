@@ -1,0 +1,240 @@
+diff --git a/.prettierrc b/.prettierrc
+index c563e850..276a47a7 100644
+--- a/.prettierrc
++++ b/.prettierrc
+@@ -1,4 +1,5 @@
+ {
+   "printWidth": 80,
+-  "singleQuote": true
++  "singleQuote": true,
++  "trailingComma": "none"
+ }
+diff --git a/lib/utils.js b/lib/utils.js
+index 7ab0c78b..2562b558 100644
+--- a/lib/utils.js
++++ b/lib/utils.js
+@@ -162,6 +162,12 @@ module.exports.mapToNotifySend = function (options) {
+   options = mapAppIcon(options);
+   options = mapText(options);
+ 
++  if (options.timeout === false) {
++    delete options.timeout;
++  }
++  if (options.wait === true) {
++    options['expire-time'] = 5; // 5 seconds default time (multipled below)
++  }
+   for (var key in options) {
+     if (key === 'message' || key === 'title') continue;
+     if (options.hasOwnProperty(key) && notifySendFlags[key] !== key) {
+@@ -169,6 +175,11 @@ module.exports.mapToNotifySend = function (options) {
+       delete options[key];
+     }
+   }
++  if (typeof options['expire-time'] === 'undefined') {
++    options['expire-time'] = 10 * 1000; // 10 sec timeout by default
++  } else if (typeof options['expire-time'] === 'number') {
++    options['expire-time'] = options['expire-time'] * 1000; // notify send uses milliseconds
++  }
+ 
+   return options;
+ };
+diff --git a/test/notify-send.js b/test/notify-send.js
+index c06fa4ab..59a86c32 100644
+--- a/test/notify-send.js
++++ b/test/notify-send.js
+@@ -2,60 +2,67 @@ var Notify = require('../notifiers/notifysend');
+ var utils = require('../lib/utils');
+ var os = require('os');
+ 
+-describe('notify-send', function() {
++describe('notify-send', function () {
+   var original = utils.command;
+   var originalType = os.type;
+ 
+-  beforeEach(function() {
+-    os.type = function() {
++  beforeEach(function () {
++    os.type = function () {
+       return 'Linux';
+     };
+   });
+ 
+-  afterEach(function() {
++  afterEach(function () {
+     utils.command = original;
+     os.type = originalType;
+   });
+ 
+   function expectArgsListToBe(expected, done) {
+-    utils.command = function(notifier, argsList, callback) {
++    utils.command = function (notifier, argsList, callback) {
+       expect(argsList).toEqual(expected);
+       done();
+     };
+   }
+ 
+-  it('should pass on title and body', function(done) {
+-    var expected = ['"title"', '"body"'];
++  it('should pass on title and body', function (done) {
++    var expected = ['"title"', '"body"', '--expire-time', '"10000"'];
+     expectArgsListToBe(expected, done);
+     var notifier = new Notify({ suppressOsdCheck: true });
+     notifier.notify({ title: 'title', message: 'body' });
+   });
+ 
+-  it('should pass have default title', function(done) {
+-    var expected = ['"Node Notification:"', '"body"'];
++  it('should pass have default title', function (done) {
++    var expected = [
++      '"Node Notification:"',
++      '"body"',
++      '--expire-time',
++      '"10000"'
++    ];
+ 
+     expectArgsListToBe(expected, done);
+     var notifier = new Notify({ suppressOsdCheck: true });
+     notifier.notify({ message: 'body' });
+   });
+ 
+-  it('should throw error if no message is passed', function(done) {
+-    utils.command = function(notifier, argsList, callback) {
++  it('should throw error if no message is passed', function (done) {
++    utils.command = function (notifier, argsList, callback) {
+       expect(argsList).toBeUndefined();
+     };
+ 
+     var notifier = new Notify({ suppressOsdCheck: true });
+-    notifier.notify({}, function(err) {
++    notifier.notify({}, function (err) {
+       expect(err.message).toBe('Message is required.');
+       done();
+     });
+   });
+ 
+-  it('should escape message input', function(done) {
++  it('should escape message input', function (done) {
+     var excapedNewline = process.platform === 'win32' ? '\\r\\n' : '\\n';
+     var expected = [
+       '"Node Notification:"',
+-      '"some' + excapedNewline + ' \\"me\'ss\\`age\\`\\""'
++      '"some' + excapedNewline + ' \\"me\'ss\\`age\\`\\""',
++      '--expire-time',
++      '"10000"'
+     ];
+ 
+     expectArgsListToBe(expected, done);
+@@ -63,22 +70,29 @@ describe('notify-send', function() {
+     notifier.notify({ message: 'some\n "me\'ss`age`"' });
+   });
+ 
+-  it('should send additional parameters as --"keyname"', function(done) {
+-    var expected = ['"title"', '"body"', '--icon', '"icon-string"'];
++  it('should send additional parameters as --"keyname"', function (done) {
++    var expected = [
++      '"title"',
++      '"body"',
++      '--icon',
++      '"icon-string"',
++      '--expire-time',
++      '"10000"'
++    ];
+ 
+     expectArgsListToBe(expected, done);
+     var notifier = new Notify({ suppressOsdCheck: true });
+     notifier.notify({ title: 'title', message: 'body', icon: 'icon-string' });
+   });
+ 
+-  it('should remove extra options that are not supported by notify-send', function(done) {
++  it('should remove extra options that are not supported by notify-send', function (done) {
+     var expected = [
+       '"title"',
+       '"body"',
+       '--icon',
+       '"icon-string"',
+       '--expire-time',
+-      '"100"'
++      '"1000"'
+     ];
+ 
+     expectArgsListToBe(expected, done);
+@@ -87,7 +101,7 @@ describe('notify-send', function() {
+       title: 'title',
+       message: 'body',
+       icon: 'icon-string',
+-      time: 100,
++      time: 1,
+       tullball: 'notValid'
+     });
+   });
+diff --git a/test/utils.js b/test/utils.js
+index 47c42836..bf4b1036 100644
+--- a/test/utils.js
++++ b/test/utils.js
+@@ -2,9 +2,9 @@ var path = require('path');
+ var fs = require('fs');
+ var _ = require('../lib/utils');
+ 
+-describe('utils', function() {
+-  describe('clone', function() {
+-    it('should clone nested objects', function() {
++describe('utils', function () {
++  describe('clone', function () {
++    it('should clone nested objects', function () {
+       var obj = { a: { b: 42 }, c: 123 };
+       var obj2 = _.clone(obj);
+ 
+@@ -15,9 +15,14 @@ describe('utils', function() {
+     });
+   });
+ 
+-  describe('mapping', function() {
+-    it('should map icon for notify-send', function() {
+-      var expected = { title: 'Foo', message: 'Bar', icon: 'foobar' };
++  describe('mapping', function () {
++    it('should map icon for notify-send', function () {
++      var expected = {
++        title: 'Foo',
++        message: 'Bar',
++        icon: 'foobar',
++        'expire-time': 10000
++      };
+ 
+       expect(
+         _.mapToNotifySend({ title: 'Foo', message: 'Bar', appIcon: 'foobar' })
+@@ -28,7 +33,7 @@ describe('utils', function() {
+       ).toEqual(expected);
+     });
+ 
+-    it('should map short hand for notify-sned', function() {
++    it('should map short hand for notify-sned', function () {
+       var expected = {
+         urgency: 'a',
+         'expire-time': 'b',
+@@ -42,7 +47,7 @@ describe('utils', function() {
+       ).toEqual(expected);
+     });
+ 
+-    it('should map icon for notification center', function() {
++    it('should map icon for notification center', function () {
+       var expected = {
+         title: 'Foo',
+         message: 'Bar',
+@@ -60,7 +65,7 @@ describe('utils', function() {
+       );
+     });
+ 
+-    it('should map icon for growl', function() {
++    it('should map icon for growl', function () {
+       var icon = path.join(__dirname, 'fixture', 'coulson.jpg');
+       var iconRead = fs.readFileSync(icon);
+ 
+@@ -78,7 +83,7 @@ describe('utils', function() {
+       expect(Buffer.isBuffer(obj.icon)).toBeTruthy();
+     });
+ 
+-    it('should not map icon url for growl', function() {
++    it('should not map icon url for growl', function () {
+       var icon = 'http://hostname.com/logo.png';
+ 
+       var expected = { title: 'Foo', message: 'Bar', icon: icon };

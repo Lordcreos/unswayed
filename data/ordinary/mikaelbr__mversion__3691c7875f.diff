@@ -1,0 +1,65 @@
+diff --git a/package.json b/package.json
+index 680e430..5b716b6 100644
+--- a/package.json
++++ b/package.json
+@@ -20,20 +20,20 @@
+     "mversion": "./bin/version"
+   },
+   "dependencies": {
+-    "chalk": "^0.5.0",
++    "chalk": "^1.1.3",
+     "cli-usage": "^0.1.2",
+     "contra": "^1.6.8",
+-    "minimatch": "^1.0.0",
+-    "minimist": "^0.2.0",
+-    "rc": "^0.5.0",
+-    "semver": "^4.0.3",
+-    "through2": "^1.0.0",
+-    "update-notifier": "^0.2.2",
+-    "vinyl-fs": "^0.3.4"
++    "minimatch": "^3.0.3",
++    "minimist": "^1.2.0",
++    "rc": "^1.1.6",
++    "semver": "^5.3.0",
++    "through2": "^2.0.3",
++    "update-notifier": "^1.0.3",
++    "vinyl-fs": "^2.4.4"
+   },
+   "devDependencies": {
+-    "istanbul": "^0.3.0",
+-    "mocha": "^2.0.1",
+-    "vinyl": "^0.2.3"
++    "istanbul": "^0.4.5",
++    "mocha": "^3.2.0",
++    "vinyl": "^2.0.1"
+   }
+ }
+diff --git a/tests/package_test.js b/tests/package_test.js
+index 9e55433..9447aa9 100644
+--- a/tests/package_test.js
++++ b/tests/package_test.js
+@@ -15,7 +15,7 @@ describe('mversion(package.json)', function () {
+   var original = fUtil.loadFiles;
+   var dest = vinylFs.dest;
+ 
+-  before(function () {
++  before(function () {
+     vinylFs.dest = function () {
+       return through.obj(function (file, enc, next) {
+         this.push(file);
+@@ -108,7 +108,7 @@ describe('mversion(package.json)', function () {
+       version.update('1.0.0', function (err, res) {
+         assert.ok(err);
+         assert.ok(err.message);
+-        assert.equal(err.message, ' * fixtures' + path.sep + 'package.json: Unexpected string');
++        assert.equal(err.message, ' * fixtures' + path.sep + 'package.json: Unexpected string in JSON at position 21');
+         assert.equal(res.versions[filename], void 0);
+ 
+         done();
+@@ -173,4 +173,4 @@ describe('mversion(package.json)', function () {
+       });
+     });
+   });
+-});
+\ No newline at end of file
++});

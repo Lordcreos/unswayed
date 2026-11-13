@@ -1,0 +1,23 @@
+diff --git a/parser_test.go b/parser_test.go
+index b02ccb60..11b3e661 100644
+--- a/parser_test.go
++++ b/parser_test.go
+@@ -988,6 +988,18 @@ var getStringTests = []GetTest{
+ 		path:  []string{"c"},
+ 		isErr: true,
+ 	},
++	{
++		desc:  `empty array index`,
++		json:  `[""]`,
++		path:  []string{"[]"},
++		isFound: false,
++	},
++	{
++		desc:  `malformed array index`,
++		json:  `[""]`,
++		path:  []string{"["},
++		isFound: false,
++	},
+ }
+ 
+ var getUnsafeStringTests = []GetTest{

@@ -1,0 +1,25 @@
+diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
+index da6b30ec747ac..2bf67fb99d60b 100644
+--- a/target/sparc/cpu.c
++++ b/target/sparc/cpu.c
+@@ -610,7 +610,7 @@ static void cpu_print_cc(FILE *f, uint32_t cc)
+ #define REGS_PER_LINE 8
+ #endif
+ 
+-void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
++static void sparc_cpu_dump_state(CPUState *cs, FILE *f, int flags)
+ {
+     SPARCCPU *cpu = SPARC_CPU(cs);
+     CPUSPARCState *env = &cpu->env;
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index ff8ae73002a3c..1f40d768d8b57 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -571,7 +571,6 @@ extern const VMStateDescription vmstate_sparc_cpu;
+ #endif
+ 
+ void sparc_cpu_do_interrupt(CPUState *cpu);
+-void sparc_cpu_dump_state(CPUState *cpu, FILE *f, int flags);
+ hwaddr sparc_cpu_get_phys_page_debug(CPUState *cpu, vaddr addr);
+ int sparc_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
+ int sparc_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);

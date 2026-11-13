@@ -1,0 +1,13 @@
+diff --git a/plugins/plugin.php b/plugins/plugin.php
+index 265f8fe63..065b0af9d 100644
+--- a/plugins/plugin.php
++++ b/plugins/plugin.php
+@@ -84,6 +84,8 @@ function dumpOutput() {
+ 	}
+ 
+ 	function editRowPrint($table, $fields, $row, $update) {
++		$args = func_get_args();
++		return $this->_appendPlugin(__FUNCTION__, $args);
+ 	}
+ 
+ 	function editFunctions($field) {

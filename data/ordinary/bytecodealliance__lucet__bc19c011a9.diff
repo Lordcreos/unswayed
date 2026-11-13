@@ -1,0 +1,52 @@
+diff --git a/.circleci/config.yml b/.circleci/config.yml
+index 69c8aeac..540432e0 100644
+--- a/.circleci/config.yml
++++ b/.circleci/config.yml
+@@ -210,7 +210,7 @@ commands:
+           name: "Install Rust"
+           command: |
+             set -x
+-            curl https://sh.rustup.rs | sh -s -- --default-toolchain 1.50.0 -y
++            curl https://sh.rustup.rs | sh -s -- --default-toolchain 1.56.1 -y
+             source $HOME/.cargo/env
+             rustup component add rustfmt
+             rustup target add wasm32-wasi
+diff --git a/Dockerfile b/Dockerfile
+index d0e04edd..a7f52f8c 100644
+--- a/Dockerfile
++++ b/Dockerfile
+@@ -35,7 +35,7 @@ RUN update-alternatives --install /usr/bin/llvm-config llvm-config /usr/bin/llvm
+ ENV LD_LIBRARY_PATH=/usr/local/lib
+ 
+ # Install our supported version of Rust, rustfmt, and the wasm32-wasi cross-compilation target
+-RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain 1.54.0 -y
++RUN curl https://sh.rustup.rs -sSf | sh -s -- --default-toolchain 1.56.1 -y
+ ENV PATH=/root/.cargo/bin:$PATH
+ RUN rustup component add rustfmt
+ RUN rustup target add wasm32-wasi
+diff --git a/lucet-wiggle/generate/src/lib.rs b/lucet-wiggle/generate/src/lib.rs
+index 635556c3..a8eace54 100644
+--- a/lucet-wiggle/generate/src/lib.rs
++++ b/lucet-wiggle/generate/src/lib.rs
+@@ -108,12 +108,10 @@ pub fn generate(doc: &witx::Document, config: &Config) -> TokenStream {
+             /// each hostcall is reachable and not garbage-collected by the
+             /// compile-time linker (ld).
+             pub fn init() {
+-                let funcs: &[*const extern "C" fn()] = &[
++                let funcs: Vec<*const extern "C" fn()> = vec![
+                     #(#init),*
+                 ];
+-                for func in funcs {
+-                    assert_ne!(*func, std::ptr::null(), "hostcall address is not null");
+-                }
++                std::mem::forget(funcs);
+             }
+         }
+     }
+diff --git a/rust-toolchain b/rust-toolchain
+index b7921ae8..43c989b5 100644
+--- a/rust-toolchain
++++ b/rust-toolchain
+@@ -1 +1 @@
+-1.54.0
++1.56.1

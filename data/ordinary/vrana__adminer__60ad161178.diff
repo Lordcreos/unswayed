@@ -1,0 +1,78 @@
+diff --git a/adminer/drivers/pgsql.inc.php b/adminer/drivers/pgsql.inc.php
+index 296b8aa3e..caeda8751 100644
+--- a/adminer/drivers/pgsql.inc.php
++++ b/adminer/drivers/pgsql.inc.php
+@@ -378,7 +378,7 @@ function fields($table) {
+ 			$row["auto_increment"] = $row['attidentity'] || preg_match('~^nextval\(~i', $row["default"]);
+ 			$row["privileges"] = array("insert" => 1, "select" => 1, "update" => 1);
+ 			if (preg_match('~(.+)::[^,)]+(.*)~', $row["default"], $match)) {
+-				$row["default"] = ($match[1] == "NULL" ? null : (($match[1][0] == "'" ? idf_unescape($match[1]) : $match[1]) . $match[2]));
++				$row["default"] = ($match[1] == "NULL" ? null : idf_unescape($match[1]) . $match[2]);
+ 			}
+ 			$return[$row["field"]] = $row;
+ 		}
+@@ -418,12 +418,12 @@ function foreign_keys($table) {
+ AND contype = 'f'::char
+ ORDER BY conkey, conname") as $row) {
+ 			if (preg_match('~FOREIGN KEY\s*\((.+)\)\s*REFERENCES (.+)\((.+)\)(.*)$~iA', $row['definition'], $match)) {
+-				$row['source'] = array_map('trim', explode(',', $match[1]));
++				$row['source'] = array_map('idf_unescape', array_map('trim', explode(',', $match[1])));
+ 				if (preg_match('~^(("([^"]|"")+"|[^"]+)\.)?"?("([^"]|"")+"|[^"]+)$~', $match[2], $match2)) {
+-					$row['ns'] = str_replace('""', '"', preg_replace('~^"(.+)"$~', '\1', $match2[2]));
+-					$row['table'] = str_replace('""', '"', preg_replace('~^"(.+)"$~', '\1', $match2[4]));
++					$row['ns'] = idf_unescape($match2[2]);
++					$row['table'] = idf_unescape($match2[4]);
+ 				}
+-				$row['target'] = array_map('trim', explode(',', $match[3]));
++				$row['target'] = array_map('idf_unescape', array_map('trim', explode(',', $match[3])));
+ 				$row['on_delete'] = (preg_match("~ON DELETE ($on_actions)~", $match[4], $match2) ? $match2[1] : 'NO ACTION');
+ 				$row['on_update'] = (preg_match("~ON UPDATE ($on_actions)~", $match[4], $match2) ? $match2[1] : 'NO ACTION');
+ 				$return[$row['conname']] = $row;
+diff --git a/adminer/drivers/sqlite.inc.php b/adminer/drivers/sqlite.inc.php
+index da698fdd3..e85fd31c2 100644
+--- a/adminer/drivers/sqlite.inc.php
++++ b/adminer/drivers/sqlite.inc.php
+@@ -140,7 +140,7 @@ function fetch_assoc() {
+ 					}
+ 					$return = array();
+ 					foreach ($row as $key => $val) {
+-						$return[($key[0] == '"' ? idf_unescape($key) : $key)] = $val;
++						$return[idf_unescape($key)] = $val;
+ 					}
+ 					return $return;
+ 				}
+@@ -676,7 +676,7 @@ function trigger($name) {
+ 		return array(
+ 			"Timing" => strtoupper($match[1]),
+ 			"Event" => strtoupper($match[2]) . ($of ? " OF" : ""),
+-			"Of" => ($of[0] == '`' || $of[0] == '"' ? idf_unescape($of) : $of),
++			"Of" => idf_unescape($of),
+ 			"Trigger" => $name,
+ 			"Statement" => $match[4],
+ 		);
+diff --git a/adminer/include/functions.inc.php b/adminer/include/functions.inc.php
+index 476cf5ccf..b33d82959 100644
+--- a/adminer/include/functions.inc.php
++++ b/adminer/include/functions.inc.php
+@@ -29,6 +29,9 @@ function version() {
+ * @return string
+ */
+ function idf_unescape($idf) {
++	if (!preg_match('~^[`\'"]~', $idf)) {
++		return $idf;
++	}
+ 	$last = substr($idf, -1);
+ 	return str_replace($last . $last, $last, substr($idf, 1, -1));
+ }
+diff --git a/changes.txt b/changes.txt
+index 6c4301eb1..9622f194b 100644
+--- a/changes.txt
++++ b/changes.txt
+@@ -5,6 +5,7 @@ MySQL: Allow moving views to other DB and renaming DB with views (bug #783)
+ MariaDB: Do not treat sequences as views (PR #416)
+ PostgreSQL: Support UPDATE OF triggers (bug #789)
+ PostgreSQL: Support triggers with more events (OR)
++PostgreSQL: Fix parsing of foreign keys with non-ASCII column names
+ PostgreSQL < 10 PDO: Avoid displaying GENERATED ALWAYS BY IDENTITY everywhere (bug #785, regression from 4.7.9)
+ SQLite: Fix displayed types (bug #784, regression from 4.8.0)
+ 

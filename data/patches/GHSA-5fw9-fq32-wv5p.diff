@@ -1,0 +1,12 @@
+diff --git a/package.json b/package.json
+index 614923a6..0b2c64ed 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+   "name": "node-notifier",
+-  "version": "8.0.0",
++  "version": "8.0.1",
+   "description": "A Node.js module for sending notifications on native Mac, Windows (post and pre 8) and Linux (or Growl as fallback)",
+   "main": "index.js",
+   "scripts": {

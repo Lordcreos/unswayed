@@ -1,0 +1,32 @@
+diff --git a/lib/tree.js b/lib/tree.js
+index d987da79..2db6de2a 100644
+--- a/lib/tree.js
++++ b/lib/tree.js
+@@ -2,13 +2,13 @@
+ 
+ const os = require('os');
+ const path = require('path');
+-const pify = require('pify');
++const {promisify} = require('util');
+ const commondir = require('commondir');
+ const walk = require('walkdir');
+ const dependencyTree = require('dependency-tree');
+ const log = require('./log');
+ 
+-const stat = pify(require('fs').stat);
++const stat = promisify(require('fs').stat);
+ 
+ /**
+  * Check if running on Windows.
+diff --git a/package.json b/package.json
+index 61c5a853..6da3caf5 100644
+--- a/package.json
++++ b/package.json
+@@ -59,7 +59,6 @@
+     "detective-typescript": "^5.8.0",
+     "graphviz": "0.0.9",
+     "ora": "^4.0.4",
+-    "pify": "^5.0.0",
+     "pluralize": "^8.0.0",
+     "precinct": "^6.3.1",
+     "pretty-ms": "^7.0.0",

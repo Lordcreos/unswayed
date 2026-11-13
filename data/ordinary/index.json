@@ -1,0 +1,1375 @@
+[
+ {
+  "id": "irssi__irssi__93c158d815",
+  "repo": "irssi/irssi",
+  "sha": "93c158d8156293bd95e4bf5bdb75cf8d44bc4eab",
+  "message": "expand_escape: expand double backslash as a backslash",
+  "files": [
+   "src/core/misc.c"
+  ],
+  "bytes": 310,
+  "path": "data/ordinary/irssi__irssi__93c158d815.diff"
+ },
+ {
+  "id": "irssi__irssi__7bd1b80687",
+  "repo": "irssi/irssi",
+  "sha": "7bd1b80687cc97010094de0d398b429480e0a608",
+  "message": "fix dcc get",
+  "files": [
+   "src/irc/dcc/dcc-autoget.c"
+  ],
+  "bytes": 1136,
+  "path": "data/ordinary/irssi__irssi__7bd1b80687.diff"
+ },
+ {
+  "id": "irssi__irssi__62fd3ac180",
+  "repo": "irssi/irssi",
+  "sha": "62fd3ac1804d5d45bc2302ceac9ee9c7ef372e1a",
+  "message": "Revert \"Quote the filename when dcc requests are auto accepted.\"",
+  "files": [
+   "src/core/misc.c",
+   "src/core/misc.h",
+   "src/fe-common/core/chat-completion.c",
+   "src/irc/dcc/dcc-autoget.c"
+  ],
+  "bytes": 3334,
+  "path": "data/ordinary/irssi__irssi__62fd3ac180.diff"
+ },
+ {
+  "id": "qemu__qemu__080832e4f4",
+  "repo": "qemu/qemu",
+  "sha": "080832e4f4801a28bd1170c49e61f6a0f5f05d03",
+  "message": "ebpf: only include in system emulators",
+  "files": [
+   "ebpf/meson.build"
+  ],
+  "bytes": 340,
+  "path": "data/ordinary/qemu__qemu__080832e4f4.diff"
+ },
+ {
+  "id": "qemu__qemu__9ac200acce",
+  "repo": "qemu/qemu",
+  "sha": "9ac200acce8c27ef44da31246f337a2454e54e0d",
+  "message": "target/sparc: Make sparc_cpu_dump_state() static",
+  "files": [
+   "target/sparc/cpu.c",
+   "target/sparc/cpu.h"
+  ],
+  "bytes": 1000,
+  "path": "data/ordinary/qemu__qemu__9ac200acce.diff"
+ },
+ {
+  "id": "qemu__qemu__eba6814a0a",
+  "repo": "qemu/qemu",
+  "sha": "eba6814a0a85a6e307221af64bf6ad28befaf1f9",
+  "message": "target/avr: Fix compiler errors (-Werror=enum-conversion)",
+  "files": [
+   "target/avr/translate.c"
+  ],
+  "bytes": 809,
+  "path": "data/ordinary/qemu__qemu__eba6814a0a.diff"
+ },
+ {
+  "id": "rusqlite__rusqlite__71b2f5187b",
+  "repo": "rusqlite/rusqlite",
+  "sha": "71b2f5187b0cbace3f8b6ff53432ff2ca0defcf0",
+  "message": "Ensure type use for auxdata is repr(C)",
+  "files": [
+   "src/functions.rs"
+  ],
+  "bytes": 2100,
+  "path": "data/ordinary/rusqlite__rusqlite__71b2f5187b.diff"
+ },
+ {
+  "id": "rusqlite__rusqlite__38aea89809",
+  "repo": "rusqlite/rusqlite",
+  "sha": "38aea89809ea4154975d853bffe3cb7715fe84d6",
+  "message": "Remove implementations of std::error::Error::description",
+  "files": [
+   "src/error.rs",
+   "src/types/from_sql.rs"
+  ],
+  "bytes": 3574,
+  "path": "data/ordinary/rusqlite__rusqlite__38aea89809.diff"
+ },
+ {
+  "id": "rusqlite__rusqlite__5a8108bd86",
+  "repo": "rusqlite/rusqlite",
+  "sha": "5a8108bd86faa6107e7a622e6297388fea3d6346",
+  "message": "Implement `source` and not `cause` for FromSqlError",
+  "files": [
+   "src/types/from_sql.rs"
+  ],
+  "bytes": 910,
+  "path": "data/ordinary/rusqlite__rusqlite__5a8108bd86.diff"
+ },
+ {
+  "id": "jperelli__osm-static-maps__6bce2e2a8d",
+  "repo": "jperelli/osm-static-maps",
+  "sha": "6bce2e2a8dd4cbbbbe083820e494ba858be74b16",
+  "message": "Console error missed",
+  "files": [
+   "CHANGELOG.md",
+   "src/lib.js"
+  ],
+  "bytes": 776,
+  "path": "data/ordinary/jperelli__osm-static-maps__6bce2e2a8d.diff"
+ },
+ {
+  "id": "jperelli__osm-static-maps__1c44d9f18c",
+  "repo": "jperelli/osm-static-maps",
+  "sha": "1c44d9f18cf59d0809a5a631f98f44bdb0fea9ab",
+  "message": "Improve docs on geojsonfile",
+  "files": [
+   "CHANGELOG.md",
+   "README.md",
+   "src/lib.d.ts"
+  ],
+  "bytes": 1369,
+  "path": "data/ordinary/jperelli__osm-static-maps__1c44d9f18c.diff"
+ },
+ {
+  "id": "jperelli__osm-static-maps__7d1336f04b",
+  "repo": "jperelli/osm-static-maps",
+  "sha": "7d1336f04bc6a54076a567b793e6f5788f33c5d4",
+  "message": "Add an option to CLI to read GeoJSON file or STDIN",
+  "files": [
+   "src/cli.js",
+   "src/lib.d.ts",
+   "src/lib.js"
+  ],
+  "bytes": 2648,
+  "path": "data/ordinary/jperelli__osm-static-maps__7d1336f04b.diff"
+ },
+ {
+  "id": "dojo__dijit__d7294be76d",
+  "repo": "dojo/dijit",
+  "sha": "d7294be76dd7b251980fe033b1901fa4135f4f4a",
+  "message": "Updating source version to 1.16.3-pre",
+  "files": [
+   "bower.json",
+   "package.json"
+  ],
+  "bytes": 930,
+  "path": "data/ordinary/dojo__dijit__d7294be76d.diff"
+ },
+ {
+  "id": "dojo__dijit__4a7cbf2ab4",
+  "repo": "dojo/dijit",
+  "sha": "4a7cbf2ab4485513486024a56aa676725f5cb7b8",
+  "message": "Updating metadata for 1.16.2",
+  "files": [
+   "bower.json",
+   "package.json"
+  ],
+  "bytes": 930,
+  "path": "data/ordinary/dojo__dijit__4a7cbf2ab4.diff"
+ },
+ {
+  "id": "dojo__dijit__4f673c6099",
+  "repo": "dojo/dijit",
+  "sha": "4f673c60997f8d465a5b41bf87ce560676909f54",
+  "message": "Updating source version to 1.16.2-pre",
+  "files": [
+   "bower.json",
+   "package.json"
+  ],
+  "bytes": 930,
+  "path": "data/ordinary/dojo__dijit__4f673c6099.diff"
+ },
+ {
+  "id": "mikaelbr__mversion__8733508bac",
+  "repo": "mikaelbr/mversion",
+  "sha": "8733508bac8f8868c85d8729f657a0c6f3f7f704",
+  "message": "Fixes breaking changes with glob-stream",
+  "files": [
+   "lib/files.js"
+  ],
+  "bytes": 1400,
+  "path": "data/ordinary/mikaelbr__mversion__8733508bac.diff"
+ },
+ {
+  "id": "mikaelbr__mversion__3691c7875f",
+  "repo": "mikaelbr/mversion",
+  "sha": "3691c7875f33a7b32a8bece439860e0e203cd54e",
+  "message": "updated dependencies and one assertion, tests now pass fine",
+  "files": [
+   "package.json",
+   "tests/package_test.js"
+  ],
+  "bytes": 1900,
+  "path": "data/ordinary/mikaelbr__mversion__3691c7875f.diff"
+ },
+ {
+  "id": "mikaelbr__mversion__58355f7ba6",
+  "repo": "mikaelbr/mversion",
+  "sha": "58355f7ba6360860b515c4511ede2509622b1c3a",
+  "message": "Use string concatenation instead of string interpolation",
+  "files": [
+   "tests/package_test.js"
+  ],
+  "bytes": 590,
+  "path": "data/ordinary/mikaelbr__mversion__58355f7ba6.diff"
+ },
+ {
+  "id": "facebook__create-react-app__18b5962ff8",
+  "repo": "facebook/create-react-app",
+  "sha": "18b5962ff82a50e01a42c502c6be2d8878e61633",
+  "message": "Upgrade eslint-webpack-plugin to fix opt-out flag (#10590)",
+  "files": [
+   "packages/react-scripts/config/webpack.config.js",
+   "packages/react-scripts/package.json"
+  ],
+  "bytes": 1264,
+  "path": "data/ordinary/facebook__create-react-app__18b5962ff8.diff"
+ },
+ {
+  "id": "facebook__create-react-app__3f5dea91c1",
+  "repo": "facebook/create-react-app",
+  "sha": "3f5dea91c1721b233e5a2b514ff9ea6fbc76ff97",
+  "message": "tests: update test case to match the description (#10384)",
+  "files": [
+   "packages/create-react-app/__tests__/getTemplateInstallPackage.test.js"
+  ],
+  "bytes": 716,
+  "path": "data/ordinary/facebook__create-react-app__3f5dea91c1.diff"
+ },
+ {
+  "id": "facebook__create-react-app__b9963abde5",
+  "repo": "facebook/create-react-app",
+  "sha": "b9963abde5870d46cd906160f98f81dbc0a5ecf2",
+  "message": "Add opt-out for eslint-webpack-plugin (#10170)",
+  "files": [
+   "docusaurus/docs/advanced-configuration.md",
+   "packages/react-dev-utils/eslintFormatter.js",
+   "packages/react-scripts/config/webpack.config.js"
+  ],
+  "bytes": 8216,
+  "path": "data/ordinary/facebook__create-react-app__b9963abde5.diff"
+ },
+ {
+  "id": "buger__jsonparser__1e1db9eaeb",
+  "repo": "buger/jsonparser",
+  "sha": "1e1db9eaebb20b9f54297b0941fdad4f40bfed3c",
+  "message": "handle \"[\" as a malformed array index by returning NotFound",
+  "files": [
+   "parser.go"
+  ],
+  "bytes": 590,
+  "path": "data/ordinary/buger__jsonparser__1e1db9eaeb.diff"
+ },
+ {
+  "id": "buger__jsonparser__d15cedbda5",
+  "repo": "buger/jsonparser",
+  "sha": "d15cedbda55de2300f347f28ac69703866b886be",
+  "message": "introduce some tests for malformed array indexes in GetString()",
+  "files": [
+   "parser_test.go"
+  ],
+  "bytes": 471,
+  "path": "data/ordinary/buger__jsonparser__d15cedbda5.diff"
+ },
+ {
+  "id": "buger__jsonparser__ee298179cc",
+  "repo": "buger/jsonparser",
+  "sha": "ee298179cc5d2af796631f7ca41aaa733eb46924",
+  "message": "Small type fix in parser.go",
+  "files": [
+   "parser.go"
+  ],
+  "bytes": 404,
+  "path": "data/ordinary/buger__jsonparser__ee298179cc.diff"
+ },
+ {
+  "id": "daylightstudio__FUEL-CMS__a780f5f564",
+  "repo": "daylightstudio/FUEL-CMS",
+  "sha": "a780f5f5649daba0d8ffd7f805c234c4a5eb9bf7",
+  "message": "fix: used modules default_col and default_order as defaults for embedded_list items sorting if not specified",
+  "files": [
+   "fuel/modules/fuel/models/Base_module_model.php"
+  ],
+  "bytes": 889,
+  "path": "data/ordinary/daylightstudio__FUEL-CMS__a780f5f564.diff"
+ },
+ {
+  "id": "daylightstudio__FUEL-CMS__e2c1227634",
+  "repo": "daylightstudio/FUEL-CMS",
+  "sha": "e2c122763489e4988670fc5c500ebfaf475c6a9d",
+  "message": "feat: added ability to add limit, offset, sort, col parameters to embedded_list field types",
+  "files": [
+   "fuel/modules/fuel/models/Base_module_model.php",
+   "fuel/modules/fuel/views/_docs/general/forms.php"
+  ],
+  "bytes": 3170,
+  "path": "data/ordinary/daylightstudio__FUEL-CMS__e2c1227634.diff"
+ },
+ {
+  "id": "daylightstudio__FUEL-CMS__60ac9c83f4",
+  "repo": "daylightstudio/FUEL-CMS",
+  "sha": "60ac9c83f41635d982896c0585dbacc3f3cc718a",
+  "message": "feat: version bump to 1.4.13",
+  "files": [
+   "fuel/modules/fuel/config/fuel_constants.php"
+  ],
+  "bytes": 477,
+  "path": "data/ordinary/daylightstudio__FUEL-CMS__60ac9c83f4.diff"
+ },
+ {
+  "id": "michaelrsweet__htmldoc__369b2ea1fd",
+  "repo": "michaelrsweet/htmldoc",
+  "sha": "369b2ea1fd0d0537ba707f20a2f047b6afd2fbdc",
+  "message": "Fix JPEG error handling (Issue #415)",
+  "files": [
+   "CHANGES.md",
+   "htmldoc/file.c",
+   "htmldoc/image.cxx",
+   "htmldoc/ps-pdf.cxx"
+  ],
+  "bytes": 3553,
+  "path": "data/ordinary/michaelrsweet__htmldoc__369b2ea1fd.diff"
+ },
+ {
+  "id": "michaelrsweet__htmldoc__ba61a3ece3",
+  "repo": "michaelrsweet/htmldoc",
+  "sha": "ba61a3ece382389ae4482c7027af8b32e8ab4cc8",
+  "message": "Fix crash bugs with bogus table attributes (Issue #416)",
+  "files": [
+   "CHANGES.md",
+   "htmldoc/ps-pdf.cxx"
+  ],
+  "bytes": 2086,
+  "path": "data/ordinary/michaelrsweet__htmldoc__ba61a3ece3.diff"
+ },
+ {
+  "id": "michaelrsweet__htmldoc__0ddab26a54",
+  "repo": "michaelrsweet/htmldoc",
+  "sha": "0ddab26a542c74770317b622e985c52430092ba5",
+  "message": "Fix a crash bug with bogus table attributes (Issue #417)",
+  "files": [
+   "CHANGES.md",
+   "htmldoc/ps-pdf.cxx"
+  ],
+  "bytes": 2470,
+  "path": "data/ordinary/michaelrsweet__htmldoc__0ddab26a54.diff"
+ },
+ {
+  "id": "gocd__gocd__f5d4d01eb0",
+  "repo": "gocd/gocd",
+  "sha": "f5d4d01eb0aa6a949d70d1314c9ad625063f6a34",
+  "message": "Now, build alpine 3.13 images",
+  "files": [
+   "buildSrc/src/main/groovy/com/thoughtworks/go/build/docker/Distro.groovy"
+  ],
+  "bytes": 1227,
+  "path": "data/ordinary/gocd__gocd__f5d4d01eb0.diff"
+ },
+ {
+  "id": "gocd__gocd__e83b03a4b6",
+  "repo": "gocd/gocd",
+  "sha": "e83b03a4b6fae8992231a5016ac9f5a257f59db1",
+  "message": "Let's try installing only `libsasl` to resolve dependency issues in alpine:latest (which is currently 3.13)",
+  "files": [
+   "buildSrc/src/main/groovy/com/thoughtworks/go/build/docker/Distro.groovy"
+  ],
+  "bytes": 1341,
+  "path": "data/ordinary/gocd__gocd__e83b03a4b6.diff"
+ },
+ {
+  "id": "gocd__gocd__3f950f94e4",
+  "repo": "gocd/gocd",
+  "sha": "3f950f94e43abc5071661795093a4154f746d313",
+  "message": "Continue building alpine 3.10 based docker images for gocd agent",
+  "files": [
+   "buildSrc/src/main/groovy/com/thoughtworks/go/build/docker/Distro.groovy"
+  ],
+  "bytes": 1153,
+  "path": "data/ordinary/gocd__gocd__3f950f94e4.diff"
+ },
+ {
+  "id": "hedgedoc__hedgedoc__c07ae7eda1",
+  "repo": "hedgedoc/hedgedoc",
+  "sha": "c07ae7eda1b02203fc48783256b2b1881a587cb4",
+  "message": "Fix variable names for docker secrets",
+  "files": [
+   "lib/config/dockerSecret.js"
+  ],
+  "bytes": 860,
+  "path": "data/ordinary/hedgedoc__hedgedoc__c07ae7eda1.diff"
+ },
+ {
+  "id": "hedgedoc__hedgedoc__57cfbcbd47",
+  "repo": "hedgedoc/hedgedoc",
+  "sha": "57cfbcbd470c794d667dc7bdb91f9bb27245db94",
+  "message": "Update id.json (POEditor.com)",
+  "files": [
+   "locales/id.json"
+  ],
+  "bytes": 505,
+  "path": "data/ordinary/hedgedoc__hedgedoc__57cfbcbd47.diff"
+ },
+ {
+  "id": "hedgedoc__hedgedoc__6280e92d10",
+  "repo": "hedgedoc/hedgedoc",
+  "sha": "6280e92d1042967e16e68a50b6364de566e266ef",
+  "message": "fix: migration should return promise",
+  "files": [
+   "lib/migrations/20171009121200-longtext-for-mysql.js",
+   "lib/migrations/20180209120907-longtext-of-authorship.js",
+   "lib/migrations/20180306150303-fix-enum.js"
+  ],
+  "bytes": 4199,
+  "path": "data/ordinary/hedgedoc__hedgedoc__6280e92d10.diff"
+ },
+ {
+  "id": "publify__publify__44ba63fa7f",
+  "repo": "publify/publify",
+  "sha": "44ba63fa7fbe22276ac3f239cd086eda8bf71c29",
+  "message": "Unify specs for disallowing script tags in comments",
+  "files": [
+   "publify_core/spec/models/comment_spec.rb"
+  ],
+  "bytes": 1861,
+  "path": "data/ordinary/publify__publify__44ba63fa7f.diff"
+ },
+ {
+  "id": "publify__publify__e4607e22bd",
+  "repo": "publify/publify",
+  "sha": "e4607e22bd5aca9476178c360944641a285659b5",
+  "message": "Clean up Feedback validation",
+  "files": [
+   "publify_core/app/models/comment.rb",
+   "publify_core/app/models/feedback.rb",
+   "publify_core/app/models/trackback.rb",
+   "publify_core/spec/models/comment_spec.rb"
+  ],
+  "bytes": 2909,
+  "path": "data/ordinary/publify__publify__e4607e22bd.diff"
+ },
+ {
+  "id": "publify__publify__6cb5fb4099",
+  "repo": "publify/publify",
+  "sha": "6cb5fb4099a5f125bccb47efbc1794e576d5035d",
+  "message": "Replace pointless use of 'protected' with 'private'",
+  "files": [
+   "publify_core/app/controllers/admin/content_controller.rb",
+   "publify_core/app/controllers/comments_controller.rb",
+   "publify_core/app/models/comment.rb",
+   "publify_core/lib/spam_protection.rb"
+  ],
+  "bytes": 1921,
+  "path": "data/ordinary/publify__publify__6cb5fb4099.diff"
+ },
+ {
+  "id": "PrismJS__prism__f5458431a0",
+  "repo": "PrismJS/prism",
+  "sha": "f5458431a051c5ad27dfeba4a96fd14567d5a763",
+  "message": "ESLint: Allow `Map` and `Set` in ES5 code (#3328)",
+  "files": [
+   ".eslintrc.js"
+  ],
+  "bytes": 374,
+  "path": "data/ordinary/PrismJS__prism__f5458431a0.diff"
+ },
+ {
+  "id": "PrismJS__prism__d6c5372616",
+  "repo": "PrismJS/prism",
+  "sha": "d6c537261684f89c4740598c8d0c8f77215b88f3",
+  "message": "PureBasic: Added missing keyword and fixed constants ending with `$` (#3320)",
+  "files": [
+   "components/prism-purebasic.js",
+   "components/prism-purebasic.min.js",
+   "tests/languages/purebasic/keyword_feature.test",
+   "tests/languages/purebasic/tag_feature.test"
+  ],
+  "bytes": 8894,
+  "path": "data/ordinary/PrismJS__prism__d6c5372616.diff"
+ },
+ {
+  "id": "PrismJS__prism__82d0ca15e8",
+  "repo": "PrismJS/prism",
+  "sha": "82d0ca15e85574e14d5714cdf2b989a5a9a36143",
+  "message": "Command Line: Added span around command and output (#3312)",
+  "files": [
+   "plugins/command-line/prism-command-line.js",
+   "plugins/command-line/prism-command-line.min.js"
+  ],
+  "bytes": 5836,
+  "path": "data/ordinary/PrismJS__prism__82d0ca15e8.diff"
+ },
+ {
+  "id": "mhart__StringStream__afbc744222",
+  "repo": "mhart/StringStream",
+  "sha": "afbc7442220358419e330618e47f3a65fc265b1b",
+  "message": "Ensure data is not a number in Buffer constructor",
+  "files": [
+   "stringstream.js"
+  ],
+  "bytes": 470,
+  "path": "data/ordinary/mhart__StringStream__afbc744222.diff"
+ },
+ {
+  "id": "mhart__StringStream__1ebe0090e3",
+  "repo": "mhart/StringStream",
+  "sha": "1ebe0090e3c53deb476696333a90c8016fb80de1",
+  "message": "Duh, resume is for stdin, not stdout!",
+  "files": [
+   "example.js"
+  ],
+  "bytes": 363,
+  "path": "data/ordinary/mhart__StringStream__1ebe0090e3.diff"
+ },
+ {
+  "id": "mhart__StringStream__17450afd5c",
+  "repo": "mhart/StringStream",
+  "sha": "17450afd5c51a8b4c129ae98ab1d75c066c0862d",
+  "message": "Throw EPIPE if not readable, export AlignedStringDecoder too",
+  "files": [
+   "package.json",
+   "stringstream.js"
+  ],
+  "bytes": 2094,
+  "path": "data/ordinary/mhart__StringStream__17450afd5c.diff"
+ },
+ {
+  "id": "dojo__dojox__93cd816dc4",
+  "repo": "dojo/dojox",
+  "sha": "93cd816dc49124d678b2aab0c4faf21028e2d01d",
+  "message": "use dojo.string.escape",
+  "files": [
+   "xmpp/util.js"
+  ],
+  "bytes": 652,
+  "path": "data/ordinary/dojo__dojox__93cd816dc4.diff"
+ },
+ {
+  "id": "dojo__dojox__d6b93d9e76",
+  "repo": "dojo/dojox",
+  "sha": "d6b93d9e76752363a402bef31473ce2d2ae356d7",
+  "message": "Updating source version to 1.17.0-pre",
+  "files": [
+   "bower.json",
+   "package.json"
+  ],
+  "bytes": 962,
+  "path": "data/ordinary/dojo__dojox__d6b93d9e76.diff"
+ },
+ {
+  "id": "dojo__dojox__0960cc1c2f",
+  "repo": "dojo/dojox",
+  "sha": "0960cc1c2fedb79b43ebf478fbe8891907c1439c",
+  "message": "Updating metadata for 1.16.0",
+  "files": [
+   "bower.json",
+   "package.json"
+  ],
+  "bytes": 962,
+  "path": "data/ordinary/dojo__dojox__0960cc1c2f.diff"
+ },
+ {
+  "id": "ruby__rake__be62efb6cd",
+  "repo": "ruby/rake",
+  "sha": "be62efb6cdfc2cc00d660f8fc7d6c1c9de8014e2",
+  "message": "Removed gitignore from gemspec files.",
+  "files": [
+   "rake.gemspec"
+  ],
+  "bytes": 541,
+  "path": "data/ordinary/ruby__rake__be62efb6cd.diff"
+ },
+ {
+  "id": "ruby__rake__77eb6d87cb",
+  "repo": "ruby/rake",
+  "sha": "77eb6d87cb69c2cc531f72d4aa1948054e9d077f",
+  "message": "Only enabled macOS environment",
+  "files": [
+   "azure-pipelines.yml"
+  ],
+  "bytes": 1308,
+  "path": "data/ordinary/ruby__rake__77eb6d87cb.diff"
+ },
+ {
+  "id": "ruby__rake__72ffa2ea89",
+  "repo": "ruby/rake",
+  "sha": "72ffa2ea89f96df2307158fa151825dbb2c28ddf",
+  "message": "use realpath",
+  "files": [
+   "test/helper.rb"
+  ],
+  "bytes": 325,
+  "path": "data/ordinary/ruby__rake__72ffa2ea89.diff"
+ },
+ {
+  "id": "Cacti__cacti__3449887359",
+  "repo": "Cacti/cacti",
+  "sha": "344988735993901c1eeea78b316c69e4cb24d667",
+  "message": "Resolving #3012",
+  "files": [
+   "graph_realtime.php"
+  ],
+  "bytes": 739,
+  "path": "data/ordinary/Cacti__cacti__3449887359.diff"
+ },
+ {
+  "id": "Cacti__cacti__397dc7462a",
+  "repo": "Cacti/cacti",
+  "sha": "397dc7462ac093119b55a2500c3e8f095accd37b",
+  "message": "Fixed #3019 (#3020)",
+  "files": [
+   "auth_login.php"
+  ],
+  "bytes": 473,
+  "path": "data/ordinary/Cacti__cacti__397dc7462a.diff"
+ },
+ {
+  "id": "Cacti__cacti__ce90c157bc",
+  "repo": "Cacti/cacti",
+  "sha": "ce90c157bc6ae77d226f9c58fd0472d5daace699",
+  "message": "Fixed #3023 (#3024)",
+  "files": [
+   "include/layout.js"
+  ],
+  "bytes": 427,
+  "path": "data/ordinary/Cacti__cacti__ce90c157bc.diff"
+ },
+ {
+  "id": "quassel__quassel__d6888a62ba",
+  "repo": "quassel/quassel",
+  "sha": "d6888a62baaa3cbb5fcf461aafa1fbf5197c4f49",
+  "message": "Shipping Mac OS X packages with SQL plugins",
+  "files": [
+   "scripts/build/macosx_DeployApp.py",
+   "scripts/build/macosx_makePackage.sh"
+  ],
+  "bytes": 8731,
+  "path": "data/ordinary/quassel__quassel__d6888a62ba.diff"
+ },
+ {
+  "id": "quassel__quassel__b2c1609b21",
+  "repo": "quassel/quassel",
+  "sha": "b2c1609b21f5a3e4eb4385ee7f89cefcc4042ec1",
+  "message": "Small optimization",
+  "files": [
+   "src/core/ctcpparser.cpp"
+  ],
+  "bytes": 1184,
+  "path": "data/ordinary/quassel__quassel__b2c1609b21.diff"
+ },
+ {
+  "id": "quassel__quassel__d17bd4700b",
+  "repo": "quassel/quassel",
+  "sha": "d17bd4700b0e8380690acb3955f0b786673fcf2e",
+  "message": "Tell travis to create a matrix of gcc 4.7, clang 3.4, qt4 and qt5.",
+  "files": [
+   ".travis.yml"
+  ],
+  "bytes": 1404,
+  "path": "data/ordinary/quassel__quassel__d17bd4700b.diff"
+ },
+ {
+  "id": "denkGroot__Spina__b7e172469a",
+  "repo": "denkGroot/Spina",
+  "sha": "b7e172469ae46a32183f44aad56d56137b390559",
+  "message": "Change the title of the admin page to project name",
+  "files": [
+   "app/views/layouts/spina/admin/application.html.haml"
+  ],
+  "bytes": 501,
+  "path": "data/ordinary/denkGroot__Spina__b7e172469a.diff"
+ },
+ {
+  "id": "denkGroot__Spina__940f3dc8e2",
+  "repo": "denkGroot/Spina",
+  "sha": "940f3dc8e2cee3d97709c1044c8718040e72714d",
+  "message": "Use Github as the source for Spina Template gem",
+  "files": [
+   "Gemfile"
+  ],
+  "bytes": 394,
+  "path": "data/ordinary/denkGroot__Spina__940f3dc8e2.diff"
+ },
+ {
+  "id": "denkGroot__Spina__959bedd90b",
+  "repo": "denkGroot/Spina",
+  "sha": "959bedd90b6bbe5c892ec52bf51a29a418761564",
+  "message": "Style",
+  "files": [
+   "Gemfile"
+  ],
+  "bytes": 326,
+  "path": "data/ordinary/denkGroot__Spina__959bedd90b.diff"
+ },
+ {
+  "id": "vrana__adminer__60ad161178",
+  "repo": "vrana/adminer",
+  "sha": "60ad16117868103cb053881ecf14303236b6bcbc",
+  "message": "PostgreSQL: Fix parsing of foreign keys with non-ASCII column names (thanks to Tomas Pecina)",
+  "files": [
+   "adminer/drivers/pgsql.inc.php",
+   "adminer/drivers/sqlite.inc.php",
+   "adminer/include/functions.inc.php",
+   "changes.txt"
+  ],
+  "bytes": 3754,
+  "path": "data/ordinary/vrana__adminer__60ad161178.diff"
+ },
+ {
+  "id": "vrana__adminer__a12d31c5a8",
+  "repo": "vrana/adminer",
+  "sha": "a12d31c5a83294e82a5be2065fe0216a865a518b",
+  "message": "Fix editRowPrint for plugin",
+  "files": [
+   "plugins/plugin.php"
+  ],
+  "bytes": 365,
+  "path": "data/ordinary/vrana__adminer__a12d31c5a8.diff"
+ },
+ {
+  "id": "vrana__adminer__f6880b59d6",
+  "repo": "vrana/adminer",
+  "sha": "f6880b59d6ab40444407616701c1376c90aba5a5",
+  "message": "Prevent adminer to consider MariaDB sequences being views",
+  "files": [
+   "adminer/db.inc.php",
+   "changes.txt"
+  ],
+  "bytes": 1329,
+  "path": "data/ordinary/vrana__adminer__f6880b59d6.diff"
+ },
+ {
+  "id": "mikaelbr__node-notifier__f5a7bc6475",
+  "repo": "mikaelbr/node-notifier",
+  "sha": "f5a7bc647589fc89ac64b0f1d259a853fcf057bc",
+  "message": "fix: test cases",
+  "files": [
+   "test/notify-send.js"
+  ],
+  "bytes": 509,
+  "path": "data/ordinary/mikaelbr__node-notifier__f5a7bc6475.diff"
+ },
+ {
+  "id": "mikaelbr__node-notifier__860c06e192",
+  "repo": "mikaelbr/node-notifier",
+  "sha": "860c06e192540e11a93d63d50fc5008ba2c1fa3b",
+  "message": "feat: implements proper timeout/wait behaviour for notify-send",
+  "files": [
+   ".prettierrc",
+   "lib/utils.js",
+   "test/notify-send.js",
+   "test/utils.js"
+  ],
+  "bytes": 7612,
+  "path": "data/ordinary/mikaelbr__node-notifier__860c06e192.diff"
+ },
+ {
+  "id": "mikaelbr__node-notifier__9beb28586d",
+  "repo": "mikaelbr/node-notifier",
+  "sha": "9beb28586d965dd7c06f475e2c8db6d9864d9322",
+  "message": "Fix lint rules.",
+  "files": [
+   "lib/utils.js",
+   "notifiers/toaster.js"
+  ],
+  "bytes": 1394,
+  "path": "data/ordinary/mikaelbr__node-notifier__9beb28586d.diff"
+ },
+ {
+  "id": "bytecodealliance__lucet__8fb1fece33",
+  "repo": "bytecodealliance/lucet",
+  "sha": "8fb1fece339927e178f6cfef4eb67328b500237d",
+  "message": "fix for `semicolon_in_expressions_from_macros` warning in lucet_bail (#688)",
+  "files": [
+   "lucet-runtime/lucet-runtime-internals/src/error.rs"
+  ],
+  "bytes": 626,
+  "path": "data/ordinary/bytecodealliance__lucet__8fb1fece33.diff"
+ },
+ {
+  "id": "bytecodealliance__lucet__bc19c011a9",
+  "repo": "bytecodealliance/lucet",
+  "sha": "bc19c011a9e4cd2c668d6178f2487b94dafe570f",
+  "message": "upgrade to rustc 1.56.1 (#685)",
+  "files": [
+   ".circleci/config.yml",
+   "Dockerfile",
+   "lucet-wiggle/generate/src/lib.rs",
+   "rust-toolchain"
+  ],
+  "bytes": 2098,
+  "path": "data/ordinary/bytecodealliance__lucet__bc19c011a9.diff"
+ },
+ {
+  "id": "bytecodealliance__lucet__e0cc4a5fa1",
+  "repo": "bytecodealliance/lucet",
+  "sha": "e0cc4a5fa14dc7468d552bc22d4022d4c39f373d",
+  "message": "Let's try Ubuntu 20.04...",
+  "files": [
+   "Dockerfile"
+  ],
+  "bytes": 437,
+  "path": "data/ordinary/bytecodealliance__lucet__e0cc4a5fa1.diff"
+ },
+ {
+  "id": "ImageMagick__ImageMagick__0ccbde849c",
+  "repo": "ImageMagick/ImageMagick",
+  "sha": "0ccbde849cd582307bf57ffb41169dd8d9d44fe7",
+  "message": "Reset counter to fix page numbering.",
+  "files": [
+   "MagickWand/identify.c"
+  ],
+  "bytes": 502,
+  "path": "data/ordinary/ImageMagick__ImageMagick__0ccbde849c.diff"
+ },
+ {
+  "id": "ImageMagick__ImageMagick__e1f8f29cea",
+  "repo": "ImageMagick/ImageMagick",
+  "sha": "e1f8f29cea243595203167f070a0f1a193e45c67",
+  "message": "If the type is true color the image will be changed to DirectClass.",
+  "files": [
+   "coders/psd.c"
+  ],
+  "bytes": 905,
+  "path": "data/ordinary/ImageMagick__ImageMagick__e1f8f29cea.diff"
+ },
+ {
+  "id": "ImageMagick__ImageMagick__af51eabcc6",
+  "repo": "ImageMagick/ImageMagick",
+  "sha": "af51eabcc6704679f11425566462f51d1a46e435",
+  "message": "Fix for accessing subimage in a photoshop layer.",
+  "files": [
+   "coders/tiff.c"
+  ],
+  "bytes": 2658,
+  "path": "data/ordinary/ImageMagick__ImageMagick__af51eabcc6.diff"
+ },
+ {
+  "id": "caddyserver__caddy__b687d7b967",
+  "repo": "caddyserver/caddy",
+  "sha": "b687d7b9670890efd8dc065fb7a025cd0c3a1445",
+  "message": "httpcaddyfile: Support multiple values for `default_bind` (#4774)",
+  "files": [
+   "caddyconfig/httpcaddyfile/addresses.go",
+   "caddyconfig/httpcaddyfile/options.go",
+   "caddytest/integration/caddyfile_adapt/global_options_default_bind.txt"
+  ],
+  "bytes": 4212,
+  "path": "data/ordinary/caddyserver__caddy__b687d7b967.diff"
+ },
+ {
+  "id": "caddyserver__caddy__f7be0ee101",
+  "repo": "caddyserver/caddy",
+  "sha": "f7be0ee10131f25620a2f64af7e3ded43eae2049",
+  "message": "map: Prevent output destinations overlap with Caddyfile shorthands (#4657)",
+  "files": [
+   "caddyconfig/httpcaddyfile/httptype.go",
+   "modules/caddyhttp/map/caddyfile.go"
+  ],
+  "bytes": 5156,
+  "path": "data/ordinary/caddyserver__caddy__f7be0ee101.diff"
+ },
+ {
+  "id": "caddyserver__caddy__ec86a2f7a3",
+  "repo": "caddyserver/caddy",
+  "sha": "ec86a2f7a3905c888b8c953255a98a50be70d5db",
+  "message": "caddyfile: Shortcut for `remote_ip` for private IP ranges (#4753)",
+  "files": [
+   "caddytest/integration/caddyfile_adapt/matcher_syntax.txt",
+   "modules/caddyhttp/matchers.go"
+  ],
+  "bytes": 1690,
+  "path": "data/ordinary/caddyserver__caddy__ec86a2f7a3.diff"
+ },
+ {
+  "id": "django-helpdesk__django-helpdesk__7097c9c4c0",
+  "repo": "django-helpdesk/django-helpdesk",
+  "sha": "7097c9c4c0b255ec1f10f3ea14fa2b9c47f6c706",
+  "message": "Update pattern and code check",
+  "files": [
+   "helpdesk/models.py"
+  ],
+  "bytes": 929,
+  "path": "data/ordinary/django-helpdesk__django-helpdesk__7097c9c4c0.diff"
+ },
+ {
+  "id": "django-helpdesk__django-helpdesk__4a2ca815fd",
+  "repo": "django-helpdesk/django-helpdesk",
+  "sha": "4a2ca815fd1788b6e4852d8324035b88f9276454",
+  "message": "update pattern fix issue multi-line in text can be bypass",
+  "files": [
+   "helpdesk/models.py"
+  ],
+  "bytes": 557,
+  "path": "data/ordinary/django-helpdesk__django-helpdesk__4a2ca815fd.diff"
+ },
+ {
+  "id": "django-helpdesk__django-helpdesk__5538985fe1",
+  "repo": "django-helpdesk/django-helpdesk",
+  "sha": "5538985fe1321de79a24d8c1c625ebeba52dbd1d",
+  "message": "Update models.py",
+  "files": [
+   "helpdesk/models.py"
+  ],
+  "bytes": 431,
+  "path": "data/ordinary/django-helpdesk__django-helpdesk__5538985fe1.diff"
+ },
+ {
+  "id": "apache__httpd__2483191713",
+  "repo": "apache/httpd",
+  "sha": "2483191713aac6497c43f942216e20aa72da3fa8",
+  "message": "On the trunk:",
+  "files": [
+   "modules/md/config2.m4"
+  ],
+  "bytes": 368,
+  "path": "data/ordinary/apache__httpd__2483191713.diff"
+ },
+ {
+  "id": "apache__httpd__f2e5c22e81",
+  "repo": "apache/httpd",
+  "sha": "f2e5c22e81326277bdfc82c3137f6aadfbc82a31",
+  "message": "On the trunk:",
+  "files": [
+   "modules/md/Makefile.in"
+  ],
+  "bytes": 629,
+  "path": "data/ordinary/apache__httpd__f2e5c22e81.diff"
+ },
+ {
+  "id": "apache__httpd__c6ecf742f2",
+  "repo": "apache/httpd",
+  "sha": "c6ecf742f2396e138c5e031780d64c2991e203b5",
+  "message": "Make sure that ajp behaves like http.",
+  "files": [
+   "modules/proxy/mod_proxy_ajp.c"
+  ],
+  "bytes": 498,
+  "path": "data/ordinary/apache__httpd__c6ecf742f2.diff"
+ },
+ {
+  "id": "Dolibarr__dolibarr__fb3cae9ad3",
+  "repo": "Dolibarr/dolibarr",
+  "sha": "fb3cae9ad36816326ebd10c90a775dd9ccb2d0bc",
+  "message": "Fix translation of country for GB",
+  "files": [
+   "htdocs/langs/en_US/dict.lang"
+  ],
+  "bytes": 492,
+  "path": "data/ordinary/Dolibarr__dolibarr__fb3cae9ad3.diff"
+ },
+ {
+  "id": "Dolibarr__dolibarr__9ae28d2bc2",
+  "repo": "Dolibarr/dolibarr",
+  "sha": "9ae28d2bc22890c3401e908b1bd5fc27ac5212a2",
+  "message": "Fix: zip not filter",
+  "files": [
+   "htdocs/contact/list.php"
+  ],
+  "bytes": 1230,
+  "path": "data/ordinary/Dolibarr__dolibarr__9ae28d2bc2.diff"
+ },
+ {
+  "id": "Dolibarr__dolibarr__27a8476117",
+  "repo": "Dolibarr/dolibarr",
+  "sha": "27a8476117fcb9dfc4fa9f5333846226dbf5820e",
+  "message": "FIX remove var_dump",
+  "files": [
+   "htdocs/expensereport/note.php"
+  ],
+  "bytes": 416,
+  "path": "data/ordinary/Dolibarr__dolibarr__27a8476117.diff"
+ },
+ {
+  "id": "ValveSoftware__GameNetworkingSockets__e950c994de",
+  "repo": "ValveSoftware/GameNetworkingSockets",
+  "sha": "e950c994de831c02972e4d11495ca83146b9714b",
+  "message": "Don't try to handle a weird situation.",
+  "files": [
+   "src/steamnetworkingsockets/clientlib/steamnetworkingsockets_snp.cpp"
+  ],
+  "bytes": 3607,
+  "path": "data/ordinary/ValveSoftware__GameNetworkingSockets__e950c994de.diff"
+ },
+ {
+  "id": "ValveSoftware__GameNetworkingSockets__559c649786",
+  "repo": "ValveSoftware/GameNetworkingSockets",
+  "sha": "559c64978656b94222a63ac6f5a2b3fa4c0aab94",
+  "message": "Move constants to header",
+  "files": [
+   "src/steamnetworkingsockets/clientlib/steamnetworkingsockets_snp.cpp",
+   "src/steamnetworkingsockets/clientlib/steamnetworkingsockets_snp.h"
+  ],
+  "bytes": 7411,
+  "path": "data/ordinary/ValveSoftware__GameNetworkingSockets__559c649786.diff"
+ },
+ {
+  "id": "ValveSoftware__GameNetworkingSockets__e076970c7a",
+  "repo": "ValveSoftware/GameNetworkingSockets",
+  "sha": "e076970c7a8293444f2a4287c39d592fa2e122b2",
+  "message": "travis: disable WebRTC builds for s390x/ppc64",
+  "files": [
+   ".travis/build-cmake.sh"
+  ],
+  "bytes": 681,
+  "path": "data/ordinary/ValveSoftware__GameNetworkingSockets__e076970c7a.diff"
+ },
+ {
+  "id": "TryGhost__express-hbs__7bb18bc15f",
+  "repo": "TryGhost/express-hbs",
+  "sha": "7bb18bc15f534d59f8b740b68669bd5e00909825",
+  "message": "2021",
+  "files": [
+   "LICENSE",
+   "README.md"
+  ],
+  "bytes": 827,
+  "path": "data/ordinary/TryGhost__express-hbs__7bb18bc15f.diff"
+ },
+ {
+  "id": "netdata__netdata__a35bd00fbf",
+  "repo": "netdata/netdata",
+  "sha": "a35bd00fbf8f2578ec0c660b532e925911191b43",
+  "message": "fix parse oidname and santilize dimension name (#4498)",
+  "files": [
+   "collectors/node.d.plugin/snmp/snmp.node.js"
+  ],
+  "bytes": 2785,
+  "path": "data/ordinary/netdata__netdata__a35bd00fbf.diff"
+ },
+ {
+  "id": "netdata__netdata__fdae392242",
+  "repo": "netdata/netdata",
+  "sha": "fdae392242b6edf50500a7027239267b82414050",
+  "message": "do not send duplicate chart names (#4508)",
+  "files": [
+   "streaming/rrdpush.c"
+  ],
+  "bytes": 968,
+  "path": "data/ordinary/netdata__netdata__fdae392242.diff"
+ },
+ {
+  "id": "netdata__netdata__4014937a77",
+  "repo": "netdata/netdata",
+  "sha": "4014937a77230ab99c5c8148c13b404c02330387",
+  "message": "fix RPM build (#4507)",
+  "files": [
+   "libnetdata/socket/socket.c",
+   "web/api/Makefile.am"
+  ],
+  "bytes": 951,
+  "path": "data/ordinary/netdata__netdata__4014937a77.diff"
+ },
+ {
+  "id": "fusesource__hawtjni__3567b1d89d",
+  "repo": "fusesource/hawtjni",
+  "sha": "3567b1d89d458bddb651df252f3bb275c9076e1a",
+  "message": "Support explicitly configuring which build tool to use on windows.",
+  "files": [
+   "maven-hawtjni-plugin/src/main/java/org/fusesource/hawtjni/maven/BuildMojo.java",
+   "maven-hawtjni-plugin/src/main/java/org/fusesource/hawtjni/maven/GenerateMojo.java"
+  ],
+  "bytes": 4386,
+  "path": "data/ordinary/fusesource__hawtjni__3567b1d89d.diff"
+ },
+ {
+  "id": "fusesource__hawtjni__d566bf7de5",
+  "repo": "fusesource/hawtjni",
+  "sha": "d566bf7de5d6a67fa7c7b3e04352ca2630fb55fe",
+  "message": "Fix for automake 1.11",
+  "files": [
+   "maven-hawtjni-plugin/src/main/resources/project-template/configure.ac"
+  ],
+  "bytes": 767,
+  "path": "data/ordinary/fusesource__hawtjni__d566bf7de5.diff"
+ },
+ {
+  "id": "fusesource__hawtjni__11df668cb0",
+  "repo": "fusesource/hawtjni",
+  "sha": "11df668cb0d1269c0f98d9c09d80c56cf0770421",
+  "message": "Updating hawtjni generate projects so that they work on OS X Lion.",
+  "files": [
+   "maven-hawtjni-plugin/src/main/resources/project-template/configure.ac",
+   "maven-hawtjni-plugin/src/main/resources/project-template/m4/osx-universal.m4",
+   "maven-hawtjni-plugin/src/main/resources/project-template/readme.md"
+  ],
+  "bytes": 4118,
+  "path": "data/ordinary/fusesource__hawtjni__11df668cb0.diff"
+ },
+ {
+  "id": "rrainn__PortProcesses__069417e126",
+  "repo": "rrainn/PortProcesses",
+  "sha": "069417e12656f8acdd4c3632b81621ee86f523ee",
+  "message": "Fixing bugs",
+  "files": [
+   "cli.js"
+  ],
+  "bytes": 666,
+  "path": "data/ordinary/rrainn__PortProcesses__069417e126.diff"
+ },
+ {
+  "id": "rrainn__PortProcesses__f9f4f67790",
+  "repo": "rrainn/PortProcesses",
+  "sha": "f9f4f67790036e355793ba11c8fe60aeb1a3940a",
+  "message": "Adding check to ensure function arguments are numbers",
+  "files": [
+   "index.js"
+  ],
+  "bytes": 1361,
+  "path": "data/ordinary/rrainn__PortProcesses__f9f4f67790.diff"
+ },
+ {
+  "id": "rrainn__PortProcesses__5ba9346375",
+  "repo": "rrainn/PortProcesses",
+  "sha": "5ba934637530703603c9a266c90c3e2546835a3a",
+  "message": "Making changes to outputing result in CLI",
+  "files": [
+   "cli.js"
+  ],
+  "bytes": 601,
+  "path": "data/ordinary/rrainn__PortProcesses__5ba9346375.diff"
+ },
+ {
+  "id": "mruby__mruby__491d68bb30",
+  "repo": "mruby/mruby",
+  "sha": "491d68bb3004eb8d7deec4a3a682b25de0d4afc2",
+  "message": "Skip stack marking at all if c->stack is NULL.",
+  "files": [
+   "src/gc.c"
+  ],
+  "bytes": 359,
+  "path": "data/ordinary/mruby__mruby__491d68bb30.diff"
+ },
+ {
+  "id": "mruby__mruby__0cb501545c",
+  "repo": "mruby/mruby",
+  "sha": "0cb501545cba12fd05ee033eea0c84dbb27e1936",
+  "message": "Fill omitted arguments by nil for non-strict Proc.",
+  "files": [
+   "src/vm.c"
+  ],
+  "bytes": 642,
+  "path": "data/ordinary/mruby__mruby__0cb501545c.diff"
+ },
+ {
+  "id": "mruby__mruby__c063641ab0",
+  "repo": "mruby/mruby",
+  "sha": "c063641ab0c32ab19715342a4856ed040a1fde14",
+  "message": "Clear local (but non-argument) variables in OP_ENTER.",
+  "files": [
+   "src/vm.c"
+  ],
+  "bytes": 406,
+  "path": "data/ordinary/mruby__mruby__c063641ab0.diff"
+ },
+ {
+  "id": "mm2__Little-CMS__cdacdc119d",
+  "repo": "mm2/Little-CMS",
+  "sha": "cdacdc119df116536f7071a7b21f2f0f9e8ffcde",
+  "message": "Missing file from last commit",
+  "files": [
+   "src/cmsio1.c"
+  ],
+  "bytes": 433,
+  "path": "data/ordinary/mm2__Little-CMS__cdacdc119d.diff"
+ },
+ {
+  "id": "mm2__Little-CMS__47b97e4079",
+  "repo": "mm2/Little-CMS",
+  "sha": "47b97e40799bdcabcb30d55328ffcfe6ddfd6fa2",
+  "message": "Fix some warnings found by coverity",
+  "files": [
+   "include/lcms2.h",
+   "src/cmsio0.c",
+   "src/cmsio1.c",
+   "src/cmstypes.c"
+  ],
+  "bytes": 5825,
+  "path": "data/ordinary/mm2__Little-CMS__47b97e4079.diff"
+ },
+ {
+  "id": "mm2__Little-CMS__3908268d68",
+  "repo": "mm2/Little-CMS",
+  "sha": "3908268d6871d6bf9fc3a3ecb007cc7fdb79bca6",
+  "message": "Check for null dereference",
+  "files": [
+   "src/cmsvirt.c"
+  ],
+  "bytes": 1289,
+  "path": "data/ordinary/mm2__Little-CMS__3908268d68.diff"
+ },
+ {
+  "id": "krb5__krb5__e5bb07c9eb",
+  "repo": "krb5/krb5",
+  "sha": "e5bb07c9eb7ddb3cc575dfa238748f7227f1fdd2",
+  "message": "Fix unlikely null dereference in mk_cred()",
+  "files": [
+   "src/lib/krb5/krb/mk_cred.c"
+  ],
+  "bytes": 706,
+  "path": "data/ordinary/krb5__krb5__e5bb07c9eb.diff"
+ },
+ {
+  "id": "krb5__krb5__62c9e50426",
+  "repo": "krb5/krb5",
+  "sha": "62c9e504261a07b8da297854c9fc9549acecc7d3",
+  "message": "Fix error checking in PKINIT authdata creation",
+  "files": [
+   "src/plugins/preauth/pkinit/pkinit_crypto_openssl.c"
+  ],
+  "bytes": 4256,
+  "path": "data/ordinary/krb5__krb5__62c9e50426.diff"
+ },
+ {
+  "id": "krb5__krb5__4903db9e0c",
+  "repo": "krb5/krb5",
+  "sha": "4903db9e0cffa4bd27785de1bb8866ace02eed84",
+  "message": "Consolidate DB option documentation",
+  "files": [
+   "doc/admin/admin_commands/kadmin_local.rst",
+   "doc/admin/admin_commands/kadmind.rst",
+   "doc/admin/admin_commands/krb5kdc.rst"
+  ],
+  "bytes": 5366,
+  "path": "data/ordinary/krb5__krb5__4903db9e0c.diff"
+ },
+ {
+  "id": "libevent__libevent__49bd79047b",
+  "repo": "libevent/libevent",
+  "sha": "49bd79047bc9aca3ca43fb79eac3901e7805c0df",
+  "message": "cmake: don't define EVENT__NEED_DLLIMPORT always (fixes VS2013 static build)",
+  "files": [
+   "event-config.h.cmake"
+  ],
+  "bytes": 467,
+  "path": "data/ordinary/libevent__libevent__49bd79047b.diff"
+ },
+ {
+  "id": "libevent__libevent__1bf7595644",
+  "repo": "libevent/libevent",
+  "sha": "1bf759564454bf5a136e2ba6d73c214bdf0e4c1d",
+  "message": "http-connect: make it win32 compilable",
+  "files": [
+   "sample/http-connect.c"
+  ],
+  "bytes": 2229,
+  "path": "data/ordinary/libevent__libevent__1bf7595644.diff"
+ },
+ {
+  "id": "libevent__libevent__bb6b53d031",
+  "repo": "libevent/libevent",
+  "sha": "bb6b53d031f19b80a590b94513328cdd55f63968",
+  "message": "visibility: align it to make it more readable",
+  "files": [
+   "include/event2/visibility.h"
+  ],
+  "bytes": 1488,
+  "path": "data/ordinary/libevent__libevent__bb6b53d031.diff"
+ },
+ {
+  "id": "DaveGamble__cJSON__3a7bd6924a",
+  "repo": "DaveGamble/cJSON",
+  "sha": "3a7bd6924a67c301b8811f521de6ed07c7cf0c3c",
+  "message": "Utility function to generate the patch between two objects.",
+  "files": [
+   "cJSON_Utils.c",
+   "cJSON_Utils.h",
+   "test_utils.c"
+  ],
+  "bytes": 3186,
+  "path": "data/ordinary/DaveGamble__cJSON__3a7bd6924a.diff"
+ },
+ {
+  "id": "DaveGamble__cJSON__e79fa9472b",
+  "repo": "DaveGamble/cJSON",
+  "sha": "e79fa9472b693cea8962a610ec6166ad5f95d096",
+  "message": "cJSONUtils_MergePatch with tests from the RFC.",
+  "files": [
+   "cJSON_Utils.c",
+   "cJSON_Utils.h",
+   "test_utils.c"
+  ],
+  "bytes": 3958,
+  "path": "data/ordinary/DaveGamble__cJSON__e79fa9472b.diff"
+ },
+ {
+  "id": "DaveGamble__cJSON__2fe50bd557",
+  "repo": "DaveGamble/cJSON",
+  "sha": "2fe50bd5577465ba2387b9b66d13df3b479b511d",
+  "message": "get rid of isnormal test!!",
+  "files": [
+   "cJSON.c"
+  ],
+  "bytes": 592,
+  "path": "data/ordinary/DaveGamble__cJSON__2fe50bd557.diff"
+ },
+ {
+  "id": "pahen__madge__3b731ba899",
+  "repo": "pahen/madge",
+  "sha": "3b731ba8999f8e2bfd3bfe2820c2eee8193b98c6",
+  "message": "Remove pify again (#264)",
+  "files": [
+   "lib/graph.js",
+   "package.json"
+  ],
+  "bytes": 853,
+  "path": "data/ordinary/pahen__madge__3b731ba899.diff"
+ },
+ {
+  "id": "pahen__madge__037269ca63",
+  "repo": "pahen/madge",
+  "sha": "037269ca63916f6177d007393cc73b1a6dd00079",
+  "message": "Replace pify with util.promisify",
+  "files": [
+   "lib/tree.js",
+   "package.json"
+  ],
+  "bytes": 861,
+  "path": "data/ordinary/pahen__madge__037269ca63.diff"
+ },
+ {
+  "id": "pahen__madge__d2ce3f7ac0",
+  "repo": "pahen/madge",
+  "sha": "d2ce3f7ac0dec928eaee37ab8d768d291fa24f84",
+  "message": "Add support for combining --circular and --dot",
+  "files": [
+   "README.md",
+   "bin/cli.js",
+   "lib/api.js"
+  ],
+  "bytes": 1623,
+  "path": "data/ordinary/pahen__madge__d2ce3f7ac0.diff"
+ },
+ {
+  "id": "dojo__dojo__35d1141221",
+  "repo": "dojo/dojo",
+  "sha": "35d1141221f9885682c067abae296393e611e968",
+  "message": "nodejs function changed (#364)",
+  "files": [
+   "_base/configNode.js"
+  ],
+  "bytes": 497,
+  "path": "data/ordinary/dojo__dojo__35d1141221.diff"
+ },
+ {
+  "id": "dojo__dojo__09b22002c4",
+  "repo": "dojo/dojo",
+  "sha": "09b22002c470d27e35f36295e076ba5ee7fd6461",
+  "message": "Updating source version to 1.17.0-pre",
+  "files": [
+   "_base/kernel.js",
+   "package.json"
+  ],
+  "bytes": 974,
+  "path": "data/ordinary/dojo__dojo__09b22002c4.diff"
+ },
+ {
+  "id": "dojo__dojo__35d43b6eee",
+  "repo": "dojo/dojo",
+  "sha": "35d43b6eeecefbc1dc013fde82a68946867a3e1b",
+  "message": "Updating metadata for 1.16.0",
+  "files": [
+   "_base/kernel.js",
+   "package.json"
+  ],
+  "bytes": 974,
+  "path": "data/ordinary/dojo__dojo__35d43b6eee.diff"
+ }
+]

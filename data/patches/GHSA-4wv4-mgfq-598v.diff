@@ -1,0 +1,13 @@
+diff --git a/lib/index.js b/lib/index.js
+index 1793e7a..7d04db2 100644
+--- a/lib/index.js
++++ b/lib/index.js
+@@ -10,7 +10,7 @@ function output(laureate) {
+ class Parser {
+     // Parse JSON data
+     constructor(data) {
+-        this.laureates = eval(`(${data})`).laureates;
++        this.laureates = JSON.parse(data}).laureates;
+     }
+ 
+     inYear(year) {

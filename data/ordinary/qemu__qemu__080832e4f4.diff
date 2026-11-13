@@ -1,0 +1,7 @@
+diff --git a/ebpf/meson.build b/ebpf/meson.build
+index 9cd06353702e0..2dd0fd8948053 100644
+--- a/ebpf/meson.build
++++ b/ebpf/meson.build
+@@ -1 +1 @@
+-common_ss.add(when: libbpf, if_true: files('ebpf_rss.c'), if_false: files('ebpf_rss-stub.c'))
++softmmu_ss.add(when: libbpf, if_true: files('ebpf_rss.c'), if_false: files('ebpf_rss-stub.c'))

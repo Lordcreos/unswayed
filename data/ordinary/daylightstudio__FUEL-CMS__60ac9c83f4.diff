@@ -1,0 +1,12 @@
+diff --git a/fuel/modules/fuel/config/fuel_constants.php b/fuel/modules/fuel/config/fuel_constants.php
+index ede2447fe..552c08fd6 100644
+--- a/fuel/modules/fuel/config/fuel_constants.php
++++ b/fuel/modules/fuel/config/fuel_constants.php
+@@ -1,6 +1,6 @@
+ <?php 
+ // INSTALL_ROOT is defined in the index.php bootstrap file
+-define('FUEL_VERSION', '1.4.12');
++define('FUEL_VERSION', '1.4.13');
+ if (!defined('MODULES_FOLDER'))
+ {
+ 	define('MODULES_FOLDER', '../../fuel/modules');

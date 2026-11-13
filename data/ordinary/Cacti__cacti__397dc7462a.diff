@@ -1,0 +1,14 @@
+diff --git a/auth_login.php b/auth_login.php
+index 87ea484da5..6c957634ce 100644
+--- a/auth_login.php
++++ b/auth_login.php
+@@ -354,6 +354,9 @@
+ 			unset($_SESSION['selected_theme']);
+ 			$newtheme = true;
+ 		}
++		if (user_setting_exists('user_language', $_SESSION['sess_user_id'])) {
++			$_SESSION['sess_user_language'] = read_user_setting('user_language');
++		}
+ 
+ 		/* ok, at the point the user has been sucessfully authenticated; so we must
+ 		decide what to do next */

@@ -1,0 +1,17 @@
+diff --git a/fuel/modules/fuel/models/Base_module_model.php b/fuel/modules/fuel/models/Base_module_model.php
+index ddb420264..2cde4b00d 100644
+--- a/fuel/modules/fuel/models/Base_module_model.php
++++ b/fuel/modules/fuel/models/Base_module_model.php
+@@ -1227,9 +1227,9 @@ public function get_embedded_list_items($params, $list_cols = array(), $actions
+ 
+ 		$limit = (isset($params['limit'])) ? $params['limit'] : NULL;
+ 		$offset = (isset($params['offset'])) ? $params['offset'] : 0;
+-		$col = (isset($params['col'])) ? $params['col'] : NULL;
+-		$order = (isset($params['order'])) ? $params['order'] : NULL;
+-		
++		$col = (isset($params['col'])) ? $params['col'] : $module->info('default_col');
++		$order = (isset($params['order'])) ? $params['order'] : $module->info('default_order');
++				
+ 		$list_items = $this->list_items($limit, $offset, $col, $order);
+ 		
+ 		if (empty($list_items))

@@ -1,0 +1,12 @@
+diff --git a/Gemfile b/Gemfile
+index 6fa0c1fcb..ba19acff7 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -14,6 +14,6 @@ group :development, :test do
+   gem 'minitest-reporters'
+   gem 'guard'
+   gem 'guard-minitest'
+-  gem "codeclimate-test-reporter", require: nil
++  gem 'codeclimate-test-reporter', require: nil
+   gem 'figaro'
+ end

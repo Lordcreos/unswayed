@@ -1,0 +1,154 @@
+diff --git a/include/lcms2.h b/include/lcms2.h
+index 7362b0018..739e6e1f8 100644
+--- a/include/lcms2.h
++++ b/include/lcms2.h
+@@ -23,7 +23,7 @@
+ //
+ //---------------------------------------------------------------------------------
+ //
+-// Version 2.8beta0
++// Version 2.8
+ //
+ 
+ #ifndef _lcms2_H
+diff --git a/src/cmsio0.c b/src/cmsio0.c
+index cd442d7ad..74b76990b 100644
+--- a/src/cmsio0.c
++++ b/src/cmsio0.c
+@@ -388,6 +388,7 @@ cmsIOHANDLER* CMSEXPORT cmsOpenIOhandlerFromFile(cmsContext ContextID, const cha
+         fileLen = cmsfilelength(fm);
+         if (fileLen < 0)
+         {
++            fclose(fm);
+             _cmsFree(ContextID, iohandler);
+             cmsSignalError(ContextID, cmsERROR_FILE, "Cannot get size of file '%s'", FileName);
+             return NULL;
+diff --git a/src/cmsio1.c b/src/cmsio1.c
+index cc29dcee4..316bf0ceb 100644
+--- a/src/cmsio1.c
++++ b/src/cmsio1.c
+@@ -338,7 +338,7 @@ cmsPipeline* _cmsReadInputLUT(cmsHPROFILE hProfile, int Intent)
+ 
+     // This is an attempt to reuse this function to retrieve the matrix-shaper as pipeline no
+     // matter other LUT are present and have precedence. Intent = -1 means just this.
+-    if (Intent != -1) {
++    if (Intent >= INTENT_PERCEPTUAL && Intent <= INTENT_ABSOLUTE_COLORIMETRIC) {
+ 
+         tag16 = Device2PCS16[Intent];
+         tagFloat = Device2PCSFloat[Intent];
+@@ -590,7 +590,6 @@ cmsPipeline* _cmsReadOutputLUT(cmsHPROFILE hProfile, int Intent)
+     cmsContext ContextID  = cmsGetProfileContextID(hProfile);
+ 
+ 
+-    if (Intent != -1) {
+ 
+         tag16 = PCS2Device16[Intent];
+         tagFloat = PCS2DeviceFloat[Intent];
+@@ -709,15 +708,21 @@ cmsPipeline* _cmsReadDevicelinkLUT(cmsHPROFILE hProfile, int Intent)
+ {
+     cmsPipeline* Lut;
+     cmsTagTypeSignature OriginalType;
+-    cmsTagSignature tag16    = Device2PCS16[Intent];
+-    cmsTagSignature tagFloat = Device2PCSFloat[Intent];
++    cmsTagSignature tag16;
++    cmsTagSignature tagFloat;
+     cmsContext ContextID = cmsGetProfileContextID(hProfile);
+ 
+ 
++    if (Intent < INTENT_PERCEPTUAL || Intent > INTENT_ABSOLUTE_COLORIMETRIC)
++        return NULL;
++
++    tag16 = Device2PCS16[Intent];
++    tagFloat = Device2PCSFloat[Intent];
++
+     // On named color, take the appropriate tag
+     if (cmsGetDeviceClass(hProfile) == cmsSigNamedColorClass) {
+ 
+-        cmsNAMEDCOLORLIST* nc = (cmsNAMEDCOLORLIST*) cmsReadTag(hProfile, cmsSigNamedColor2Tag);
++        cmsNAMEDCOLORLIST* nc = (cmsNAMEDCOLORLIST*)cmsReadTag(hProfile, cmsSigNamedColor2Tag);
+ 
+         if (nc == NULL) return NULL;
+ 
+@@ -733,12 +738,13 @@ cmsPipeline* _cmsReadDevicelinkLUT(cmsHPROFILE hProfile, int Intent)
+                 goto Error;
+ 
+         return Lut;
+-Error:
++    Error:
+         cmsPipelineFree(Lut);
+         cmsFreeNamedColorList(nc);
+         return NULL;
+     }
+ 
++
+     if (cmsIsTag(hProfile, tagFloat)) {  // Float tag takes precedence
+ 
+         // Floating point LUT are always V
+@@ -748,19 +754,19 @@ cmsPipeline* _cmsReadDevicelinkLUT(cmsHPROFILE hProfile, int Intent)
+     tagFloat = Device2PCSFloat[0];
+     if (cmsIsTag(hProfile, tagFloat)) {
+ 
+-        return cmsPipelineDup((cmsPipeline*) cmsReadTag(hProfile, tagFloat));
++        return cmsPipelineDup((cmsPipeline*)cmsReadTag(hProfile, tagFloat));
+     }
+ 
+     if (!cmsIsTag(hProfile, tag16)) {  // Is there any LUT-Based table?
+ 
+-        tag16    = Device2PCS16[0];
++        tag16 = Device2PCS16[0];
+         if (!cmsIsTag(hProfile, tag16)) return NULL;
+     }
+ 
+     // Check profile version and LUT type. Do the necessary adjustments if needed
+ 
+     // Read the tag
+-    Lut = (cmsPipeline*) cmsReadTag(hProfile, tag16);
++    Lut = (cmsPipeline*)cmsReadTag(hProfile, tag16);
+     if (Lut == NULL) return NULL;
+ 
+     // The profile owns the Lut, so we need to copy it
+@@ -773,7 +779,7 @@ cmsPipeline* _cmsReadDevicelinkLUT(cmsHPROFILE hProfile, int Intent)
+         ChangeInterpolationToTrilinear(Lut);
+ 
+     // After reading it, we have info about the original type
+-    OriginalType =  _cmsGetTagTrueType(hProfile, tag16);
++    OriginalType = _cmsGetTagTrueType(hProfile, tag16);
+ 
+     // We need to adjust data for Lab16 on output
+     if (OriginalType != cmsSigLut16Type) return Lut;
+@@ -781,12 +787,12 @@ cmsPipeline* _cmsReadDevicelinkLUT(cmsHPROFILE hProfile, int Intent)
+     // Here it is possible to get Lab on both sides
+ 
+     if (cmsGetColorSpace(hProfile) == cmsSigLabData) {
+-        if(!cmsPipelineInsertStage(Lut, cmsAT_BEGIN, _cmsStageAllocLabV4ToV2(ContextID)))
++        if (!cmsPipelineInsertStage(Lut, cmsAT_BEGIN, _cmsStageAllocLabV4ToV2(ContextID)))
+             goto Error2;
+     }
+ 
+     if (cmsGetPCS(hProfile) == cmsSigLabData) {
+-        if(!cmsPipelineInsertStage(Lut, cmsAT_END, _cmsStageAllocLabV2ToV4(ContextID)))
++        if (!cmsPipelineInsertStage(Lut, cmsAT_END, _cmsStageAllocLabV2ToV4(ContextID)))
+             goto Error2;
+     }
+ 
+diff --git a/src/cmstypes.c b/src/cmstypes.c
+index 84355be38..cb618600a 100644
+--- a/src/cmstypes.c
++++ b/src/cmstypes.c
+@@ -4312,13 +4312,13 @@ void *Type_MPEclut_Read(struct _cms_typehandler_struct* self, cmsIOHANDLER* io,
+ static
+ cmsBool  Type_MPEclut_Write(struct _cms_typehandler_struct* self, cmsIOHANDLER* io, void* Ptr, cmsUInt32Number nItems)
+ {
+-    cmsUInt8Number Dimensions8[16];
++    cmsUInt8Number Dimensions8[16];  // 16 because the spec says 16 and not max number of channels
+     cmsUInt32Number i;
+     cmsStage* mpe = (cmsStage*) Ptr;
+     _cmsStageCLutData* clut = (_cmsStageCLutData*) mpe ->Data;
+ 
+-    // Check for maximum number of channels
+-    if (mpe -> InputChannels > 15) return FALSE;
++    // Check for maximum number of channels supported by lcms
++    if (mpe -> InputChannels > MAX_INPUT_DIMENSIONS) return FALSE;
+ 
+     // Only floats are supported in MPE
+     if (clut ->HasFloatValues == FALSE) return FALSE;

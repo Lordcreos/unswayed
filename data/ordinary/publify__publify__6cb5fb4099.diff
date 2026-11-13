@@ -1,0 +1,61 @@
+diff --git a/publify_core/app/controllers/admin/content_controller.rb b/publify_core/app/controllers/admin/content_controller.rb
+index b86f381f49..a3b487d415 100644
+--- a/publify_core/app/controllers/admin/content_controller.rb
++++ b/publify_core/app/controllers/admin/content_controller.rb
+@@ -131,7 +131,7 @@ def autosave
+     end
+   end
+ 
+-  protected
++  private
+ 
+   def fetch_fresh_or_existing_draft_for_article
+     return unless @article.published? && @article.id
+@@ -146,8 +146,6 @@ def fetch_fresh_or_existing_draft_for_article
+ 
+   attr_accessor :resources, :resource
+ 
+-  private
+-
+   def load_resources
+     @post_types = PostType.all
+     @macros = TextFilterPlugin.macro_filters
+diff --git a/publify_core/app/controllers/comments_controller.rb b/publify_core/app/controllers/comments_controller.rb
+index 4b0c872964..72dda58938 100644
+--- a/publify_core/app/controllers/comments_controller.rb
++++ b/publify_core/app/controllers/comments_controller.rb
+@@ -28,7 +28,7 @@ def preview
+     @comment = @article.comments.build(comment_params)
+   end
+ 
+-  protected
++  private
+ 
+   def recaptcha_ok_for?(comment)
+     use_recaptcha = comment.blog.use_recaptcha
+diff --git a/publify_core/app/models/comment.rb b/publify_core/app/models/comment.rb
+index 04c4c04d59..9dae48fb83 100644
+--- a/publify_core/app/models/comment.rb
++++ b/publify_core/app/models/comment.rb
+@@ -38,7 +38,7 @@ def send_notifications
+     really_send_notifications
+   end
+ 
+-  protected
++  private
+ 
+   def article_allows_feedback?
+     return true if article.allow_comments?
+diff --git a/publify_core/lib/spam_protection.rb b/publify_core/lib/spam_protection.rb
+index 237b251d50..4f4005ecb8 100644
+--- a/publify_core/lib/spam_protection.rb
++++ b/publify_core/lib/spam_protection.rb
+@@ -31,7 +31,7 @@ def is_spam?(string)
+     end
+   end
+ 
+-  protected
++  private
+ 
+   def scan_ip(ip_address)
+     logger.info("[SP] Scanning IP #{ip_address}")

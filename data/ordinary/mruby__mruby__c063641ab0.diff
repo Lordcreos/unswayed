@@ -1,0 +1,15 @@
+diff --git a/src/vm.c b/src/vm.c
+index 0fba22c2cd..49f10c5a5f 100644
+--- a/src/vm.c
++++ b/src/vm.c
+@@ -1637,6 +1637,10 @@ mrb_vm_exec(mrb_state *mrb, struct RProc *proc, mrb_code *pc)
+         }
+         pc += o + 1;
+       }
++      /* clear local (but non-argument) variables */
++      if (irep->nlocals-len-2 > 0) {
++        stack_clear(&regs[len+2], irep->nlocals-len-2);
++      }
+       JUMP;
+     }
+ 

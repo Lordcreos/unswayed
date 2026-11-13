@@ -1,0 +1,876 @@
+{
+ "CVE-2017-7191": {
+  "vuln_id": "CVE-2017-7191",
+  "status": "ok",
+  "files_expected": [
+   "src/fe-common/irc/fe-netjoin.c"
+  ],
+  "commit": "https://github.com/irssi/irssi/commit/77b2631c78461965bc9a7414aae206b5c514e1b3",
+  "bytes": 1180,
+  "files": [
+   "src/fe-common/irc/fe-netjoin.c"
+  ],
+  "path": "data/patches/CVE-2017-7191.diff"
+ },
+ "CVE-2021-3748": {
+  "vuln_id": "CVE-2021-3748",
+  "status": "ok",
+  "files_expected": [
+   "hw/net/virtio-net.c"
+  ],
+  "commit": "https://github.com/qemu/qemu/commit/bedd7e93d01961fcb16a97ae45d93acf357e11f6",
+  "bytes": 3022,
+  "files": [
+   "hw/net/virtio-net.c"
+  ],
+  "path": "data/patches/CVE-2021-3748.diff"
+ },
+ "GHSA-8h4j-vm3r-vcq3": {
+  "vuln_id": "GHSA-8h4j-vm3r-vcq3",
+  "status": "ok",
+  "files_expected": [
+   "src/functions.rs"
+  ],
+  "commit": "https://github.com/rusqlite/rusqlite/commit/2ef3628dac35aeba0a97d5fb3a57746b4e1d62b3",
+  "bytes": 7646,
+  "files": [
+   "src/functions.rs"
+  ],
+  "path": "data/patches/GHSA-8h4j-vm3r-vcq3.diff"
+ },
+ "GHSA-pxcf-v868-m492": {
+  "vuln_id": "GHSA-pxcf-v868-m492",
+  "status": "ok",
+  "files_expected": [
+   "src/server.js"
+  ],
+  "commit": "https://github.com/jperelli/osm-static-maps/commit/97355d29e08753d1cfe99b1281dbaa06f4e651b0",
+  "bytes": 1263,
+  "files": [
+   "src/server.js"
+  ],
+  "path": "data/patches/GHSA-pxcf-v868-m492.diff"
+ },
+ "GHSA-cxjc-r2fp-7mq6": {
+  "vuln_id": "GHSA-cxjc-r2fp-7mq6",
+  "status": "ok",
+  "files_expected": [
+   "_editor/plugins/LinkDialog.js",
+   "tests/editor/test_LinkDialog.html"
+  ],
+  "commit": "https://github.com/dojo/dijit/commit/462bdcd60d0333315fe69ab4709c894d78f61301",
+  "bytes": 4257,
+  "files": [
+   "_editor/plugins/LinkDialog.js",
+   "tests/editor/test_LinkDialog.html"
+  ],
+  "path": "data/patches/GHSA-cxjc-r2fp-7mq6.diff"
+ },
+ "GHSA-6m8p-4fxj-pgc2": {
+  "vuln_id": "GHSA-6m8p-4fxj-pgc2",
+  "status": "ok",
+  "files_expected": [
+   "lib/git.js"
+  ],
+  "commit": "https://github.com/mikaelbr/mversion/commit/b7a8b32600e60759a7ad3921ec4a2750bf173482",
+  "bytes": 428,
+  "files": [
+   "lib/git.js"
+  ],
+  "path": "data/patches/GHSA-6m8p-4fxj-pgc2.diff"
+ },
+ "GHSA-5q6m-3h65-w53x": {
+  "vuln_id": "GHSA-5q6m-3h65-w53x",
+  "status": "ok",
+  "files_expected": [
+   "packages/react-dev-utils/getProcessForPort.js"
+  ],
+  "commit": "https://github.com/facebook/create-react-app/commit/f5e415f3a5b66f07dcc60aba1b445fa7cda97268",
+  "bytes": 767,
+  "files": [
+   "packages/react-dev-utils/getProcessForPort.js"
+  ],
+  "path": "data/patches/GHSA-5q6m-3h65-w53x.diff"
+ },
+ "CVE-2011-4715": {
+  "vuln_id": "CVE-2011-4715",
+  "status": "osv_error: HTTP Error 404: Not Found",
+  "files_expected": [
+   "C4/Output.pm"
+  ]
+ },
+ "GHSA-8vrw-m3j9-j27c": {
+  "vuln_id": "GHSA-8vrw-m3j9-j27c",
+  "status": "ok",
+  "files_expected": [
+   "parser.go",
+   "parser_test.go"
+  ],
+  "commit": "https://github.com/buger/jsonparser/commit/df3ea76ece10095374fd1c9a22a4fb85a44efc42",
+  "bytes": 1061,
+  "files": [
+   "parser.go",
+   "parser_test.go"
+  ],
+  "path": "data/patches/GHSA-8vrw-m3j9-j27c.diff"
+ },
+ "CVE-2020-28705": {
+  "vuln_id": "CVE-2020-28705",
+  "status": "ok",
+  "files_expected": [
+   "fuel/modules/fuel/controllers/Module.php"
+  ],
+  "commit": "https://github.com/daylightstudio/FUEL-CMS/commit/fbf2d59215800f05d4359e8f984d5680d62f0f3b",
+  "bytes": 674,
+  "files": [
+   "fuel/modules/fuel/controllers/Module.php"
+  ],
+  "path": "data/patches/CVE-2020-28705.diff"
+ },
+ "CVE-2021-23165": {
+  "vuln_id": "CVE-2021-23165",
+  "status": "ok",
+  "files_expected": [
+   "CHANGES.md",
+   "htmldoc/ps-pdf.cxx"
+  ],
+  "commit": "https://github.com/michaelrsweet/htmldoc/commit/6e8a95561988500b5b5ae4861b3b0cbf4fba517f",
+  "bytes": 985,
+  "files": [
+   "CHANGES.md",
+   "htmldoc/ps-pdf.cxx"
+  ],
+  "path": "data/patches/CVE-2021-23165.diff"
+ },
+ "CVE-2021-25924": {
+  "vuln_id": "CVE-2021-25924",
+  "status": "ok",
+  "files_expected": [
+   "api/api-backup-config-v1/src/main/java/com/thoughtworks/go/apiv1/backupconfig/BackupConfigControllerV1.java"
+  ],
+  "commit": "https://github.com/gocd/gocd/commit/7d0baab0d361c377af84994f95ba76c280048548",
+  "bytes": 1027,
+  "files": [
+   "api/api-backup-config-v1/src/main/java/com/thoughtworks/go/apiv1/backupconfig/BackupConfigControllerV1.java"
+  ],
+  "path": "data/patches/CVE-2021-25924.diff"
+ },
+ "CVE-2021-29475": {
+  "vuln_id": "CVE-2021-29475",
+  "status": "ok",
+  "files_expected": [
+   "lib/config/index.js"
+  ],
+  "commit": "https://github.com/hedgedoc/hedgedoc/commit/c1789474020a6d668d616464cb2da5e90e123f65",
+  "bytes": 622,
+  "files": [
+   "lib/config/index.js"
+  ],
+  "path": "data/patches/CVE-2021-29475.diff"
+ },
+ "GHSA-w78q-4w34-jrjx": {
+  "vuln_id": "GHSA-w78q-4w34-jrjx",
+  "status": "ok",
+  "files_expected": [
+   "publify_core/app/models/feedback.rb",
+   "publify_core/spec/models/comment_spec.rb"
+  ],
+  "commit": "https://github.com/publify/publify/commit/b50df050c593cc532b2c516792989bcfce2d73f7",
+  "bytes": 2001,
+  "files": [
+   "publify_core/app/models/feedback.rb",
+   "publify_core/spec/models/comment_spec.rb"
+  ],
+  "path": "data/patches/GHSA-w78q-4w34-jrjx.diff"
+ },
+ "GHSA-3949-f494-cm99": {
+  "vuln_id": "GHSA-3949-f494-cm99",
+  "status": "ok",
+  "files_expected": [
+   "plugins/command-line/prism-command-line.js",
+   "plugins/command-line/prism-command-line.min.js"
+  ],
+  "commit": "https://github.com/PrismJS/prism/commit/e002e78c343154e1c0ddf9d6a0bb85689e1a5c7c",
+  "bytes": 6551,
+  "files": [
+   "plugins/command-line/prism-command-line.js",
+   "plugins/command-line/prism-command-line.min.js"
+  ],
+  "path": "data/patches/GHSA-3949-f494-cm99.diff"
+ },
+ "GHSA-qpw2-xchm-655q": {
+  "vuln_id": "GHSA-qpw2-xchm-655q",
+  "status": "ok",
+  "files_expected": [
+   "stringstream.js"
+  ],
+  "commit": "https://github.com/mhart/StringStream/commit/2f4a9d496f94b0880e01a26857aa266a5a3ef274",
+  "bytes": 470,
+  "files": [
+   "stringstream.js"
+  ],
+  "path": "data/patches/GHSA-qpw2-xchm-655q.diff"
+ },
+ "GHSA-3hw5-q855-g6cw": {
+  "vuln_id": "GHSA-3hw5-q855-g6cw",
+  "status": "ok",
+  "files_expected": [
+   "jq.js"
+  ],
+  "commit": "https://github.com/dojo/dojox/commit/47d1b302b5b23d94e875b77b9b9a8c4f5622c9da",
+  "bytes": 702,
+  "files": [
+   "jq.js"
+  ],
+  "path": "data/patches/GHSA-3hw5-q855-g6cw.diff"
+ },
+ "GHSA-jppv-gw3r-w3q8": {
+  "vuln_id": "GHSA-jppv-gw3r-w3q8",
+  "status": "ok",
+  "files_expected": [
+   "lib/rake/file_list.rb"
+  ],
+  "commit": "https://github.com/ruby/rake/commit/5b8f8fc41a5d7d7d6a5d767e48464c60884d3aee",
+  "bytes": 426,
+  "files": [
+   "lib/rake/file_list.rb"
+  ],
+  "path": "data/patches/GHSA-jppv-gw3r-w3q8.diff"
+ },
+ "CVE-2019-17358": {
+  "vuln_id": "CVE-2019-17358",
+  "status": "ok",
+  "files_expected": [
+   "lib/functions.php"
+  ],
+  "commit": "https://github.com/Cacti/cacti/commit/adf221344359f5b02b8aed43dfb6b33ae5d708c8",
+  "bytes": 1023,
+  "files": [
+   "lib/functions.php"
+  ],
+  "path": "data/patches/CVE-2019-17358.diff"
+ },
+ "CVE-2014-8483": {
+  "vuln_id": "CVE-2014-8483",
+  "status": "ok",
+  "files_expected": [
+   "src/core/cipher.cpp"
+  ],
+  "commit": "https://github.com/quassel/quassel/commit/8b5ecd226f9208af3074b33d3b7cf5e14f55b138",
+  "bytes": 876,
+  "files": [
+   "src/core/cipher.cpp"
+  ],
+  "path": "data/patches/CVE-2014-8483.diff"
+ },
+ "GHSA-2hxv-mx8x-mcj9": {
+  "vuln_id": "GHSA-2hxv-mx8x-mcj9",
+  "status": "ok",
+  "files_expected": [
+   "app/controllers/spina/application_controller.rb"
+  ],
+  "commit": "https://github.com/denkGroot/Spina/commit/bfe44f289e336f80b6593032679300c493735e75",
+  "bytes": 417,
+  "files": [
+   "app/controllers/spina/application_controller.rb"
+  ],
+  "path": "data/patches/GHSA-2hxv-mx8x-mcj9.diff"
+ },
+ "GHSA-26xx-m4q2-xhq8": {
+  "vuln_id": "GHSA-26xx-m4q2-xhq8",
+  "status": "adds_or_deletes_files",
+  "files_expected": [
+   "lib/controllers/frontend/spree/users_controller.rb",
+   "spec/requests/spree/frontend/user_update_spec.rb"
+  ],
+  "commit": "https://github.com/spree/spree_auth_devise/commit/adf6ed4cd94d66091776b5febd4ff3767362de63",
+  "bytes": 3137,
+  "files": [
+   "lib/controllers/frontend/spree/users_controller.rb",
+   "spec/requests/spree/frontend/user_update_spec.rb"
+  ]
+ },
+ "GHSA-2v82-5746-vwqc": {
+  "vuln_id": "GHSA-2v82-5746-vwqc",
+  "status": "ok",
+  "files_expected": [
+   "adminer/include/editing.inc.php",
+   "changes.txt"
+  ],
+  "commit": "https://github.com/vrana/adminer/commit/4043092ec2c0de2258d60a99d0c5958637d051a7",
+  "bytes": 1111,
+  "files": [
+   "adminer/include/editing.inc.php",
+   "changes.txt"
+  ],
+  "path": "data/patches/GHSA-2v82-5746-vwqc.diff"
+ },
+ "GHSA-5fw9-fq32-wv5p": {
+  "vuln_id": "GHSA-5fw9-fq32-wv5p",
+  "status": "ok",
+  "files_expected": [
+   "package.json"
+  ],
+  "commit": "https://github.com/mikaelbr/node-notifier/commit/5d62799dab88505a709cd032653b2320c5813fce",
+  "bytes": 380,
+  "files": [
+   "package.json"
+  ],
+  "path": "data/patches/GHSA-5fw9-fq32-wv5p.diff"
+ },
+ "GHSA-hf79-8hjp-rrvq": {
+  "vuln_id": "GHSA-hf79-8hjp-rrvq",
+  "status": "ok",
+  "files_expected": [
+   "lucet-runtime/lucet-runtime-internals/src/instance.rs"
+  ],
+  "commit": "https://github.com/bytecodealliance/lucet/commit/7c7757c772fb709c61b1442bcc1e1fbee97bf4a8",
+  "bytes": 4202,
+  "files": [
+   "lucet-runtime/lucet-runtime-internals/src/instance.rs"
+  ],
+  "path": "data/patches/GHSA-hf79-8hjp-rrvq.diff"
+ },
+ "CVE-2012-1207": {
+  "vuln_id": "CVE-2012-1207",
+  "status": "osv_error: HTTP Error 404: Not Found",
+  "files_expected": [
+   "frontend/core/engine/javascript.php"
+  ]
+ },
+ "CVE-2015-8897": {
+  "vuln_id": "CVE-2015-8897",
+  "status": "ok",
+  "files_expected": [
+   "MagickCore/transform.c"
+  ],
+  "commit": "https://github.com/ImageMagick/ImageMagick/commit/7b1cf5784b5bcd85aa9293ecf56769f68c037231",
+  "bytes": 2270,
+  "files": [
+   "MagickCore/transform.c"
+  ],
+  "path": "data/patches/CVE-2015-8897.diff"
+ },
+ "GHSA-m7gr-5w5g-36jf": {
+  "vuln_id": "GHSA-m7gr-5w5g-36jf",
+  "status": "ok",
+  "files_expected": [
+   "modules/caddyhttp/rewrite/rewrite.go",
+   "modules/caddyhttp/rewrite/rewrite_test.go"
+  ],
+  "commit": "https://github.com/caddyserver/caddy/commit/693e9b5283e675b56084ecc83d73176cab0ee27c",
+  "bytes": 2324,
+  "files": [
+   "modules/caddyhttp/rewrite/rewrite.go",
+   "modules/caddyhttp/rewrite/rewrite_test.go"
+  ],
+  "path": "data/patches/GHSA-m7gr-5w5g-36jf.diff"
+ },
+ "CVE-2018-1000852": {
+  "vuln_id": "CVE-2018-1000852",
+  "status": "commits=0",
+  "files_expected": [
+   "channels/drdynvc/client/drdynvc_main.c"
+  ]
+ },
+ "GHSA-2v5j-q74q-r53f": {
+  "vuln_id": "GHSA-2v5j-q74q-r53f",
+  "status": "ok",
+  "files_expected": [
+   "helpdesk/models.py"
+  ],
+  "commit": "https://github.com/django-helpdesk/django-helpdesk/commit/a22eb0673fe0b7784f99c6b5fd343b64a6700f06",
+  "bytes": 432,
+  "files": [
+   "helpdesk/models.py"
+  ],
+  "path": "data/patches/GHSA-2v5j-q74q-r53f.diff"
+ },
+ "CVE-2010-4264": {
+  "vuln_id": "CVE-2010-4264",
+  "status": "osv_error: HTTP Error 404: Not Found",
+  "files_expected": [
+   "applications/dashboard/controllers/class.entrycontroller.php",
+   "library/core/class.dispatcher.php"
+  ]
+ },
+ "CVE-2015-5221": {
+  "vuln_id": "CVE-2015-5221",
+  "status": "osv_error: HTTP Error 404: Not Found",
+  "files_expected": [
+   "src/libjasper/mif/mif_cod.c"
+  ]
+ },
+ "CVE-2017-9798": {
+  "vuln_id": "CVE-2017-9798",
+  "status": "ok",
+  "files_expected": [
+   "CHANGES",
+   "server/core.c"
+  ],
+  "commit": "https://github.com/apache/httpd/commit/4cc27823899e070268b906ca677ee838d07cf67a",
+  "bytes": 1476,
+  "files": [
+   "CHANGES",
+   "server/core.c"
+  ],
+  "path": "data/patches/CVE-2017-9798.diff"
+ },
+ "CVE-2018-10092": {
+  "vuln_id": "CVE-2018-10092",
+  "status": "ok",
+  "files_expected": [
+   "htdocs/admin/security_file.php"
+  ],
+  "commit": "https://github.com/Dolibarr/dolibarr/commit/5d121b2d3ae2a95abebc9dc31e4782cbc61a1f39",
+  "bytes": 2587,
+  "files": [
+   "htdocs/admin/security_file.php"
+  ],
+  "path": "data/patches/CVE-2018-10092.diff"
+ },
+ "CVE-2020-6016": {
+  "vuln_id": "CVE-2020-6016",
+  "status": "ok",
+  "files_expected": [
+   "src/steamnetworkingsockets/clientlib/steamnetworkingsockets_snp.cpp",
+   "src/steamnetworkingsockets/clientlib/steamnetworkingsockets_snp.h"
+  ],
+  "commit": "https://github.com/ValveSoftware/GameNetworkingSockets/commit/e0c86dcb9139771db3db0cfdb1fb8bef0af19c43",
+  "bytes": 3750,
+  "files": [
+   "src/steamnetworkingsockets/clientlib/steamnetworkingsockets_snp.cpp",
+   "src/steamnetworkingsockets/clientlib/steamnetworkingsockets_snp.h"
+  ],
+  "path": "data/patches/CVE-2020-6016.diff"
+ },
+ "GHSA-rwxp-hwwf-653v": {
+  "vuln_id": "GHSA-rwxp-hwwf-653v",
+  "status": "ok",
+  "files_expected": [
+   "README.md"
+  ],
+  "commit": "https://github.com/TryGhost/express-hbs/commit/ff6fad6e357699412d4e916273314e5e7af1500e",
+  "bytes": 553,
+  "files": [
+   "README.md"
+  ],
+  "path": "data/patches/GHSA-rwxp-hwwf-653v.diff"
+ },
+ "CVE-2018-18836": {
+  "vuln_id": "CVE-2018-18836",
+  "status": "ok",
+  "files_expected": [
+   "libnetdata/url/url.c",
+   "web/api/web_api_v1.c"
+  ],
+  "commit": "https://github.com/netdata/netdata/commit/92327c9ec211bd1616315abcb255861b130b97ca",
+  "bytes": 1864,
+  "files": [
+   "libnetdata/url/url.c",
+   "web/api/web_api_v1.c"
+  ],
+  "path": "data/patches/CVE-2018-18836.diff"
+ },
+ "GHSA-49j7-qghp-5wj8": {
+  "vuln_id": "GHSA-49j7-qghp-5wj8",
+  "status": "ok",
+  "files_expected": [
+   "hawtjni-runtime/src/main/java/org/fusesource/hawtjni/runtime/Library.java"
+  ],
+  "commit": "https://github.com/fusesource/hawtjni/commit/92c266170ce98edc200c656bd034a237098b8aa5",
+  "bytes": 5370,
+  "files": [
+   "hawtjni-runtime/src/main/java/org/fusesource/hawtjni/runtime/Library.java"
+  ],
+  "path": "data/patches/GHSA-49j7-qghp-5wj8.diff"
+ },
+ "GHSA-vm67-7vmg-66vm": {
+  "vuln_id": "GHSA-vm67-7vmg-66vm",
+  "status": "ok",
+  "files_expected": [
+   "cli.js",
+   "index.js"
+  ],
+  "commit": "https://github.com/rrainn/PortProcesses/commit/86811216c9b97b01b5722f879f8c88a7aa4214e1",
+  "bytes": 2027,
+  "files": [
+   "cli.js",
+   "index.js"
+  ],
+  "path": "data/patches/GHSA-vm67-7vmg-66vm.diff"
+ },
+ "CVE-2017-9527": {
+  "vuln_id": "CVE-2017-9527",
+  "status": "ok",
+  "files_expected": [
+   "src/gc.c"
+  ],
+  "commit": "https://github.com/mruby/mruby/commit/5c114c91d4ff31859fcd84cf8bf349b737b90d99",
+  "bytes": 783,
+  "files": [
+   "src/gc.c"
+  ],
+  "path": "data/patches/CVE-2017-9527.diff"
+ },
+ "CVE-2016-10165": {
+  "vuln_id": "CVE-2016-10165",
+  "status": "ok",
+  "files_expected": [
+   "src/cmstypes.c"
+  ],
+  "commit": "https://github.com/mm2/Little-CMS/commit/5ca71a7bc18b6897ab21d815d15e218e204581e2",
+  "bytes": 463,
+  "files": [
+   "src/cmstypes.c"
+  ],
+  "path": "data/patches/CVE-2016-10165.diff"
+ },
+ "CVE-2014-4341": {
+  "vuln_id": "CVE-2014-4341",
+  "status": "ok",
+  "files_expected": [
+   "src/lib/gssapi/krb5/k5unseal.c",
+   "src/lib/gssapi/krb5/k5unsealiov.c"
+  ],
+  "commit": "https://github.com/krb5/krb5/commit/e6ae703ae597d798e310368d52b8f38ee11c6a73",
+  "bytes": 3890,
+  "files": [
+   "src/lib/gssapi/krb5/k5unseal.c",
+   "src/lib/gssapi/krb5/k5unsealiov.c"
+  ],
+  "path": "data/patches/CVE-2014-4341.diff"
+ },
+ "CVE-2016-10195": {
+  "vuln_id": "CVE-2016-10195",
+  "status": "ok",
+  "files_expected": [
+   "evdns.c"
+  ],
+  "commit": "https://github.com/libevent/libevent/commit/96f64a022014a208105ead6c8a7066018449d86d",
+  "bytes": 615,
+  "files": [
+   "evdns.c"
+  ],
+  "path": "data/patches/CVE-2016-10195.diff"
+ },
+ "CVE-2016-10749": {
+  "vuln_id": "CVE-2016-10749",
+  "status": "ok",
+  "files_expected": [
+   "cJSON.c"
+  ],
+  "commit": "https://github.com/DaveGamble/cJSON/commit/94df772485c92866ca417d92137747b2e3b0a917",
+  "bytes": 934,
+  "files": [
+   "cJSON.c"
+  ],
+  "path": "data/patches/CVE-2016-10749.diff"
+ },
+ "GHSA-753c-phhg-cj29": {
+  "vuln_id": "GHSA-753c-phhg-cj29",
+  "status": "ok",
+  "files_expected": [
+   "lib/graph.js",
+   "test/api.js"
+  ],
+  "commit": "https://github.com/pahen/madge/commit/da5cbc9ab30372d687fa7c324b22af7ffa5c6332",
+  "bytes": 1730,
+  "files": [
+   "lib/graph.js",
+   "test/api.js"
+  ],
+  "path": "data/patches/GHSA-753c-phhg-cj29.diff"
+ },
+ "GHSA-jxfh-8wgv-vfr2": {
+  "vuln_id": "GHSA-jxfh-8wgv-vfr2",
+  "status": "ok",
+  "files_expected": [
+   "request/util.js",
+   "tests/unit/request/util.js"
+  ],
+  "commit": "https://github.com/dojo/dojo/commit/20a00afb68f5587946dc76fbeaa68c39bda2171d",
+  "bytes": 1148,
+  "files": [
+   "request/util.js",
+   "tests/unit/request/util.js"
+  ],
+  "path": "data/patches/GHSA-jxfh-8wgv-vfr2.diff"
+ },
+ "GHSA-hwv5-w8gm-fq9f": {
+  "vuln_id": "GHSA-hwv5-w8gm-fq9f",
+  "status": "ok",
+  "files_expected": [
+   "xhu.py"
+  ],
+  "commit": "https://github.com/horazont/xmpp-http-upload/commit/82056540191e89f0cd697c81f57714c00962ed75",
+  "bytes": 3282,
+  "files": [
+   "xhu.py"
+  ],
+  "path": "data/patches/GHSA-hwv5-w8gm-fq9f.diff"
+ },
+ "GHSA-6h7w-fc84-x7p6": {
+  "vuln_id": "GHSA-6h7w-fc84-x7p6",
+  "status": "ok",
+  "files_expected": [
+   "core/src/main/scala/org/http4s/StaticFile.scala",
+   "tests/src/test/scala/org/http4s/StaticFileSuite.scala"
+  ],
+  "commit": "https://github.com/http4s/http4s/commit/52e1890665410b4385e37b96bc49c5e3c708e4e9",
+  "bytes": 2047,
+  "files": [
+   "core/src/main/scala/org/http4s/StaticFile.scala",
+   "tests/src/test/scala/org/http4s/StaticFileSuite.scala"
+  ],
+  "path": "data/patches/GHSA-6h7w-fc84-x7p6.diff"
+ },
+ "CVE-2017-0896": {
+  "vuln_id": "CVE-2017-0896",
+  "status": "ok",
+  "files_expected": [
+   "zerver/tests/test_signup.py",
+   "zerver/views/invite.py"
+  ],
+  "commit": "https://github.com/zulip/zulip/commit/1f48fa27672170bba3b9a97384905bb04c18761b",
+  "bytes": 2077,
+  "files": [
+   "zerver/tests/test_signup.py",
+   "zerver/views/invite.py"
+  ],
+  "path": "data/patches/CVE-2017-0896.diff"
+ },
+ "GHSA-xr38-w74q-r8jv": {
+  "vuln_id": "GHSA-xr38-w74q-r8jv",
+  "status": "ok",
+  "files_expected": [
+   "invenio_drafts_resources/services/records/service.py"
+  ],
+  "commit": "https://github.com/inveniosoftware/invenio-drafts-resources/commit/039b0cff1ad4b952000f4d8c3a93f347108b6626",
+  "bytes": 833,
+  "files": [
+   "invenio_drafts_resources/services/records/service.py"
+  ],
+  "path": "data/patches/GHSA-xr38-w74q-r8jv.diff"
+ },
+ "CVE-2014-8321": {
+  "vuln_id": "CVE-2014-8321",
+  "status": "ok",
+  "files_expected": [
+   "src/airodump-ng.c"
+  ],
+  "commit": "https://github.com/aircrack-ng/aircrack-ng/commit/ff70494dd389ba570dbdbf36f217c28d4381c6b5",
+  "bytes": 452,
+  "files": [
+   "src/airodump-ng.c"
+  ],
+  "path": "data/patches/CVE-2014-8321.diff"
+ },
+ "GHSA-43m5-c88r-cjvv": {
+  "vuln_id": "GHSA-43m5-c88r-cjvv",
+  "status": "ok",
+  "files_expected": [
+   "library.js"
+  ],
+  "commit": "https://github.com/psychobunny/nodebb-plugin-blog-comments/commit/cf43beedb05131937ef46f365ab0a0c6fa6ac618",
+  "bytes": 635,
+  "files": [
+   "library.js"
+  ],
+  "path": "data/patches/GHSA-43m5-c88r-cjvv.diff"
+ },
+ "CVE-2021-21275": {
+  "vuln_id": "CVE-2021-21275",
+  "status": "ok",
+  "files_expected": [
+   "SpecialReport.php"
+  ],
+  "commit": "https://github.com/Kenny2github/Report/commit/f828dc6f73cdfaea5639edbf8ac7b326eeefb117",
+  "bytes": 2396,
+  "files": [
+   "SpecialReport.php"
+  ],
+  "path": "data/patches/CVE-2021-21275.diff"
+ },
+ "GHSA-26hm-r6mg-963c": {
+  "vuln_id": "GHSA-26hm-r6mg-963c",
+  "status": "ok",
+  "files_expected": [
+   "jeecg-boot/db/jeecgboot-mysql-5.7.sql",
+   "jeecg-boot/pom.xml"
+  ],
+  "commit": "https://github.com/jeecgboot/jeecg-boot/commit/baefc1338dd03de36384ce7d5846b08041b488d0",
+  "bytes": 6107,
+  "files": [
+   "jeecg-boot/db/jeecgboot-mysql-5.7.sql",
+   "jeecg-boot/pom.xml"
+  ],
+  "path": "data/patches/GHSA-26hm-r6mg-963c.diff"
+ },
+ "GHSA-45q2-34rf-mr94": {
+  "vuln_id": "GHSA-45q2-34rf-mr94",
+  "status": "ok",
+  "files_expected": [
+   "lib/utils.js",
+   "test/utils.test.js"
+  ],
+  "commit": "https://github.com/aheckmann/mquery/commit/792e69fd0a7281a0300be5cade5a6d7c1d468ad4",
+  "bytes": 1810,
+  "files": [
+   "lib/utils.js",
+   "test/utils.test.js"
+  ],
+  "path": "data/patches/GHSA-45q2-34rf-mr94.diff"
+ },
+ "GHSA-rj44-gpjc-29r7": {
+  "vuln_id": "GHSA-rj44-gpjc-29r7",
+  "status": "ok",
+  "files_expected": [
+   "packages/egf/src/tags.ts"
+  ],
+  "commit": "https://github.com/thi-ng/umbrella/commit/88f61656e5f5cfba960013b8133186389efaf243",
+  "bytes": 1017,
+  "files": [
+   "packages/egf/src/tags.ts"
+  ],
+  "path": "data/patches/GHSA-rj44-gpjc-29r7.diff"
+ },
+ "GHSA-fjqr-fx3f-g4rv": {
+  "vuln_id": "GHSA-fjqr-fx3f-g4rv",
+  "status": "ok",
+  "files_expected": [
+   "atom/app/command_line_args.cc"
+  ],
+  "commit": "https://github.com/electron/electron/commit/ce361a12e355f9e1e99c989f1ea056c9e502dbe7",
+  "bytes": 674,
+  "files": [
+   "atom/app/command_line_args.cc"
+  ],
+  "path": "data/patches/GHSA-fjqr-fx3f-g4rv.diff"
+ },
+ "CVE-2020-12102": {
+  "vuln_id": "CVE-2020-12102",
+  "status": "too_big",
+  "files_expected": [
+   "tinyfilemanager.php",
+   "translation.json"
+  ],
+  "commit": "https://github.com/prasathmani/tinyfilemanager/commit/a0c595a8e11e55a43eeaa68e1a3ce76365f29d06",
+  "bytes": 11408,
+  "files": [
+   "tinyfilemanager.php",
+   "translation.json"
+  ]
+ },
+ "GHSA-4j46-mp85-mv8c": {
+  "vuln_id": "GHSA-4j46-mp85-mv8c",
+  "status": "ok",
+  "files_expected": [
+   "CHANGELOG.md",
+   "src/index.js"
+  ],
+  "commit": "https://github.com/thgh/rollup-plugin-serve/commit/3d144f2f47e86fcba34f5a144968da94220e3969",
+  "bytes": 1182,
+  "files": [
+   "CHANGELOG.md",
+   "src/index.js"
+  ],
+  "path": "data/patches/GHSA-4j46-mp85-mv8c.diff"
+ },
+ "CVE-2017-5985": {
+  "vuln_id": "CVE-2017-5985",
+  "status": "ok",
+  "files_expected": [
+   "src/lxc/lxc_user_nic.c"
+  ],
+  "commit": "https://github.com/lxc/lxc/commit/16af238036a5464ae8f2420ed3af214f0de875f9",
+  "bytes": 4842,
+  "files": [
+   "src/lxc/lxc_user_nic.c"
+  ],
+  "path": "data/patches/CVE-2017-5985.diff"
+ },
+ "CVE-2022-27239": {
+  "vuln_id": "CVE-2022-27239",
+  "status": "commits=0",
+  "files_expected": [
+   "mount.cifs.c"
+  ]
+ },
+ "CVE-2020-12626": {
+  "vuln_id": "CVE-2020-12626",
+  "status": "ok",
+  "files_expected": [
+   "CHANGELOG",
+   "index.php"
+  ],
+  "commit": "https://github.com/roundcube/roundcubemail/commit/9bbda422ff0b782b81de59c86994f1a5fd93f8e6",
+  "bytes": 1638,
+  "files": [
+   "CHANGELOG",
+   "index.php"
+  ],
+  "path": "data/patches/CVE-2020-12626.diff"
+ },
+ "GHSA-38f9-m297-6q9g": {
+  "vuln_id": "GHSA-38f9-m297-6q9g",
+  "status": "ok",
+  "files_expected": [
+   "native/ios/WatermelonDB/DatabaseDriver.swift",
+   "src/adapters/__tests__/commonTests.js"
+  ],
+  "commit": "https://github.com/Nozbe/WatermelonDB/commit/924c7ae2a8d7d6459656751e5b9b1bf91a218025",
+  "bytes": 2241,
+  "files": [
+   "native/ios/WatermelonDB/DatabaseDriver.swift",
+   "src/adapters/__tests__/commonTests.js"
+  ],
+  "path": "data/patches/GHSA-38f9-m297-6q9g.diff"
+ },
+ "CVE-2020-11004": {
+  "vuln_id": "CVE-2020-11004",
+  "status": "ok",
+  "files_expected": [
+   "adm_program/system/classes/TableAccess.php"
+  ],
+  "commit": "https://github.com/Admidio/admidio/commit/ea5d6f114b151ed11ec0ad7cb47bd729e77a874a",
+  "bytes": 914,
+  "files": [
+   "adm_program/system/classes/TableAccess.php"
+  ],
+  "path": "data/patches/CVE-2020-11004.diff"
+ },
+ "CVE-2011-4960": {
+  "vuln_id": "CVE-2011-4960",
+  "status": "osv_error: HTTP Error 404: Not Found",
+  "files_expected": [
+   "filesystem/Folder.php"
+  ]
+ },
+ "GHSA-484f-743f-6jx2": {
+  "vuln_id": "GHSA-484f-743f-6jx2",
+  "status": "ok",
+  "files_expected": [
+   "src/phpFastCache/Drivers/Cookie/Driver.php"
+  ],
+  "commit": "https://github.com/PHPSocialNetwork/phpfastcache/commit/c4527205cb7a402b595790c74310791f5b04a1a4",
+  "bytes": 693,
+  "files": [
+   "src/phpFastCache/Drivers/Cookie/Driver.php"
+  ],
+  "path": "data/patches/GHSA-484f-743f-6jx2.diff"
+ },
+ "GHSA-4wv4-mgfq-598v": {
+  "vuln_id": "GHSA-4wv4-mgfq-598v",
+  "status": "ok",
+  "files_expected": [
+   "lib/index.js"
+  ],
+  "commit": "https://github.com/AnneTheDev/nobelprize/commit/00639d375b0efd097bc1eca18d9dc021691b9286",
+  "bytes": 359,
+  "files": [
+   "lib/index.js"
+  ],
+  "path": "data/patches/GHSA-4wv4-mgfq-598v.diff"
+ }
+}

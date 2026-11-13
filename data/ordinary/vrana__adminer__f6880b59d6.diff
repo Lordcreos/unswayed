@@ -1,0 +1,25 @@
+diff --git a/adminer/db.inc.php b/adminer/db.inc.php
+index a03580c19..6c879fcee 100644
+--- a/adminer/db.inc.php
++++ b/adminer/db.inc.php
+@@ -83,7 +83,7 @@
+ 
+ 			$tables = 0;
+ 			foreach ($tables_list as $name => $type) {
+-				$view = ($type !== null && !preg_match('~table~i', $type));
++				$view = ($type !== null && !preg_match('~table|sequence~i', $type));
+ 				$id = h("Table-" . $name);
+ 				echo '<tr' . odd() . '><td>' . checkbox(($view ? "views[]" : "tables[]"), $name, in_array($name, $tables_views, true), "", "", "", $id);
+ 				echo '<th>' . (support("table") || support("indexes") ? "<a href='" . h(ME) . "table=" . urlencode($name) . "' title='" . lang('Show structure') . "' id='$id'>" . h($name) . '</a>' : h($name));
+diff --git a/changes.txt b/changes.txt
+index 0500f5cc3..6c4301eb1 100644
+--- a/changes.txt
++++ b/changes.txt
+@@ -2,6 +2,7 @@ Adminer 4.8.1-dev:
+ Fix more PHP 8 warnings (bug #781)
+ Avoid PHP warnings with PDO drivers (bug #786, regression from 4.7.8)
+ MySQL: Allow moving views to other DB and renaming DB with views (bug #783)
++MariaDB: Do not treat sequences as views (PR #416)
+ PostgreSQL: Support UPDATE OF triggers (bug #789)
+ PostgreSQL: Support triggers with more events (OR)
+ PostgreSQL < 10 PDO: Avoid displaying GENERATED ALWAYS BY IDENTITY everywhere (bug #785, regression from 4.7.9)

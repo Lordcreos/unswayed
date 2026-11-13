@@ -1,0 +1,13 @@
+diff --git a/_base/configNode.js b/_base/configNode.js
+index 9982cd6a6f..fbcec916e9 100644
+--- a/_base/configNode.js
++++ b/_base/configNode.js
+@@ -79,7 +79,7 @@ exports.config = function(config){
+ 				// define debug for console messages during dev instead of console.log
+ 				// (node's heavy async makes console.log confusing sometimes)
+ 				var util = require("util");
+-				util.debug(util.inspect(item));
++				util.debuglog(util.inspect(item));
+ 			},
+ 
+ 			eval: function(__text, __urlHint){

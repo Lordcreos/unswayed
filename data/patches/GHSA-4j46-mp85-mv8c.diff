@@ -1,0 +1,40 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 6f561df..4d32560 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -2,6 +2,10 @@
+ 
+ All notable changes to `rollup-plugin-serve` will be documented in this file.
+ 
++## [1.0.2] - 2020-07-17
++### Fixed
++- Fix path traversal issue
++
+ ## [1.0.1] - 2019-01-27
+ ### Added
+ - Add Intellisense support #34
+diff --git a/src/index.js b/src/index.js
+index ec9ee3c..2d1c81d 100644
+--- a/src/index.js
++++ b/src/index.js
+@@ -1,7 +1,7 @@
+ import { readFile } from 'fs'
+ import { createServer as createHttpsServer } from 'https'
+ import { createServer } from 'http'
+-import { resolve } from 'path'
++import { resolve, normalize } from 'path'
+ 
+ import mime from 'mime'
+ import opener from 'opener'
+@@ -26,7 +26,10 @@ function serve (options = { contentBase: '' }) {
+ 
+   const requestListener = (request, response) => {
+     // Remove querystring
+-    const urlPath = decodeURI(request.url.split('?')[0])
++    const unsafePath = decodeURI(request.url.split('?')[0])
++
++    // Don't allow path traversal
++    const urlPath = normalize(unsafePath)
+ 
+     Object.keys(options.headers).forEach((key) => {
+       response.setHeader(key, options.headers[key])

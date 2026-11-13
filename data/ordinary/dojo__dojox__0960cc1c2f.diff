@@ -1,0 +1,36 @@
+diff --git a/bower.json b/bower.json
+index 19f16cb987..62c2be84f9 100644
+--- a/bower.json
++++ b/bower.json
+@@ -15,8 +15,8 @@
+ 		"url": "https://github.com/dojo/dojox.git"
+ 	},
+ 	"dependencies": {
+-		"dojo": "1.16.0-pre",
+-		"dijit": "1.16.0-pre"
++		"dojo": "1.16.0",
++		"dijit": "1.16.0"
+ 	},
+ 	"devDependencies": {
+ 	}
+diff --git a/package.json b/package.json
+index 9d0001e4f1..57d3b8d9f1 100644
+--- a/package.json
++++ b/package.json
+@@ -1,13 +1,13 @@
+ {
+ 	"name": "dojox",
+-	"version": "1.16.0-pre",
++	"version": "1.16.0",
+ 	"directories": {
+ 		"lib": "."
+ 	},
+ 	"main": "main",
+ 	"dependencies": {
+-		"dojo": "1.16.0-pre",
+-		"dijit": "1.16.0-pre"
++		"dojo": "1.16.0",
++		"dijit": "1.16.0"
+ 	},
+ 	"description": "Dojo eXtensions, a rollup of many useful sub-projects and varying states of maturity – from very stable and robust, to alpha and experimental. See individual projects contain README files for details.",
+ 	"license" : "BSD-3-Clause OR AFL-2.1",

@@ -1,0 +1,12 @@
+diff --git a/modules/md/config2.m4 b/modules/md/config2.m4
+index 25d796cb73d..e0e73f13a71 100644
+--- a/modules/md/config2.m4
++++ b/modules/md/config2.m4
+@@ -273,7 +273,6 @@ APACHE_MODULE(md, [Managed Domain handling], $md_objs, , most, [
+         enable_md=no
+     fi
+     
+-    APR_ADDTO(MOD_MD_LDADD, [ "libmd.la" ])
+     APR_ADDTO(A2MD_LDADD, [ "libmd.la" ])
+ ])
+ 

@@ -1,0 +1,13 @@
+diff --git a/test/helper.rb b/test/helper.rb
+index 8e061fa45..64f7db7e2 100644
+--- a/test/helper.rb
++++ b/test/helper.rb
+@@ -28,7 +28,7 @@ class TaskManager
+     include Rake::TaskManager
+   end
+ 
+-  RUBY = ENV["BUNDLE_RUBY"] || Gem.ruby
++  RUBY = File.realpath(ENV["BUNDLE_RUBY"] || Gem.ruby)
+ 
+   def setup
+     ARGV.clear

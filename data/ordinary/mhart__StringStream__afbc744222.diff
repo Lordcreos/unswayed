@@ -1,0 +1,13 @@
+diff --git a/stringstream.js b/stringstream.js
+index 4ece127..6732b9d 100644
+--- a/stringstream.js
++++ b/stringstream.js
+@@ -28,7 +28,7 @@ StringStream.prototype.write = function(data) {
+     return false
+   }
+   if (this.fromEncoding) {
+-    if (Buffer.isBuffer(data)) data = data.toString()
++    if (Buffer.isBuffer(data) || typeof data === 'number') data = data.toString()
+     data = new Buffer(data, this.fromEncoding)
+   }
+   var string = this.decoder.write(data)

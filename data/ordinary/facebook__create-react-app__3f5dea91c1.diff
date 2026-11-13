@@ -1,0 +1,13 @@
+diff --git a/packages/create-react-app/__tests__/getTemplateInstallPackage.test.js b/packages/create-react-app/__tests__/getTemplateInstallPackage.test.js
+index 457c906b5bb..bef6106a7e1 100644
+--- a/packages/create-react-app/__tests__/getTemplateInstallPackage.test.js
++++ b/packages/create-react-app/__tests__/getTemplateInstallPackage.test.js
+@@ -33,7 +33,7 @@ describe('getTemplateInstallPackage', () => {
+   });
+ 
+   it('typescript@next gives cra-template-typescript@next', async () => {
+-    await expect(getTemplateInstallPackage('cra-template-typescript@next')).resolves.toBe(
++    await expect(getTemplateInstallPackage('typescript@next')).resolves.toBe(
+       'cra-template-typescript@next'
+     );
+   });

@@ -1,0 +1,72 @@
+diff --git a/lib/migrations/20171009121200-longtext-for-mysql.js b/lib/migrations/20171009121200-longtext-for-mysql.js
+index cb9fc8a5ca..96bf7e8765 100644
+--- a/lib/migrations/20171009121200-longtext-for-mysql.js
++++ b/lib/migrations/20171009121200-longtext-for-mysql.js
+@@ -1,16 +1,16 @@
+ 'use strict'
+ module.exports = {
+-  up: function (queryInterface, Sequelize) {
+-    queryInterface.changeColumn('Notes', 'content', { type: Sequelize.TEXT('long') })
+-    queryInterface.changeColumn('Revisions', 'patch', { type: Sequelize.TEXT('long') })
+-    queryInterface.changeColumn('Revisions', 'content', { type: Sequelize.TEXT('long') })
+-    queryInterface.changeColumn('Revisions', 'lastContent', { type: Sequelize.TEXT('long') })
++  up: async function (queryInterface, Sequelize) {
++    await queryInterface.changeColumn('Notes', 'content', { type: Sequelize.TEXT('long') })
++    await queryInterface.changeColumn('Revisions', 'patch', { type: Sequelize.TEXT('long') })
++    await queryInterface.changeColumn('Revisions', 'content', { type: Sequelize.TEXT('long') })
++    await queryInterface.changeColumn('Revisions', 'lastContent', { type: Sequelize.TEXT('long') })
+   },
+ 
+-  down: function (queryInterface, Sequelize) {
+-    queryInterface.changeColumn('Notes', 'content', { type: Sequelize.TEXT })
+-    queryInterface.changeColumn('Revisions', 'patch', { type: Sequelize.TEXT })
+-    queryInterface.changeColumn('Revisions', 'content', { type: Sequelize.TEXT })
+-    queryInterface.changeColumn('Revisions', 'lastContent', { type: Sequelize.TEXT })
++  down: async function (queryInterface, Sequelize) {
++    await queryInterface.changeColumn('Notes', 'content', { type: Sequelize.TEXT })
++    await queryInterface.changeColumn('Revisions', 'patch', { type: Sequelize.TEXT })
++    await queryInterface.changeColumn('Revisions', 'content', { type: Sequelize.TEXT })
++    await queryInterface.changeColumn('Revisions', 'lastContent', { type: Sequelize.TEXT })
+   }
+ }
+diff --git a/lib/migrations/20180209120907-longtext-of-authorship.js b/lib/migrations/20180209120907-longtext-of-authorship.js
+index c5d8a1efd1..04810009e6 100644
+--- a/lib/migrations/20180209120907-longtext-of-authorship.js
++++ b/lib/migrations/20180209120907-longtext-of-authorship.js
+@@ -1,13 +1,13 @@
+ 'use strict'
+ 
+ module.exports = {
+-  up: function (queryInterface, Sequelize) {
+-    queryInterface.changeColumn('Notes', 'authorship', { type: Sequelize.TEXT('long') })
+-    queryInterface.changeColumn('Revisions', 'authorship', { type: Sequelize.TEXT('long') })
++  up: async function (queryInterface, Sequelize) {
++    await queryInterface.changeColumn('Notes', 'authorship', { type: Sequelize.TEXT('long') })
++    await queryInterface.changeColumn('Revisions', 'authorship', { type: Sequelize.TEXT('long') })
+   },
+ 
+-  down: function (queryInterface, Sequelize) {
+-    queryInterface.changeColumn('Notes', 'authorship', { type: Sequelize.TEXT })
+-    queryInterface.changeColumn('Revisions', 'authorship', { type: Sequelize.TEXT })
++  down: async function (queryInterface, Sequelize) {
++    await queryInterface.changeColumn('Notes', 'authorship', { type: Sequelize.TEXT })
++    await queryInterface.changeColumn('Revisions', 'authorship', { type: Sequelize.TEXT })
+   }
+ }
+diff --git a/lib/migrations/20180306150303-fix-enum.js b/lib/migrations/20180306150303-fix-enum.js
+index 433a974921..620a422976 100644
+--- a/lib/migrations/20180306150303-fix-enum.js
++++ b/lib/migrations/20180306150303-fix-enum.js
+@@ -2,10 +2,10 @@
+ 
+ module.exports = {
+   up: function (queryInterface, Sequelize) {
+-    queryInterface.changeColumn('Notes', 'permission', { type: Sequelize.ENUM('freely', 'editable', 'limited', 'locked', 'protected', 'private') })
++    return queryInterface.changeColumn('Notes', 'permission', { type: Sequelize.ENUM('freely', 'editable', 'limited', 'locked', 'protected', 'private') })
+   },
+ 
+   down: function (queryInterface, Sequelize) {
+-    queryInterface.changeColumn('Notes', 'permission', { type: Sequelize.ENUM('freely', 'editable', 'locked', 'private') })
++    return queryInterface.changeColumn('Notes', 'permission', { type: Sequelize.ENUM('freely', 'editable', 'locked', 'private') })
+   }
+ }

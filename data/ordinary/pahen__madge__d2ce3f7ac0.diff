@@ -1,0 +1,68 @@
+diff --git a/README.md b/README.md
+index 49703557..462a6463 100644
+--- a/README.md
++++ b/README.md
+@@ -175,9 +175,9 @@ madge('path/to/app.js').then((res) => {
+ });
+ ```
+ 
+-#### .dot()
++#### .dot([circularOnly: boolean])
+ 
+-> Returns a `Promise` resolved with a DOT representation of the module dependency graph.
++> Returns a `Promise` resolved with a DOT representation of the module dependency graph. Set `circularOnly` to only include circular dependencies.
+ 
+ ```javascript
+ const madge = require('madge');
+diff --git a/bin/cli.js b/bin/cli.js
+index 7c544ca0..27e72935 100755
+--- a/bin/cli.js
++++ b/bin/cli.js
+@@ -248,6 +248,13 @@ function createOutputFromOptions(program, res) {
+ 		});
+ 	}
+ 
++	if (program.dot) {
++		return res.dot(program.circular).then((output) => {
++			process.stdout.write(output);
++			return res;
++		});
++	}
++
+ 	if (program.circular) {
+ 		const circular = res.circular();
+ 
+@@ -261,11 +268,4 @@ function createOutputFromOptions(program, res) {
+ 
+ 		return res;
+ 	}
+-
+-	if (program.dot) {
+-		return res.dot().then((output) => {
+-			process.stdout.write(output);
+-			return res;
+-		});
+-	}
+ }
+diff --git a/lib/api.js b/lib/api.js
+index 977a2234..76a989ee 100644
+--- a/lib/api.js
++++ b/lib/api.js
+@@ -158,10 +158,15 @@ class Madge {
+ 	/**
+ 	 * Return the module dependency graph as DOT output.
+ 	 * @api public
++	 * @param  {Boolean} circularOnly
+ 	 * @return {Promise}
+ 	 */
+-	dot() {
+-		return graph.dot(this.obj(), this.circular(), this.config);
++	dot(circularOnly) {
++		return graph.dot(
++			circularOnly ? this.circularGraph() : this.obj(),
++			this.circular(),
++			this.config
++		);
+ 	}
+ 
+ 	/**

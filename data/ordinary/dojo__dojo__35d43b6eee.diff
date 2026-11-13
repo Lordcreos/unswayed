@@ -1,0 +1,34 @@
+diff --git a/_base/kernel.js b/_base/kernel.js
+index 95de24d527..18bad1449f 100644
+--- a/_base/kernel.js
++++ b/_base/kernel.js
+@@ -92,7 +92,7 @@ define(["../global", "../has", "./config", "require", "module"], function(global
+ 		//		- flag: String: Descriptor flag. If total version is "1.2.0beta1", will be "beta1"
+ 		//		- revision: Number: The Git rev from which dojo was pulled
+ 
+-		major: 1, minor: 16, patch: 0, flag: "-pre",
++		major: 1, minor: 16, patch: 0, flag: "",
+ 		revision: rev ? rev[0] : NaN,
+ 		toString: function(){
+ 			var v = dojo.version;
+diff --git a/package.json b/package.json
+index 6c0782f398..b50d16b142 100644
+--- a/package.json
++++ b/package.json
+@@ -1,6 +1,6 @@
+ {
+ 	"name": "dojo",
+-	"version": "1.16.0-pre",
++	"version": "1.16.0",
+ 	"directories": {
+ 		"lib": "."
+ 	},
+@@ -11,7 +11,7 @@
+ 		"jsgi-node": "0.3.1",
+ 		"formidable": "1.0.17",
+ 		"sinon": "1.12.2",
+-		"dojo": "1.16.0-pre"
++		"dojo": "1.16.0"
+ 	},
+ 	"main": "main",
+ 	"scripts": {
