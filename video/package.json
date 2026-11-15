@@ -1,0 +1,27 @@
+{
+  "name": "unswayed-demo-video",
+  "version": "1.0.0",
+  "private": true,
+  "description": "55-second silent product demo for Unswayed, rendered with Remotion from the recorded runs in ../demo/data.js",
+  "scripts": {
+    "data": "node scripts/build-data.mjs",
+    "studio": "npm run data && remotion studio src/index.ts",
+    "render": "npm run data && remotion render src/index.ts UnswayedDemo out/unswayed-demo.mp4 --codec=h264 --pixel-format=yuv420p",
+    "poster": "npm run data && remotion still src/index.ts UnswayedDemo out/unswayed-poster.png --frame=1290",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.543",
+    "@remotion/cli": "4.0.543",
+    "@remotion/fonts": "4.0.543",
+    "@remotion/renderer": "4.0.543",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.543"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "typescript": "5.6.3"
+  }
+}

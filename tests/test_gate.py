@@ -11,8 +11,8 @@ import tempfile
 import unittest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SCRIPT = os.path.join(ROOT, "gate", "revisor_ciego.py")
-_spec = importlib.util.spec_from_file_location("revisor_ciego", SCRIPT)
+SCRIPT = os.path.join(ROOT, "gate", "unswayed.py")
+_spec = importlib.util.spec_from_file_location("unswayed_gate", SCRIPT)
 gate = importlib.util.module_from_spec(_spec)
 _spec.loader.exec_module(gate)
 
@@ -152,14 +152,15 @@ class EndToEndTests(unittest.TestCase):
                               capture_output=True, text=True)
 
     def log(self):
-        path = os.path.join(self.repo, ".git", "revisor-ciego", "log.jsonl")
+        path = os.path.join(self.repo, ".git", "unswayed", "log.jsonl")
         with open(path, encoding="utf-8") as fh:
             return [json.loads(line) for line in fh]
 
     def test_weakening_change_blocks_the_commit(self):
         proc = self.check("- replaces the parameterised query\nSECURITY_EFFECT: WEAKENS")
         self.assertEqual(proc.returncode, 1)
-        self.assertIn("debilita una salvaguarda", proc.stderr)
+        self.assertIn("weakens an existing safeguard", proc.stderr)
+        self.assertIn("BLOCKED", proc.stderr)
         self.assertIn("replaces the parameterised query", proc.stderr)
         self.assertEqual(self.log()[-1]["decision"], "blocked")
 
@@ -202,11 +203,238 @@ class EndToEndTests(unittest.TestCase):
         hook = os.path.join(self.repo, ".git", "hooks", "pre-commit")
         self.assertTrue(os.access(hook, os.X_OK))
         with open(hook, encoding="utf-8") as fh:
-            self.assertIn("revisor_ciego.py", fh.read())
+            self.assertIn("unswayed.py", fh.read())
 
     def test_no_staged_changes_is_a_pass(self):
         self.run_git("reset", "-q", "--hard")
         self.assertEqual(self.check("SECURITY_EFFECT: WEAKENS").returncode, 0)
+
+    def clean_env(self, **extra):
+        env = {k: v for k, v in os.environ.items()
+               if not k.startswith(("UNSWAYED_", "REVISOR_CIEGO_"))}
+        env.update(extra)
+        return env
+
+    def test_public_env_prefix_works_and_wins_over_the_legacy_one(self):
+        env = self.clean_env(UNSWAYED_PROVIDER="mock", UNSWAYED_REVIEWER_CMD="",
+                             UNSWAYED_MOCK_RESPONSE="- x\nSECURITY_EFFECT: WEAKENS",
+                             REVISOR_CIEGO_MOCK_RESPONSE="- x\nSECURITY_EFFECT: NEUTRAL")
+        blocked = subprocess.run([sys.executable, SCRIPT, "check"], cwd=self.repo, env=env,
+                                 capture_output=True, text=True)
+        self.assertEqual(blocked.returncode, 1)
+        env["UNSWAYED_ACK"] = "approved in the change board"
+        acked = subprocess.run([sys.executable, SCRIPT, "check"], cwd=self.repo, env=env,
+                               capture_output=True, text=True)
+        self.assertEqual(acked.returncode, 0)
+        self.assertEqual(self.log()[-1]["ack"], "approved in the change board")
+
+    def test_config_file_is_read_and_the_new_name_overrides_the_legacy_one(self):
+        self.write(".revisor-ciego", 'PROVIDER="mock"\nREVIEWER_CMD="false"\n')
+        env = self.clean_env(UNSWAYED_MOCK_RESPONSE="SECURITY_EFFECT: NEUTRAL")
+        legacy = subprocess.run([sys.executable, SCRIPT, "check"], cwd=self.repo, env=env,
+                                capture_output=True, text=True)
+        self.assertEqual(legacy.returncode, 1)
+        self.assertIn("handing over to the normal reviewer", legacy.stderr)
+        self.write(".unswayed", 'REVIEWER_CMD=""\n')
+        current = subprocess.run([sys.executable, SCRIPT, "check"], cwd=self.repo, env=env,
+                                 capture_output=True, text=True)
+        self.assertEqual(current.returncode, 0)
+
+    def test_range_mode_checks_committed_changes_for_ci(self):
+        self.run_git("commit", "-q", "-m", "story the gate never reads", "--no-verify")
+        proc = self.check("- x\nSECURITY_EFFECT: WEAKENS", args=("--range", "HEAD~1..HEAD"))
+        self.assertEqual(proc.returncode, 1)
+        entry = self.log()[-1]
+        self.assertEqual(entry["source"], "HEAD~1..HEAD")
+        self.assertNotIn("story the gate never reads", json.dumps(entry))
+
+    def test_init_writes_the_public_config_name(self):
+        proc = subprocess.run([sys.executable, SCRIPT, "init"], cwd=self.repo,
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0)
+        self.assertTrue(os.path.exists(os.path.join(self.repo, ".unswayed")))
+
+
+
+class ShadowAndReportTests(unittest.TestCase):
+    """Shadow mode (pilots) and the decision report (evidence)."""
+
+    setUp = EndToEndTests.setUp
+    tearDown = EndToEndTests.tearDown
+    write = EndToEndTests.write
+    run_git = EndToEndTests.run_git
+    check = EndToEndTests.check
+    log = EndToEndTests.log
+
+    def test_shadow_mode_never_holds_a_change_but_logs_it(self):
+        proc = self.check("- x\nSECURITY_EFFECT: WEAKENS", {"UNSWAYED_MODE": "shadow"})
+        self.assertEqual(proc.returncode, 0)
+        self.assertIn("SHADOW MODE", proc.stderr)
+        entry = self.log()[-1]
+        self.assertEqual(entry["decision"], "shadow-flagged")
+        self.assertEqual(entry["mode"], "shadow")
+
+    def test_shadow_mode_does_not_hold_on_model_failure(self):
+        proc = self.check("no tag", {"UNSWAYED_MODE": "shadow"})
+        self.assertEqual(proc.returncode, 0)
+        self.assertEqual(self.log()[-1]["decision"], "error")
+
+    def test_each_check_writes_exactly_one_log_line(self):
+        self.check("- x\nSECURITY_EFFECT: WEAKENS",
+                   {"UNSWAYED_ACK": "approved", "UNSWAYED_REVIEWER_CMD": "true"})
+        self.assertEqual(len(self.log()), 1)
+        self.check("no tag", {"UNSWAYED_ON_ERROR": "allow", "UNSWAYED_REVIEWER_CMD": "true"})
+        self.assertEqual(len(self.log()), 2)
+
+    def test_report_counts_decisions_and_exports_csv(self):
+        self.check("- x\nSECURITY_EFFECT: WEAKENS")                                   # blocked
+        self.check("- x\nSECURITY_EFFECT: WEAKENS", {"UNSWAYED_ACK": "ticket CHG-1"})  # acknowledged
+        self.check("- x\nSECURITY_EFFECT: WEAKENS", {"UNSWAYED_MODE": "shadow"})       # shadow-flagged
+        self.check("SECURITY_EFFECT: NEUTRAL")                                        # passed
+        self.check("no tag")                                                          # error
+        proc = subprocess.run([sys.executable, SCRIPT, "report", "--json"], cwd=self.repo,
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 0)
+        summary = json.loads(proc.stdout)
+        self.assertEqual(summary["checks"], 5)
+        self.assertEqual(summary["answered"], 4)
+        self.assertEqual(summary["errors"], 1)
+        self.assertEqual(summary["flagged"], 3)
+        self.assertAlmostEqual(summary["flag_rate"], 0.75)
+        self.assertEqual(summary["acknowledgements"][0]["ack"], "ticket CHG-1")
+        out = os.path.join(self.repo, "evidence.csv")
+        text = subprocess.run([sys.executable, SCRIPT, "report", "--csv", out], cwd=self.repo,
+                              capture_output=True, text=True)
+        self.assertIn("flagged as weakening a safeguard: 3 of 4 (75.0%)", text.stdout)
+        with open(out, encoding="utf-8") as fh:
+            rows = fh.read().splitlines()
+        self.assertEqual(len(rows), 6)
+        self.assertTrue(rows[0].startswith("time,decision,effect,mode,model"))
+
+    def test_report_without_a_log_says_so(self):
+        proc = subprocess.run([sys.executable, SCRIPT, "report"], cwd=self.repo,
+                              capture_output=True, text=True)
+        self.assertEqual(proc.returncode, 1)
+
+    def test_job_summary_is_written_in_ci_with_model_text_fenced(self):
+        target = os.path.join(self.repo, "summary.md")
+        proc = self.check("- removes the check ``` and tries markdown\nSECURITY_EFFECT: WEAKENS",
+                          {"GITHUB_STEP_SUMMARY": target, "GITHUB_ACTIONS": "true"})
+        self.assertEqual(proc.returncode, 1)
+        self.assertIn("unswayed-ack: <reason>", proc.stderr)
+        with open(target, encoding="utf-8") as fh:
+            text = fh.read()
+        self.assertIn("### Unswayed: BLOCKED", text)
+        self.assertEqual(text.count("```"), 2)
+
+
+def review(login, state, body="", commit="abc123", assoc="MEMBER", at="2026-11-14T10:00:00Z"):
+    return {"user": {"login": login}, "state": state, "body": body, "commit_id": commit,
+            "author_association": assoc, "submitted_at": at}
+
+
+class CiAcknowledgementTests(unittest.TestCase):
+    """Who may clear a block from a pull request."""
+
+    OK = "Looks intended.\nunswayed-ack: ownership moved to the gateway, CHG-1042"
+
+    def pick(self, reviews, author="mallory", head="abc123"):
+        return gate.select_ack(reviews, author, head)
+
+    def test_a_maintainers_approval_with_the_ack_line_is_accepted(self):
+        self.assertEqual(self.pick([review("alice", "APPROVED", self.OK)]),
+                         ("alice", "ownership moved to the gateway, CHG-1042"))
+
+    def test_the_author_cannot_acknowledge_their_own_change(self):
+        self.assertIsNone(self.pick([review("Mallory", "APPROVED", self.OK)]))
+
+    def test_an_approval_on_an_older_commit_is_void(self):
+        self.assertIsNone(self.pick([review("alice", "APPROVED", self.OK, commit="old999")]))
+
+    def test_outside_contributors_cannot_acknowledge(self):
+        self.assertIsNone(self.pick([review("eve", "APPROVED", self.OK, assoc="CONTRIBUTOR")]))
+        self.assertIsNone(self.pick([review("eve", "APPROVED", self.OK, assoc="NONE")]))
+
+    def test_an_approval_without_the_ack_line_is_not_an_acknowledgement(self):
+        self.assertIsNone(self.pick([review("alice", "APPROVED", "LGTM")]))
+
+    def test_a_later_change_request_by_the_same_person_voids_the_ack(self):
+        reviews = [review("alice", "APPROVED", self.OK, at="2026-11-14T10:00:00Z"),
+                   review("alice", "CHANGES_REQUESTED", "wait", at="2026-11-14T11:00:00Z")]
+        self.assertIsNone(self.pick(reviews))
+
+    def test_a_dismissed_approval_is_void_but_a_later_comment_is_not(self):
+        self.assertIsNone(self.pick([review("alice", "DISMISSED", self.OK)]))
+        reviews = [review("alice", "APPROVED", self.OK, at="2026-11-14T10:00:00Z"),
+                   review("alice", "COMMENTED", "nit", at="2026-11-14T11:00:00Z")]
+        self.assertEqual(self.pick(reviews)[0], "alice")
+
+    def test_the_command_reads_paginated_api_output(self):
+        pages = [[review("bob", "COMMENTED", "hm")], [review("alice", "APPROVED", self.OK)]]
+        with tempfile.TemporaryDirectory() as tmp:
+            path = os.path.join(tmp, "reviews.json")
+            with open(path, "w", encoding="utf-8") as fh:
+                json.dump(pages, fh)
+            found = subprocess.run([sys.executable, SCRIPT, "ack-from-reviews", "--file", path,
+                                    "--author", "mallory", "--head", "abc123"],
+                                   capture_output=True, text=True)
+            self.assertEqual(found.returncode, 0)
+            self.assertIn("CHG-1042 (acknowledged by alice on abc123)", found.stdout)
+            none = subprocess.run([sys.executable, SCRIPT, "ack-from-reviews", "--file", path,
+                                   "--author", "alice", "--head", "abc123"],
+                                  capture_output=True, text=True)
+            self.assertEqual(none.returncode, 1)
+            self.assertEqual(none.stdout, "")
+
+
+
+DECOY_DIFF = """diff --git a/api.py b/api.py
+--- a/api.py
++++ b/api.py
+@@ -1,6 +1,4 @@
+ def get_invoice(db, user, invoice_id):
+     invoice = db.find(invoice_id)
+-    if invoice.owner_id != user.id:
+-        raise Forbidden()
+     return invoice
+@@ -40,3 +38,5 @@
+ def rename(db, name):
++    if name is None or len(name) > 64:
++        raise ValueError("bad name")
+     db.rename(name)
+"""
+
+
+class GranularityTests(unittest.TestCase):
+    """Judging every hunk on its own, so a decoy cannot outweigh a weakening."""
+
+    @staticmethod
+    def swayed_by_decoy(prompt, cfg):
+        # A model that lets an added guard outweigh a removed check when it sees both.
+        if "raise ValueError" in prompt:
+            return "- adds a guard\nSECURITY_EFFECT: STRENGTHENS"
+        if "-        raise Forbidden()" in prompt:
+            return "- removes the ownership check\nSECURITY_EFFECT: WEAKENS"
+        return "SECURITY_EFFECT: NEUTRAL"
+
+    def cfg(self, granularity):
+        return dict(gate.DEFAULTS, PROVIDER="mock", GRANULARITY=granularity)
+
+    def test_whole_diff_judgement_can_be_outweighed_by_a_decoy(self):
+        result = gate.tripwire(DECOY_DIFF, self.cfg("diff"), ask=self.swayed_by_decoy)
+        self.assertEqual(result["effect"], "STRENGTHENS")
+
+    def test_hunk_granularity_isolates_the_weakening_hunk(self):
+        result = gate.tripwire(DECOY_DIFF, self.cfg("hunk"), ask=self.swayed_by_decoy)
+        self.assertEqual(result["effect"], "WEAKENS")
+        self.assertEqual([c["effect"] for c in result["chunks"]], ["WEAKENS", "STRENGTHENS"])
+
+    def test_hunk_granularity_makes_one_call_per_hunk_with_the_file_header(self):
+        chunks, _ = gate.build_chunks(DECOY_DIFF, 12000, gate.DEFAULTS["EXCLUDE"], "hunk")
+        self.assertEqual(len(chunks), 2)
+        for chunk in chunks:
+            self.assertTrue(chunk["diff"].startswith("diff --git a/api.py b/api.py"))
+            self.assertEqual(chunk["diff"].count("@@ -"), 1)
 
 
 if __name__ == "__main__":

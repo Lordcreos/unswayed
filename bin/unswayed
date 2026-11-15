@@ -1,0 +1,3 @@
+#!/bin/sh
+# Unswayed launcher. Add this folder to PATH or symlink it into ~/bin.
+exec python3 "$(cd "$(dirname "$0")/.." && pwd)/gate/unswayed.py" "$@"

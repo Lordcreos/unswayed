@@ -1,0 +1,86 @@
+# Unswayed as a pull request check. Copy to .github/workflows/unswayed.yml.
+#
+# Setup
+#   1. Vendor gate/unswayed.py into your repository as tools/unswayed.py. It is one
+#      standard-library Python file, so the check depends on no third-party action.
+#   2. Add the model key as the repository secret UNSWAYED_MODEL_API_KEY.
+#   3. Mark the job "blind-gate" as a required status check on the protected branch.
+#      That is what turns the verdict from advice into a gate.
+#
+# Why pull_request_target
+#   This workflow and tools/unswayed.py are taken from the BASE branch, so a pull
+#   request cannot edit its own gate. The pull request's commits are fetched as data
+#   and only diffed. Nothing from the pull request is ever executed, which is what
+#   makes it safe to give this job a secret.
+#
+# What leaves your infrastructure
+#   The diff, sent to the model endpoint you configure below. Not the title, the
+#   description, the comments, the commit messages or the branch name.
+#
+# Clearing a block
+#   A maintainer other than the author approves the pull request with a line
+#       unswayed-ack: <reason>
+#   in the review body, then re-runs this job. An approval made before the latest
+#   push does not count. The reason and who gave it are written to the decision log.
+#
+# Pilot ("shadow") mode
+#   Set the repository variable UNSWAYED_MODE to "shadow": verdicts are logged and
+#   shown in the job summary, and no pull request is ever held.
+name: unswayed
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  blind-gate:
+    runs-on: ubuntu-latest
+    env:
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+      PR_AUTHOR: ${{ github.event.pull_request.user.login }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+    steps:
+      - name: Check out the base branch (trusted code)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Fetch the pull request commits as data
+        run: git fetch --no-tags origin "$HEAD_SHA"
+
+      - name: Does this change weaken a safeguard?
+        env:
+          GH_TOKEN: ${{ github.token }}
+          UNSWAYED_MODE: ${{ vars.UNSWAYED_MODE || 'enforce' }}
+          UNSWAYED_PROVIDER: ${{ vars.UNSWAYED_PROVIDER || 'openai' }}
+          UNSWAYED_MODEL: ${{ vars.UNSWAYED_MODEL || 'Qwen/Qwen3-235B-A22B-Instruct-2507' }}
+          UNSWAYED_BASE_URL: ${{ vars.UNSWAYED_BASE_URL || 'https://api.tokenfactory.nebius.com/v1' }}
+          UNSWAYED_API_KEY_ENV: MODEL_API_KEY
+          MODEL_API_KEY: ${{ secrets.UNSWAYED_MODEL_API_KEY }}
+        run: |
+          gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/reviews" > "$RUNNER_TEMP/reviews.json"
+          ACK="$(python3 tools/unswayed.py ack-from-reviews --file "$RUNNER_TEMP/reviews.json" --author "$PR_AUTHOR" --head "$HEAD_SHA" || true)"
+          UNSWAYED_ACK="$ACK" python3 tools/unswayed.py check --range "$BASE_SHA...$HEAD_SHA" --no-reviewer
+
+      - name: Keep the decision log
+        if: always()
+        run: |
+          if [ -f .git/unswayed/log.jsonl ]; then
+            cp .git/unswayed/log.jsonl "$RUNNER_TEMP/unswayed-log.jsonl"
+            python3 tools/unswayed.py report --log "$RUNNER_TEMP/unswayed-log.jsonl" --csv "$RUNNER_TEMP/unswayed-log.csv"
+          fi
+
+      - name: Upload the decision log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: unswayed-decision-log
+          path: |
+            ${{ runner.temp }}/unswayed-log.jsonl
+            ${{ runner.temp }}/unswayed-log.csv
+          if-no-files-found: ignore

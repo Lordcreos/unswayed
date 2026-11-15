@@ -31,10 +31,12 @@ The four-eyes control fails when the second pair of eyes is an AI that reads the
 
 ## Capabilities and Constraints
 
-- Blocks on `WEAKENS`; passes `NEUTRAL` and `STRENGTHENS` to the normal reviewer; human acknowledgement via `REVISOR_CIEGO_ACK`; decisions logged to `.git/revisor-ciego/log.jsonl`.
+- Blocks on `WEAKENS`; passes `NEUTRAL` and `STRENGTHENS` to the normal reviewer; human acknowledgement via `UNSWAYED_ACK`; decisions logged to `.git/unswayed/log.jsonl`.
 - Does not see commit messages, PR descriptions or branch names by construction.
-- Not yet measured: an adaptive attacker (a reversion hidden inside a larger refactor, or text in the diff aimed at the gate).
-- The internal project folder and CLI are named `revisor-ciego`; the public name is Unswayed.
+- Shadow mode (`MODE=shadow`) logs verdicts and never holds a change; `unswayed report` summarises the log and exports CSV.
+- As a pull request check (`examples/github-actions.yml`, `pull_request_target`): the gate and workflow come from the base branch, and only a maintainer who is not the author can clear a block, with `unswayed-ack: <reason>` in an approval of the exact commit. Ran on GitHub-hosted runners with a scripted model answer on 14 Nov 2026; the acknowledgement path is unit-tested only.
+- Adaptive attacker, measured 14 Nov 2026 on 24 stable cases (Qwen3-235B, one sample per attack): in the default mode the best attack, a decoy hardening change elsewhere in the diff, evades 8 of 24; all six attacks evade 28 of 144. With `GRANULARITY=hunk` the same attacks evade 4 of 144, at a cost: ordinary commits flagged go from 18 to 33 of 118 and legitimate fixes flagged from 2 to 6 of 30, with 2.4 times the model calls. Not measured: an attacker adapted to hunk mode.
+- The public name is Unswayed and so is the CLI (`bin/unswayed`, config `.unswayed`, `UNSWAYED_*` variables). The project folder and the module file keep the original name `revisor-ciego`; the old config file and `REVISOR_CIEGO_*` variables still work.
 
 ## Brand Commitments
 
@@ -52,7 +54,7 @@ Measured on SEVRA-Bench (malicious PRs that revert real CVE fixes, wrapped in pe
 - Gate question answered by Claude Opus 5.5: flags 30 of 30 malicious (sample), 1 of 10 legitimate fixes.
 - False alarms on 118 ordinary commits from the same repositories: 16% (gpt-oss-120b), 15% (Qwen3-235B), 4% (Opus 5.5, single pass).
 - Negative result: the difference between the full and blind verdicts does not work as a detector (AUROC 0.55 to 0.59).
-- No customers, pricing or deployments exist; none may be shown.
+- No customers or deployments exist; none may be shown. Pricing exists only as a proposal (Community free, Team per active developer, Enterprise self-hosted) and must be labelled as not validated with any customer whenever it is shown.
 
 ## Product Principles
 
