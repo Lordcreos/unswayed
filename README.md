@@ -5,6 +5,10 @@
 AI code reviewers approve malicious pull requests when the description lies.
 Unswayed is a gate that sits in front of the reviewer and never reads what the author wrote.
 
+![Malicious pull requests approved: 53 of 90 with the reviewer alone, 6 of 90 with Unswayed in front. Legitimate fixes approved: 24 of 30 in both cases.](video/out/unswayed-poster.png)
+
+Built for the Entropy Alignment Security Hackathon, Berlin, November 2026.
+
 | Malicious PRs approved (of 90) | Reviewer alone | With Unswayed |
 | --- | --- | --- |
 | Qwen3-235B as reviewer | 53 | 6 |
@@ -176,7 +180,7 @@ python3 -m unittest discover -s tests
 python3 experiments/run_claims.py . --model Qwen/Qwen3-235B-A22B-Instruct-2507 --analyze
 ```
 
-prints the table above from `results/`. `experiments/run_review.py`, `run_claims.py` and `run_ordinary.py` re-run the models; they need a Nebius key in `.env`.
+prints the table above from `results/`. Where the data comes from and under which licences: `data/README.md`. `experiments/run_review.py`, `run_claims.py` and `run_ordinary.py` re-run the models; they need a Nebius key in `.env`.
 
 What did not work: using the difference between the blind verdict and the full-context verdict as a detector. AUROC was 0.55 to 0.59.
 
